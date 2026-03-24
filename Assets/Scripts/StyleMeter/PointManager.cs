@@ -26,6 +26,7 @@ public class PointManager : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI rankText;
     public Slider progressSlider;
+    public TextMeshProUGUI pointsText;
 
     [Header("Decay Settings")]
     [Tooltip("Delay before decay starts after gaining points")]
@@ -152,8 +153,10 @@ public class PointManager : MonoBehaviour
                     Time.deltaTime * 5f
                 );
             }
+            
         }
-
+        if (pointsText != null)
+            pointsText.text = currentPoints.ToString();
         previousRankIndex = currentRankIndex;
     }
 
