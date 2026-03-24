@@ -620,7 +620,7 @@ MonoBehaviour:
   EncryptionKey: 
   ImportType: 0
   TargetAssetPath: FMODBanks
-  TargetBankFolder: C:\Users\Ulrich\P4G4\testpro\FMOD\Desktop
+  TargetBankFolder: C:\Users\Ulrich\P4G4\testpro\FMOD
   EventLinkage: 0
   SerializeGUIDsOnly: 0
   LoggingLevel: 2
@@ -634,7 +634,8 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master
-  Banks: []
+  Banks:
+  - StyleBank
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

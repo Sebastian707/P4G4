@@ -516,9 +516,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PointManager
   currentPoints: 0
   ranks:
-  - rankName: None
-    threshold: 0
-    decayPerSecond: 0
   - rankName: D
     threshold: 100
     decayPerSecond: 10
@@ -534,9 +531,22 @@ MonoBehaviour:
   - rankName: S
     threshold: 4000
     decayPerSecond: 50
+  - rankName: SS
+    threshold: 6500
+    decayPerSecond: 60
+  - rankName: SSS
+    threshold: 10000
+    decayPerSecond: 70
   rankText: {fileID: 883004851}
   progressSlider: {fileID: 1865234954}
   delayBeforeDecay: 1
+  musicEvent:
+    Guid:
+      Data1: 1556050852
+      Data2: 1246991010
+      Data3: 2070463906
+      Data4: -676637273
+    Path: event:/GuhAssEvent
 --- !u!4 &354228875
 Transform:
   m_ObjectHideFlags: 0
