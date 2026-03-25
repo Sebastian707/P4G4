@@ -19,6 +19,7 @@ public class PointManager : MonoBehaviour
 {
     [Header("Points Settings")]
     public int currentPoints = 0;
+    public int maxPoints = 11000;
 
     [Header("Style Ranks")]
     public List<StyleRank> ranks = new List<StyleRank>();
@@ -70,6 +71,10 @@ public class PointManager : MonoBehaviour
     public void AddPoints(int amount)
     {
         currentPoints += amount;
+        if (currentPoints > maxPoints)
+        {
+            currentPoints = maxPoints;
+        }
         noDecayTimer = 0f;
     }
 
