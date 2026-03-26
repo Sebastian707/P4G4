@@ -155,13 +155,23 @@ public class Weapon : MonoBehaviour
 
     void ApplyHit(RaycastHit hit)
     {
-        hit.collider.GetComponentInParent<IDamageable>()?.ApplyDamage(damage);
-        SpawnBulletHole(hit);
-
-        if (defaultImpactVfx != null)
+        // Try to apply damage if the object implements IDamageable
+        IDamageable damageable = hit.collider.GetComponentInParent<IDamageable>();
+        if (damageable != null)
         {
-            var fx = Instantiate(defaultImpactVfx, hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(fx, 5f);
+            damageable.ApplyDamage(damage);
+            // Do NOT spawn bullet hole prefab on damageable objects
+        }
+        else
+        {
+            // Only spawn bullet hole and VFX if it's NOT damageable
+            SpawnBulletHole(hit);
+
+            if (defaultImpactVfx != null)
+            {
+                var fx = Instantiate(defaultImpactVfx, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(fx, 5f);
+            }
         }
     }
 
