@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{7e59cbf4-7668-4701-b928-189b9ba12e0e}">
+		<property name="assetPath">
+			<value>YTDown.com_YouTube_Devil-Trigger-Nero-s-battle-theme-from-D_Media_eICijnr1k_I_001_1080p.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>405.28979591836736</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b37012e9-5ce3-485e-96a4-f03f14c6690f}</destination>
+		</relationship>
+	</object>
+</objects>
