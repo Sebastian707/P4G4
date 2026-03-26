@@ -37,9 +37,7 @@ public class Weapon : MonoBehaviour
 
     [Header("FMOD Sound")]
     [SerializeField] private EventReference soundFire;
-    // Optional: expose FMOD parameters you want to drive per-shot
-    // e.g. for a "PitchVariation" parameter in your FMOD event
-    [SerializeField] private string pitchParameterName = "";   // leave blank to skip
+    [SerializeField] private string pitchParameterName = "";   
     [SerializeField] private float audioPitchVariation = 0.02f;
 
     [Header("Recoil")]
@@ -107,10 +105,6 @@ public class Weapon : MonoBehaviour
 
         HandleWeaponSway();
     }
-
-    // ------------------------------------------------------------------
-    // Firing
-    // ------------------------------------------------------------------
 
     IEnumerator BurstCoroutine()
     {
@@ -202,24 +196,16 @@ public class Weapon : MonoBehaviour
         Destroy(shell, 8f);
     }
 
-    // ------------------------------------------------------------------
-    // FMOD Audio
-    // ------------------------------------------------------------------
-
     void PlayFireSound()
     {
         if (soundFire.IsNull) return;
 
-        // If no per-shot parameter is needed, use the lightweight PlayOneShot path.
-        // This fires, plays, and auto-releases the event instance — no leak risk.
         if (string.IsNullOrEmpty(pitchParameterName))
         {
             RuntimeManager.PlayOneShot(soundFire, transform.position);
             return;
         }
 
-        // If you have an FMOD parameter (e.g. "PitchVariation") to drive per-shot,
-        // create a short-lived instance so we can set it before playback starts.
         EventInstance instance = RuntimeManager.CreateInstance(soundFire);
         instance.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
 
@@ -227,12 +213,8 @@ public class Weapon : MonoBehaviour
         instance.setParameterByName(pitchParameterName, pitchOffset);
 
         instance.start();
-        instance.release(); // Marks for destruction once the event finishes naturally
+        instance.release();
     }
-
-    // ------------------------------------------------------------------
-    // Weapon Sway
-    // ------------------------------------------------------------------
 
     void HandleWeaponSway()
     {
@@ -260,10 +242,6 @@ public class Weapon : MonoBehaviour
         transform.localRotation = currentSwayRotation * Quaternion.Euler(currentRecoil);
     }
 }
-
-// ------------------------------------------------------------------
-// Damage interface
-// ------------------------------------------------------------------
 
 public interface IDamageable
 {
