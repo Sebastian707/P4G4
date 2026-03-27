@@ -388,7 +388,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 247495191}
-  - {fileID: 416604545}
+  - {fileID: 2032700309}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -503,11 +503,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247495190}
   m_CullTransparentMesh: 1
---- !u!224 &416604545 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 9104106709527347402, guid: dfe51d022558bd4479c66f2c981fb859, type: 3}
-  m_PrefabInstance: {fileID: 2818772992841616323}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &542508511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,6 +1189,11 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
+--- !u!224 &2032700309 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2940337817168222364, guid: dfe51d022558bd4479c66f2c981fb859, type: 3}
+  m_PrefabInstance: {fileID: 2818772992841616323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!33 &33325208752117722
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3400,12 +3400,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3893294199639930361}
   - component: {fileID: 4416926083347132233}
-  - component: {fileID: 4416926083347132228}
   - component: {fileID: 5885216829670671795}
   - component: {fileID: 135756641613574975}
   - component: {fileID: 4416926083347132239}
   - component: {fileID: 5885216829670671796}
   - component: {fileID: 5885216829670671797}
+  - component: {fileID: 5885216829670671798}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -3413,29 +3413,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &4416926083347132228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4416926083347132227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 4
-  SprintSpeed: 6
-  RotationSpeed: 1
-  JumpHeight: 1.2
-  Gravity: -15
-  GroundedOffset: -0.14
-  GroundedRadius: 0.5
-  GroundLayers:
-    serializedVersion: 2
-    m_Bits: 1
-  MaxLookAngle: 90
 --- !u!143 &4416926083347132233
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4233,6 +4210,51 @@ MonoBehaviour:
   stepInterval: 0.5
   footstepEvents:
   - event:/Footsteps/Footstep_1
+--- !u!114 &5885216829670671798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926083347132227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fddb029001c5f0c43b24b6df5bedb89b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarterAssets.PlayerMovementWithStrafes
+  controller: {fileID: 4416926083347132233}
+  GroundCheck: {fileID: 0}
+  GroundLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  GroundedRadius: 0.4
+  moveSpeed: 7
+  runAcceleration: 14
+  runDeacceleration: 10
+  airAcceleration: 2
+  airDeacceleration: 2
+  airControl: 0.3
+  sideStrafeAcceleration: 50
+  sideStrafeSpeed: 1
+  jumpSpeed: 8
+  friction: 6
+  playerFriction: 0
+  JumpQueue: 0
+  wishJump: 0
+  PlayerVel: {x: 0, y: 0, z: 0}
+  ModulasSpeed: 0
+  ZVelocity: 0
+  XVelocity: 0
+  moveDirection: {x: 0, y: 0, z: 0}
+  moveDirectionNorm: {x: 0, y: 0, z: 0}
+  GroundedOffset: -0.14
+  playerView: {fileID: 8944336656349189700}
+  x: 0
+  z: 0
+  IsGrounded: 0
+  player: {fileID: 3893294199639930361}
+  RotationSpeed: 1
+  MaxLookAngle: 90
 --- !u!23 &6045556068550499327
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5076,6 +5098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SimpleEnemy
   maxHealth: 4
   currentHealth: 0
+  enemyName: Boss
 --- !u!114 &8061178605965752736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5089,6 +5112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossBar
   bossHealthBarPrefab: {fileID: 5251429261978079289, guid: dfe51d022558bd4479c66f2c981fb859, type: 3}
+  ghostDelay: 1
+  ghostDrainSpeed: 30
 --- !u!23 &8080841852154815418
 MeshRenderer:
   m_ObjectHideFlags: 0
