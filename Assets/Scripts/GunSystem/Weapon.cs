@@ -65,7 +65,7 @@ public class Weapon : MonoBehaviour
 
     void Awake()
     {
-        input = FindObjectOfType<StarterAssetsInputs>();
+        input = FindFirstObjectByType<StarterAssetsInputs>();
         mainCamera = Camera.main;
 
         burstLeft = burstCount;
