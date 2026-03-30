@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ForceFieldTrue
+  m_Shader: {fileID: 4800000, guid: 4a81832c351139849bf07019d0a61e86, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _DistortionSpeed: 1.2
+    - _DistortionStrength: 0.04
+    - _DitherStrength: 1
+    - _EdgeSoftness: 1.2
+    - _EmissionIntensity: 2
+    - _FlickerAmount: 0.07
+    - _FlickerSpeed: 0
+    - _FresnelPower: 4
+    - _HexContrast: 0.15
+    - _HexTiling: 6
+    - _ImpactRadius: 0
+    - _NoiseScale: 2.5
+    - _NoiseStrength: 0.15
+    - _RevealRadius: 3.5
+    - _ScanlineDensity: 40
+    - _ScanlineStrength: 0.3
+    m_Colors:
+    - _ImpactPosition: {r: 0, g: -9999, b: 0, a: 0}
+    - _PlayerPosition: {r: 0, g: 0, b: 0, a: 0}
+    - _ShieldColor: {r: 0.1, g: 0.8, b: 1, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
