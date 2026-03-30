@@ -2672,19 +2672,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1859617647560964455, guid: dfe51d022558bd4479c66f2c981fb859, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1859617647560964455, guid: dfe51d022558bd4479c66f2c981fb859, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3810918129468612371, guid: dfe51d022558bd4479c66f2c981fb859, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3810918129468612371, guid: dfe51d022558bd4479c66f2c981fb859, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5251429261978079289, guid: dfe51d022558bd4479c66f2c981fb859, type: 3}
       propertyPath: m_Name
@@ -2696,6 +2696,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6926589548597389553, guid: dfe51d022558bd4479c66f2c981fb859, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506611422063999925, guid: dfe51d022558bd4479c66f2c981fb859, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9104106709527347402, guid: dfe51d022558bd4479c66f2c981fb859, type: 3}
@@ -5258,7 +5262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a7d8435d6d05e843818b8b16b95a4d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossBar
-  bossHealthBarPrefab: {fileID: 5251429261978079289, guid: dfe51d022558bd4479c66f2c981fb859, type: 3}
+  bossHealthBarPrefab: {fileID: 8506611422063999925, guid: dfe51d022558bd4479c66f2c981fb859, type: 3}
   ghostDelay: 1
   ghostDrainSpeed: 30
 --- !u!23 &8080841852154815418
