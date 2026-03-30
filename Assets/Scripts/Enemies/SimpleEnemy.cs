@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SimpleEnemy : MonoBehaviour, IDamageable
@@ -6,6 +7,8 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
     public float maxHealth = 100f;
     public float currentHealth;
     public string enemyName = "Boss";
+
+    public event Action OnDeath;
 
     void Awake()
     {
@@ -26,7 +29,7 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
 
     void Die()
     {
-        // Optional: play death effects here (particles, sound, etc.)
+        OnDeath?.Invoke();
         Destroy(gameObject);
     }
 }

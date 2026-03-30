@@ -50,10 +50,12 @@ namespace StarterAssets
 
         private void Update()
         {
-            GroundedCheck();
-            Move();
-            JumpAndGravity();
-            Look();
+            if (Time.timeScale > 0)
+            {
+                Move();
+                JumpAndGravity();
+                Look();
+            }
         }
 
         private void GroundedCheck()
