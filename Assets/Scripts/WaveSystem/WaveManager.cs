@@ -9,10 +9,26 @@ public class WaveManager : MonoBehaviour
     [Header("UI")]
     public EnemyCounterUI enemyCounterUI;
 
+    [Header("Trigger Settings")]
+    public string triggerTag = "Player"; 
+
     private int currentWaveIndex = 0;
     private int enemiesAlive = 0;
 
-    void Start()
+    private bool hasStarted = false;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (hasStarted) return;
+
+        if (other.CompareTag(triggerTag))
+        {
+            hasStarted = true;
+            Debug.Log("Wave system triggered!");
+            StartCoroutine(RunWaveSystem());
+        }
+    }
+    public void StartWaves()
     {
         StartCoroutine(RunWaveSystem());
     }
@@ -47,7 +63,6 @@ public class WaveManager : MonoBehaviour
                 continue;
             }
 
-            // Find spawn point in scene by name
             Transform spawnPoint = GameObject.Find(entry.spawnPointName)?.transform;
             if (spawnPoint == null)
             {
