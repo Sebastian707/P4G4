@@ -196,4 +196,12 @@ public class PointManager : MonoBehaviour
     {
         AddPoints(10);
     }
+
+    void OnDisable()
+    {
+        if (musicInstance.isValid())
+        {
+            musicInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        }
+    }
 }
