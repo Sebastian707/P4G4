@@ -10,11 +10,10 @@ public class WaveManager : MonoBehaviour
     public EnemyCounterUI enemyCounterUI;
 
     [Header("Trigger Settings")]
-    public string triggerTag = "Player"; 
+    public string triggerTag = "Player";
 
     private int currentWaveIndex = 0;
     private int enemiesAlive = 0;
-
     private bool hasStarted = false;
 
     private void OnTriggerEnter(Collider other)
@@ -28,6 +27,7 @@ public class WaveManager : MonoBehaviour
             StartCoroutine(RunWaveSystem());
         }
     }
+
     public void StartWaves()
     {
         StartCoroutine(RunWaveSystem());
@@ -38,6 +38,9 @@ public class WaveManager : MonoBehaviour
         while (currentWaveIndex < waves.Length)
         {
             WaveData wave = waves[currentWaveIndex];
+
+            // Update wave UI
+            enemyCounterUI?.UpdateWaveCount(currentWaveIndex + 1, waves.Length);
 
             Debug.Log($"Wave {currentWaveIndex + 1} starting in {wave.timeBeforeWaveStarts} seconds");
             yield return new WaitForSeconds(wave.timeBeforeWaveStarts);

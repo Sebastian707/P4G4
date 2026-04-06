@@ -3,6 +3,8 @@ using UnityEngine;
 public class WaveStart : MonoBehaviour
 {
     public WaveManager waveManager;
+    public GameObject pointManager;
+
     public string triggerTag = "Player";
 
     private bool hasTriggered = false;
@@ -10,7 +12,7 @@ public class WaveStart : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (hasTriggered) return;
-
+        pointManager.SetActive(true);
         if (other.CompareTag(triggerTag))
         {
             hasTriggered = true;
