@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{bc8cae1a-e4bf-4fa7-bbf8-9935c174cd27}">
+		<property name="assetPath">
+			<value>freesound_community-ambientsound-27920.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>24</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>36.960000000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b37012e9-5ce3-485e-96a4-f03f14c6690f}</destination>
+		</relationship>
+	</object>
+</objects>

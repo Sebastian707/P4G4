@@ -50,15 +50,18 @@ namespace StarterAssets
 
         private void Update()
         {
-            GroundedCheck();
-            Move();
-            JumpAndGravity();
-            Look();
+            if (Time.timeScale > 0)
+            {
+                GroundedCheck();
+                Move();
+                JumpAndGravity();
+                Look();
+            }
         }
 
         private void GroundedCheck()
         {
-            Vector3 pos = transform.position - Vector3.up * GroundedOffset;
+            Vector3 pos = transform.position + Vector3.up * GroundedOffset;
             _grounded = Physics.CheckSphere(pos, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
         }
 

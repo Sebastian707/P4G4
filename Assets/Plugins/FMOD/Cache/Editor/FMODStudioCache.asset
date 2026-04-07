@@ -42,10 +42,10 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639102291170891699
+  lastModified: 639109308285086736
   FileSizes:
   - Name: Desktop
-    Value: 1434
+    Value: 1522
   Exists: 1
 --- !u!114 &-7626504162215255346
 MonoBehaviour:
@@ -290,13 +290,15 @@ MonoBehaviour:
   - {fileID: 1448686317895001193}
   - {fileID: -7626504162215255346}
   - {fileID: 4484513285593963803}
+  - {fileID: 6603485327294711850}
+  - {fileID: 6876683814323317087}
   EditorParameters: []
   MasterBanks:
   - {fileID: 1323921616586282711}
   StringsBanks:
   - {fileID: -9075412839043594894}
   cacheVersion: 131858
-  cacheTime: 639102291171172268
+  cacheTime: 639109308286079516
   SerializableEventsDict:
   - key: event:/GuhAssEvent
     index: 0
@@ -324,6 +326,10 @@ MonoBehaviour:
     index: 11
   - key: event:/Footsteps/Footstep_6
     index: 12
+  - key: event:/EnergyShield
+    index: 13
+  - key: event:/AmbientSilence
+    index: 14
 --- !u!114 &650020608143067956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,7 +373,7 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Footsteps.bank
   Name: Footsteps
   StudioPath: bank:/Footsteps
-  lastModified: 639102291170620441
+  lastModified: 639109308280209398
   FileSizes:
   - Name: Desktop
     Value: 38144
@@ -411,10 +417,10 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639102291170876669
+  lastModified: 639109308285076228
   FileSizes:
   - Name: Desktop
-    Value: 5818944
+    Value: 6213280
   Exists: 1
 --- !u!114 &1448686317895001193
 MonoBehaviour:
@@ -601,6 +607,60 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &6603485327294711850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/EnergyShield
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/EnergyShield
+  Guid:
+    Data1: 649884575
+    Data2: 1112253516
+    Data3: 600001418
+    Data4: -2062164954
+  Banks:
+  - {fileID: 1323921616586282711}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 16326
+--- !u!114 &6876683814323317087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/AmbientSilence
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/AmbientSilence
+  Guid:
+    Data1: 588679328
+    Data2: 1115767558
+    Data3: 2122215067
+    Data4: -1547497338
+  Banks:
+  - {fileID: 1323921616586282711}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 36960
 --- !u!114 &7477301508143652450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -616,7 +676,7 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/StyleBank.bank
   Name: StyleBank
   StudioPath: bank:/StyleBank
-  lastModified: 639102291171172268
+  lastModified: 639109308286079516
   FileSizes:
   - Name: Desktop
     Value: 11380864
