@@ -632,8 +632,11 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks: []
-  Banks: []
+  MasterBanks:
+  - Master
+  Banks:
+  - Footsteps
+  - StyleBank
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
