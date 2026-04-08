@@ -12,14 +12,19 @@ public class Weapon : MonoBehaviour
 
     [Header("General")]
     public FireMode fireMode = FireMode.SemiAuto;
+    public string gunName;
+    public UnityEngine.UI.Image previewImage;
+
 
     [Header("Shooting")]
+    public GameObject projectile;
     public float fireRate = 6f;
     public int burstCount = 3;
     public int pelletsPerShot = 1;
     public float spreadAngle = 2f;
 
     [Header("Damage")]
+
     public float damage = 25f;
     public float maxDistance = 100f;
     public LayerMask hitMask = ~0;
@@ -143,9 +148,17 @@ public class Weapon : MonoBehaviour
         {
             Vector3 origin = raycastOrigin != null ? raycastOrigin.position : mainCamera.transform.position;
             Vector3 direction = GetShotDirection();
-
+            if (projectile == null) { 
             if (Physics.Raycast(origin, direction, out RaycastHit hit, maxDistance, hitMask))
                 ApplyHit(hit);
+            } else
+            {
+                //if projectile weapon
+                var shot = Instantiate(projectile);
+                shot.transform.position = raycastOrigin.transform.position;
+                shot.transform.rotation = Quaternion.LookRotation(direction);
+                Destroy(shot, 30f);
+            }
         }
 
         return true;
@@ -182,6 +195,8 @@ public class Weapon : MonoBehaviour
 
     void SpawnBulletHole(RaycastHit hit)
     {
+        //if hitscan
+        if (projectile != null) return;
         if (bulletHolePrefab == null) return;
 
         var go = Instantiate(bulletHolePrefab,
