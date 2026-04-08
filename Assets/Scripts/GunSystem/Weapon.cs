@@ -3,7 +3,7 @@ using UnityEngine;
 using StarterAssets;
 using FMODUnity;
 using FMOD.Studio;
-
+using UnityEngine.InputSystem;
 public class Weapon : MonoBehaviour
 {
     public enum FireMode { SemiAuto, FullAuto, Burst }
@@ -255,6 +255,10 @@ public class Weapon : MonoBehaviour
         );
 
         swayTransform.localRotation = currentSwayRotation * Quaternion.Euler(currentRecoil);
+    }
+    void OnShoot2()
+    {
+        animator.SetTrigger("Spin");
     }
 }
 
