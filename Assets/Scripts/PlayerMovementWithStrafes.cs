@@ -20,9 +20,8 @@ namespace StarterAssets {
 #if ENABLE_INPUT_SYSTEM
         private PlayerInput _playerInput;
 #endif
-    public Transform GroundCheck;
-        public LayerMask GroundLayers;
-        private float wishspeed2;
+	public LayerMask GroundLayers;
+    private float wishspeed2;
 	private float gravity = -20f;
 	float wishspeed;
 
@@ -168,10 +167,11 @@ namespace StarterAssets {
 			wishJump = true;
 			JumpQueue = false;
 		}
-	}
+        _input.jump = false;
+        }
 
-	//Calculates wish acceleration
-	public void Accelerate(Vector3 wishdir, float wishspeed, float accel)
+        //Calculates wish acceleration
+        public void Accelerate(Vector3 wishdir, float wishspeed, float accel)
 	{
 		currentspeed = Vector3.Dot(playerVelocity, wishdir);
 		addspeed = wishspeed - currentspeed;
