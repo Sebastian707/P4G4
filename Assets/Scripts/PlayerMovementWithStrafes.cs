@@ -66,6 +66,8 @@ namespace StarterAssets {
 	public Vector3 moveDirection;
 	public Vector3 moveDirectionNorm;
 	private Vector3 playerVelocity;
+	//expose playervelocity
+	public Vector3 PlayerVelocity {  get { return playerVelocity; } set  { playerVelocity = value; } }
 	Vector3 wishdir;
 	Vector3 vec;
 
