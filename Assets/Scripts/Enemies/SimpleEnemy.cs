@@ -24,7 +24,7 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
 
     private Material _dissolveMat;
 
-    void Awake()
+    public void Awake()
     {
         currentHealth = maxHealth;
 
@@ -78,5 +78,9 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
     {
         OnDeath?.Invoke();
         Destroy(gameObject);
+    }
+    protected void InvokeOnDeath()
+    {
+        OnDeath?.Invoke();
     }
 }

@@ -1,9 +1,11 @@
+using StarterAssets;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
     public float speed = 10f;
-    public GameObject owner; // Who fired it
+    public GameObject owner;
+    public float damageAmount = 10f;
 
     void Update()
     {
@@ -12,9 +14,15 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        // Ignore the object that fired this projectile
         if (collision.gameObject == owner)
             return;
+
+        PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDamage(damageAmount);
+        }
 
         Destroy(gameObject);
     }
