@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3c0f420dcb6c294b9342acf51649e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DroneEnemy
-  maxHealth: 1
+  maxHealth: 2
   currentHealth: 0
   enemyName: Drone
   spawnParticlePrefab: {fileID: 76895744292651234, guid: 0976e71fd074fdc4cbc7de7a6899d030, type: 3}
