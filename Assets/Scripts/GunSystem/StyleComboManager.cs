@@ -1,22 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Awards style points for hitting enemies using a sliding history window.
-/// 
-/// Every hit appends the weapon to a shared history list. A weapon's point
-/// multiplier is determined by how many times it appears in the recent tail
-/// of that list:
-/// 
-///     multiplier = 1 / (1 + appearances)
-/// 
-/// The further back its entries are pushed (by using other weapons), the fewer
-/// appearances it has in the window, and the closer to full points it pays.
-/// When it has zero appearances in the window it pays full base points — a
-/// natural, gradual recovery with no binary reset needed.
-/// 
-/// Zero changes to Weapon.cs, PointManager.cs, or SimpleEnemy.cs required.
-/// </summary>
 public class StyleComboManager : MonoBehaviour
 {
     [System.Serializable]

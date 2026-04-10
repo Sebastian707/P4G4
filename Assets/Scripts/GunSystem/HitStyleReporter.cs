@@ -1,25 +1,11 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// Attach this to any enemy that should feed into the style system.
-/// It requires a SimpleEnemy on the same object and bridges damage/death
-/// events to StyleComboManager — no changes to Weapon.cs or PointManager.cs.
-///
-/// SETUP:
-///   1. Add this component alongside SimpleEnemy on your enemy prefab.
-///   2. Assign styleManager in the Inspector (or let it auto-find one in the scene).
-///   3. Done. No other changes needed anywhere.
-/// </summary>
 [RequireComponent(typeof(SimpleEnemy))]
 public class HitStyleReporter : MonoBehaviour, IDamageable
 {
     [Tooltip("Leave blank to auto-find in scene.")]
     public StyleComboManager styleManager;
 
-    // The weapon that most recently called ApplyDamage on us.
-    // We find it by checking which Weapon component fired recently.
-    // Because Weapon calls IDamageable.ApplyDamage() synchronously inside
-    // Physics.Raycast, we can match it via distance / last-fire time.
     private SimpleEnemy _enemy;
 
     void Awake()
@@ -29,7 +15,6 @@ public class HitStyleReporter : MonoBehaviour, IDamageable
         if (styleManager == null)
             styleManager = FindFirstObjectByType<StyleComboManager>();
 
-        // Subscribe to death to register a kill streak event
         _enemy.OnDeath += OnEnemyDeath;
     }
 
