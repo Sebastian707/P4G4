@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 45808338047601496}
   - component: {fileID: 6674158293744075077}
   - component: {fileID: 8364207195594172720}
+  - component: {fileID: -7121036625563509232}
   - component: {fileID: 2877181177518583128}
   m_Layer: 0
   m_Name: Terry
@@ -173,6 +174,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-7121036625563509232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7313989658818356384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7102c68d674273b4bbf74269acf26c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitStyleReporter
+  styleManager: {fileID: 0}
 --- !u!114 &2877181177518583128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +202,8 @@ MonoBehaviour:
   maxHealth: 2
   currentHealth: 0
   enemyName: Drone
+  pointManager: {fileID: 0}
+  pointsToAdd: 50
   spawnParticlePrefab: {fileID: 76895744292651234, guid: 0976e71fd074fdc4cbc7de7a6899d030, type: 3}
   dissolveSpawnDuration: 1.5
   dissolveStart: -30
