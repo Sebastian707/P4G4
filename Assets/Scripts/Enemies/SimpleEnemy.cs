@@ -10,6 +10,8 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
     public float maxHealth = 100f;
     public float currentHealth;
     public string enemyName = "Boss";
+    public PointManager pointManager;
+    public int pointsToAdd = 50;
 
     [Header("Spawn Effects")]
     public GameObject spawnParticlePrefab;
@@ -27,7 +29,10 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
     public void Awake()
     {
         currentHealth = maxHealth;
-
+        if (pointManager == null)
+        {
+            pointManager = FindFirstObjectByType<PointManager>();
+        }
         Renderer rend = GetComponent<Renderer>();
         if (rend != null)
             _dissolveMat = rend.material;
@@ -78,6 +83,7 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
     {
         OnDeath?.Invoke();
         Destroy(gameObject);
+        pointManager.AddPoints(pointsToAdd);
     }
     protected void InvokeOnDeath()
     {

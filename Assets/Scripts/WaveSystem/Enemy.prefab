@@ -128,3 +128,16 @@ MonoBehaviour:
   maxHealth: 2
   currentHealth: 0
   enemyName: Boss
+  pointManager: {fileID: 0}
+  pointsToAdd: 10000
+  spawnParticlePrefab: {fileID: 0}
+  dissolveSpawnDuration: 1.5
+  dissolveStart: 5
+  dissolveEnd: -13
+  spawnSoundEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 

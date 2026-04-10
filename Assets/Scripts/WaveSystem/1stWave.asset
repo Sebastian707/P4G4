@@ -19,10 +19,4 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 7313989658818356384, guid: 2815c4392a0918f43b5c7f2b3441dd79, type: 3}
     spawnPointName: SpawnPoint01
     spawnDelay: 3
-  - enemyPrefab: {fileID: 7313989658818356384, guid: 2815c4392a0918f43b5c7f2b3441dd79, type: 3}
-    spawnPointName: SpawnPoint01
-    spawnDelay: 2
-  - enemyPrefab: {fileID: 7313989658818356384, guid: 2815c4392a0918f43b5c7f2b3441dd79, type: 3}
-    spawnPointName: SpawnPoint02
-    spawnDelay: 5
   timeBeforeWaveStarts: 3
