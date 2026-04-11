@@ -6704,9 +6704,9 @@ RectTransform:
   - {fileID: 6499464176473390229}
   m_Father: {fileID: 998017658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 839, y: -73}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &474082857
@@ -14610,7 +14610,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1734137609}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e7c6c67aac378946a3f49ae6aa344a3, type: 3}
   m_Name: 
@@ -14901,69 +14901,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a18287db1065a4a9ff4745a307dc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPrefLoader
---- !u!1 &1892131663
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1892131665}
-  - component: {fileID: 1892131664}
-  m_Layer: 0
-  m_Name: BeatManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1892131664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892131663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 985750abf9109d345926d40be3e7f168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BeatManager
-  _eventReference:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  _intervals:
-  - _steps: 0
-    _trigger:
-      m_PersistentCalls:
-        m_Calls:
-        - {m_Target: {fileID: 437380253}, m_TargetAssemblyTypeName: PulseToTheBeat, Assembly-CSharp, m_MethodName: Pulse, m_Mode: 1, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
-      m_CallsDirty: 1
-    _lastInterval: 0
-  _playbackState: 0
-  _lastMarkerPosition: -1
-  _bpm: 225
-  _currentBeat: -1
---- !u!4 &1892131665
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892131663}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.82154, y: 1.09, z: 8.03265}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1918043841
 GameObject:
   m_ObjectHideFlags: 0
@@ -17232,7 +17169,6 @@ MonoBehaviour:
   portraitImage: {fileID: 7648969901632038867}
   speakerNameText: {fileID: 6113890435666053103}
   subtitleText: {fileID: 3720209255039057599}
-  voiceSource: {fileID: 0}
 --- !u!114 &8875572726991863637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17435,4 +17371,3 @@ SceneRoots:
   - {fileID: 1035542040}
   - {fileID: 1431436658}
   - {fileID: 437380252}
-  - {fileID: 1892131665}

@@ -14,11 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   lines:
   - speakerName: Larry
-    speakerNameColor: {r: 0, g: 0, b: 0, a: 0}
-    portrait: {fileID: 0}
-    voiceClip: {fileID: 0}
+    speakerNameColor: {r: 0, g: 0, b: 0, a: 1}
+    portrait: {fileID: 21300000, guid: 369c3e9de1d958b4988df9a5390857e8, type: 3}
+    voiceClip:
+      Guid:
+        Data1: 958811328
+        Data2: 1146205900
+        Data3: 1482089897
+        Data4: 1112719395
+      Path: event:/Gunshot
     subtitles:
     - text: Hello there
+      duration: 5
+    - text: You are dapper looking one
       duration: 5
   priority: 0
   clearQueueWithSamePriority: 0
