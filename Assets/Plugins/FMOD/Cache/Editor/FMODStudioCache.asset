@@ -172,7 +172,7 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/StyleBank.bank
   Name: StyleBank
   StudioPath: bank:/StyleBank
-  lastModified: 639115215647737784
+  lastModified: 639115944531838126
   FileSizes:
   - Name: Desktop
     Value: 11380864
@@ -256,6 +256,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-4489896983937688640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CountDownClick
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/CountDownClick
+  Guid:
+    Data1: -36806257
+    Data2: 1080662502
+    Data3: 977300916
+    Data4: -165110073
+  Banks:
+  - {fileID: 3219367564650421146}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 85
 --- !u!114 &-4233337826465877838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,10 +325,10 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639115364233326638
+  lastModified: 639116342893272289
   FileSizes:
   - Name: Desktop
-    Value: 1748
+    Value: 1890
   Exists: 1
 --- !u!114 &-3491648743720684548
 MonoBehaviour:
@@ -494,13 +521,15 @@ MonoBehaviour:
   - {fileID: -1088338865663699887}
   - {fileID: 3386591051681145209}
   - {fileID: 4379772644388398909}
+  - {fileID: 5614438019663854073}
+  - {fileID: -4489896983937688640}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3219367564650421146}
   StringsBanks:
   - {fileID: -3885612251368421316}
   cacheVersion: 131859
-  cacheTime: 639115364233326638
+  cacheTime: 639116342893272289
   SerializableEventsDict:
   - key: event:/Footsteps/Footstep_3
     index: 0
@@ -536,6 +565,10 @@ MonoBehaviour:
     index: 15
   - key: event:/GuhAssEvent
     index: 16
+  - key: event:/GamerSpeech
+    index: 17
+  - key: event:/CountDownClick
+    index: 18
 --- !u!114 &902513565502561977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,10 +632,10 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639115364233316599
+  lastModified: 639116342893259177
   FileSizes:
   - Name: Desktop
-    Value: 6410240
+    Value: 7317344
   Exists: 1
 --- !u!114 &3386591051681145209
 MonoBehaviour:
@@ -687,6 +720,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 181066
+--- !u!114 &5614438019663854073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/GamerSpeech
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/GamerSpeech
+  Guid:
+    Data1: -1375916865
+    Data2: 1260807089
+    Data3: 1407014017
+    Data4: 384663965
+  Banks:
+  - {fileID: 3219367564650421146}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 11290
 --- !u!114 &6009115686606564230
 MonoBehaviour:
   m_ObjectHideFlags: 0

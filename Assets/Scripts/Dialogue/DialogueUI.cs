@@ -15,6 +15,11 @@ public class DialogueUI : MonoBehaviour
 
     private EventInstance voiceInstance;
 
+    private void Awake()
+    {
+        commsPanel.SetActive(false);
+    }
+
     public IEnumerator PlayDialogueCoroutine(DialogueSO dialogue)
     {
         commsPanel.SetActive(true);

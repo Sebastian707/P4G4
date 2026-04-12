@@ -13,20 +13,26 @@ MonoBehaviour:
   m_Name: NewDialogue
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   lines:
-  - speakerName: Larry
-    speakerNameColor: {r: 0, g: 0, b: 0, a: 1}
-    portrait: {fileID: 21300000, guid: 369c3e9de1d958b4988df9a5390857e8, type: 3}
+  - speakerName: Master Miller
+    speakerNameColor: {r: 0.01944971, g: 1, b: 0, a: 1}
+    portrait: {fileID: 21300000, guid: fc3f64c72c9921c4a83e6a50cb0fb399, type: 3}
     voiceClip:
       Guid:
-        Data1: 958811328
-        Data2: 1146205900
-        Data3: 1482089897
-        Data4: 1112719395
-      Path: event:/Gunshot
+        Data1: -1375916865
+        Data2: 1260807089
+        Data3: 1407014017
+        Data4: 384663965
+      Path: event:/GamerSpeech
     subtitles:
-    - text: Hello there
-      duration: 5
-    - text: You are dapper looking one
-      duration: 5
+    - text: 'People who have been through war '
+      duration: 2
+    - text: and survived develop a kind of
+      duration: 2.5
+    - text: sixth sense to warn them of danger.
+      duration: 2
+    - text: trust your insticts As a soldier,
+      duration: 2.5
+    - text: 'As a gamer, '
+      duration: 2
   priority: 0
   clearQueueWithSamePriority: 0
