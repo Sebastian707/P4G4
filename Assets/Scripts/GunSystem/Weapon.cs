@@ -152,7 +152,7 @@ public class Weapon : MonoBehaviour
         {
             Vector3 origin = raycastOrigin != null ? raycastOrigin.position : mainCamera.transform.position;
             Vector3 direction = GetShotDirection();
-            if (projectile == null) { 
+            if (projectile != null) { 
             if (Physics.Raycast(origin, direction, out RaycastHit hit, maxDistance, hitMask))
                 ApplyHit(hit);
             } else
