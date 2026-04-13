@@ -62,7 +62,7 @@
                 },
                 {
                     "name": "Shoot2",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "880e8446-3632-4054-ab77-44e88937a021",
                     "expectedControlType": "",
                     "processors": "",

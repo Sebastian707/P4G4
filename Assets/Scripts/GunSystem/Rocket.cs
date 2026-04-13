@@ -1,4 +1,5 @@
 using StarterAssets;
+using System;
 using UnityEngine;
 
 public class Rocket : MonoBehaviour
@@ -6,14 +7,19 @@ public class Rocket : MonoBehaviour
     public float speed = 1;
     public float damage = 1;
     public float explosionRadius = 5f;
-    public float explosionForce = 5f;
-    
+    public float explosionForceMin = 5f;
+    public float explosionForceMax = 12f;
+    public float explosionScaleLowPercent = 0.5f;
+    public float explosionScaleHighPercent = 0.8f;
+
+
+
     private void Start()
     {
+        GetComponent<Rigidbody>().AddForce(this.transform.forward * speed);
     }   
     void Update()
     {
-        this.transform.position = this.transform.position + this.transform.forward * speed;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -32,24 +38,35 @@ public class Rocket : MonoBehaviour
             Vector3 explosionDirection = (collider.transform.position - this.transform.position).normalized;
             float distanceToExplosion = (collider.transform.position - this.transform.position).magnitude;
             // 100% = center 0% = edge
+            float forceToApply = explosionForceMin;
             float distanceAsPercent = ((explosionRadius - distanceToExplosion) / explosionRadius);
+            if (distanceAsPercent > explosionScaleHighPercent)
+            {
+                forceToApply = explosionForceMax;
+            } else if (distanceAsPercent > explosionScaleLowPercent)
+            {
+                forceToApply = explosionForceMin + (explosionForceMax - explosionForceMin) * distanceAsPercent;
+            }
+
+
             if ((collider.gameObject.GetComponent<IDamageable>()) != null)
             {
                 collider.gameObject.GetComponent<IDamageable>().ApplyDamage(damage * distanceAsPercent);
             }
             if (collider.gameObject.CompareTag("Player"))
             {
+                Debug.Log("Hit Player" + ": " + forceToApply);
                 var pc = collider.gameObject.GetComponent<PlayerMovementWithStrafes>();
                 pc.IsGrounded = false;
                 //full force at edge linearly dropping off
-                Vector3 relativeForce = explosionForce * distanceAsPercent * explosionDirection;
+                Vector3 relativeForce = forceToApply * explosionDirection;
                 pc.PlayerVelocity = pc.PlayerVelocity + relativeForce;
                 continue;
             }
             if (rb == null) { 
                 continue;
             }
-            rb.AddExplosionForce(explosionForce, this.transform.position, explosionRadius);
+            rb.AddExplosionForce(explosionForceMin, this.transform.position, explosionRadius);
         }
         Destroy(this.gameObject);
     }

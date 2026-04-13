@@ -69,9 +69,12 @@ public class Weapon : MonoBehaviour
     private StarterAssetsInputs input;
     private Camera mainCamera;
     private Animator animator;
+    private PlayerInput newInput;
     void Awake()
     {
         input = FindFirstObjectByType<StarterAssetsInputs>();
+        //really should be using globals...
+        newInput = FindFirstObjectByType<PlayerInput>();
         mainCamera = Camera.main;
 
         burstLeft = burstCount;
@@ -80,12 +83,12 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        HandleWeaponSway();
         if (Time.timeScale == 0f || input == null) return;
+        HandleWeaponSway();
 
         timeSinceLastShot += Time.deltaTime;
-
-        bool currentShoot = input.shoot;
+        //the abstraction layer was breaking the interaction so reading directly
+        bool currentShoot = newInput.actions["Shoot"].ReadValue<float>() > 0.5;
         bool triggerDown = currentShoot && !triggerWasHeld;
 
         switch (fireMode)
