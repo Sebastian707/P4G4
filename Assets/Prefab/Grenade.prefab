@@ -127,13 +127,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0e0cf8608c547341abfc7586f8772fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  speed: 400
+  speed: 200
   damage: 1
-  explosionRadius: 20
-  explosionForceMin: 10
-  explosionForceMax: 15
-  explosionScaleLowPercent: 0.5
-  explosionScaleHighPercent: 0.8
+  explosionRadius: 10
+  explosionForceMin: 15
+  explosionForceMax: 18
+  explosionScaleLowPercent: 0.4
+  explosionScaleHighPercent: 0.7
   explodeOnContact: 0
   explodeDelay: 2
 --- !u!54 &4057166648797116023
