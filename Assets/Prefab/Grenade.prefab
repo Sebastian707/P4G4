@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1477841449883464793}
   - component: {fileID: 4057166648797116023}
   m_Layer: 25
-  m_Name: Rocket
+  m_Name: Grenade
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.947, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7038190576865428813}
   m_Father: {fileID: 0}
@@ -109,7 +109,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -127,14 +127,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0e0cf8608c547341abfc7586f8772fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  speed: 800
+  speed: 0
   damage: 1
-  explosionRadius: 10
-  explosionForceMin: 5
-  explosionForceMax: 12
+  explosionRadius: 20
+  explosionForceMin: 1
+  explosionForceMax: 3
   explosionScaleLowPercent: 0.5
   explosionScaleHighPercent: 0.8
-  explodeOnContact: 1
+  explodeOnContact: 0
   explodeDelay: 999
 --- !u!54 &4057166648797116023
 Rigidbody:
@@ -158,11 +158,11 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &6565468759617598126
 GameObject:
   m_ObjectHideFlags: 0

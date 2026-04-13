@@ -929,11 +929,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8ac46a16ef434438615541f275f872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  fireMode: 0
-  gunName: 
+  fireMode: 1
+  gunName: Rocket Launcher
   previewImage: {fileID: 0}
-  projectile: {fileID: 6054764215323127235, guid: 9657c5c6e0edd2140b5a48b2d38fca5b, type: 3}
-  fireRate: 2
+  projectile: {fileID: 6054764215323127235, guid: 18745fa0b8d7cca4987e29f40f826227, type: 3}
+  fireRate: 1
   burstCount: 3
   pelletsPerShot: 1
   spreadAngle: 0
@@ -3997,13 +3997,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2135568967926744135, guid: 67705baaeb8d5d84db46408604f48ef1, type: 3}
+      propertyPath: m_SkinWidth
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135568967926744135, guid: 67705baaeb8d5d84db46408604f48ef1, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 33554496
+      objectReference: {fileID: 0}
     - target: {fileID: 2977939412472910979, guid: 67705baaeb8d5d84db46408604f48ef1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.68
       objectReference: {fileID: 0}
     - target: {fileID: 2977939412472910979, guid: 67705baaeb8d5d84db46408604f48ef1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.74
+      value: 13.24
       objectReference: {fileID: 0}
     - target: {fileID: 2977939412472910979, guid: 67705baaeb8d5d84db46408604f48ef1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4052,6 +4060,18 @@ PrefabInstance:
     - target: {fileID: 8523072229405812898, guid: 67705baaeb8d5d84db46408604f48ef1, type: 3}
       propertyPath: m_Name
       value: PlayerCapsule
+      objectReference: {fileID: 0}
+    - target: {fileID: 8523072229405812898, guid: 67705baaeb8d5d84db46408604f48ef1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539854855782383217, guid: 67705baaeb8d5d84db46408604f48ef1, type: 3}
+      propertyPath: field of view
+      value: 89.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539854855782383217, guid: 67705baaeb8d5d84db46408604f48ef1, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 167772215
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

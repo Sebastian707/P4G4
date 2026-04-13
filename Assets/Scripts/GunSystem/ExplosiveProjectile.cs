@@ -2,7 +2,7 @@ using StarterAssets;
 using System;
 using UnityEngine;
 
-public class Rocket : MonoBehaviour
+public class ExplosiveProjectile : MonoBehaviour
 {
     public float speed = 1;
     public float damage = 1;
@@ -11,6 +11,9 @@ public class Rocket : MonoBehaviour
     public float explosionForceMax = 12f;
     public float explosionScaleLowPercent = 0.5f;
     public float explosionScaleHighPercent = 0.8f;
+    public bool explodeOnContact = true;
+    public float explodeDelay = 30f;
+    private float timeAlive;
 
 
 
@@ -20,13 +23,21 @@ public class Rocket : MonoBehaviour
     }   
     void Update()
     {
+        this.timeAlive += Time.deltaTime;
+        if (this.timeAlive > explodeDelay)
+        {
+            this.Explode();
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player")) return;
         //implement explosion instead prob
         var damageable = other.gameObject.GetComponent<IDamageable>();
-        this.Explode();
+        if (explodeOnContact)
+        {
+            this.Explode();
+        }
     }
     private void Explode()
     {

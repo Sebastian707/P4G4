@@ -4,6 +4,7 @@ using StarterAssets;
 using FMODUnity;
 using FMOD.Studio;
 using UnityEngine.InputSystem;
+using System.Runtime.CompilerServices;
 public class Weapon : MonoBehaviour
 {
     public enum FireMode { SemiAuto, FullAuto, Burst }
@@ -73,7 +74,7 @@ public class Weapon : MonoBehaviour
     void Awake()
     {
         input = FindFirstObjectByType<StarterAssetsInputs>();
-        //really should be using globals...
+        //really should be using project wide...
         newInput = FindFirstObjectByType<PlayerInput>();
         mainCamera = Camera.main;
 
@@ -87,7 +88,7 @@ public class Weapon : MonoBehaviour
         HandleWeaponSway();
 
         timeSinceLastShot += Time.deltaTime;
-        //the abstraction layer was breaking the interaction so reading directly
+        //the abstraction layer was breaking the interaction so reading directly (another reason to use project wide system instead...))
         bool currentShoot = newInput.actions["Shoot"].ReadValue<float>() > 0.5;
         bool triggerDown = currentShoot && !triggerWasHeld;
 
@@ -156,11 +157,7 @@ public class Weapon : MonoBehaviour
                 ApplyHit(hit);
             } else
             {
-                //if projectile weapon
-                var shot = Instantiate(projectile);
-                shot.transform.position = raycastOrigin.transform.position;
-                shot.transform.rotation = Quaternion.LookRotation(direction);
-                Destroy(shot, 30f);
+                var shot = Instantiate(projectile, origin, Quaternion.LookRotation(direction));
             }
         }
 
