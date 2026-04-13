@@ -73,9 +73,8 @@ public class WaveManager : MonoBehaviour
                 continue;
             }
 
+            yield return new WaitForSeconds(entry.spawnDelay);
             SpawnEnemy(entry.enemyPrefab, spawnPoint);
-
-            yield return new WaitForSeconds(wave.spawnDelay);
         }
     }
 

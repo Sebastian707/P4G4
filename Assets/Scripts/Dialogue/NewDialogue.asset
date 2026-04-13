@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75464964b68d0ee4c9223ca8eb20fd26, type: 3}
+  m_Name: NewDialogue
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
+  lines:
+  - speakerName: Master Miller
+    speakerNameColor: {r: 0.01944971, g: 1, b: 0, a: 1}
+    portrait: {fileID: 21300000, guid: fc3f64c72c9921c4a83e6a50cb0fb399, type: 3}
+    voiceClip:
+      Guid:
+        Data1: -1375916865
+        Data2: 1260807089
+        Data3: 1407014017
+        Data4: 384663965
+      Path: event:/GamerSpeech
+    subtitles:
+    - text: 'People who have been through war '
+      duration: 2
+    - text: and survived develop a kind of
+      duration: 2.5
+    - text: sixth sense to warn them of danger.
+      duration: 2
+    - text: trust your insticts As a soldier,
+      duration: 2.5
+    - text: 'As a gamer, '
+      duration: 2
+  priority: 0
+  clearQueueWithSamePriority: 0

@@ -20,6 +20,7 @@ namespace StarterAssets
         public float GroundedRadius = 0.5f;
         public LayerMask GroundLayers;
         public float MaxLookAngle = 90f;
+        public float MouseSensitivity = 100f;
 
 #if ENABLE_INPUT_SYSTEM
         private PlayerInput _playerInput;
@@ -89,16 +90,22 @@ namespace StarterAssets
         {
             if (_input.look.sqrMagnitude < _threshold) return;
 
-            float delta = IsMouse ? 1f : Time.deltaTime;
+            // Use deltaTime for smooth scaling
+            float delta = Time.deltaTime;
 
-            _pitch += _input.look.y * RotationSpeed * delta;
+            // Choose sensitivity based on input type
+            float sensitivity = IsMouse ? MouseSensitivity : RotationSpeed;
+
+            // Vertical rotation (camera up/down)
+            _pitch += _input.look.y * sensitivity * delta;
             _pitch = Mathf.Clamp(_pitch, -MaxLookAngle, MaxLookAngle);
 
-            transform.Rotate(Vector3.up * _input.look.x * RotationSpeed * delta);
+            // Horizontal rotation (player left/right)
+            transform.Rotate(Vector3.up * _input.look.x * sensitivity * delta);
 
+            // Apply pitch to camera
             Camera.main.transform.localEulerAngles = new Vector3(_pitch, 0f, 0f);
         }
-
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = _grounded ? new Color(0, 1, 0, 0.35f) : new Color(1, 0, 0, 0.35f);
