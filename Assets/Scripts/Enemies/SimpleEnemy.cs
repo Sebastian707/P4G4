@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
+using FMOD;
+using StarterAssets;
 
 public class SimpleEnemy : MonoBehaviour, IDamageable
 {
@@ -25,6 +27,11 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
     public event Action OnDeath;
 
     private Material _dissolveMat;
+
+    [Header("Death")]
+
+    public GameObject HealthPrefab;
+    public float DropChance = 0.2f;
 
     public void Awake()
     {
@@ -84,6 +91,14 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
         OnDeath?.Invoke();
         Destroy(gameObject);
         pointManager.AddPoints(pointsToAdd);
+
+
+            if (UnityEngine.Random.value <= DropChance)
+        {
+            if (HealthPrefab != null)
+                Instantiate(HealthPrefab, transform.position, Quaternion.identity);
+        }
+      
     }
     protected void InvokeOnDeath()
     {
