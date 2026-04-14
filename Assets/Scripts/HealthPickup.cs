@@ -22,8 +22,8 @@ public class HealthPickup : MonoBehaviour
                 else
                 {
                     playerHealth.Heal(healAmount);
-
-                    Destroy(gameObject);
+                FMODUnity.RuntimeManager.PlayOneShot(PickUpSound);
+                Destroy(gameObject);
                 }
             }
            
