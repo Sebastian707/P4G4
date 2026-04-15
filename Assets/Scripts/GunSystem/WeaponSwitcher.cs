@@ -18,9 +18,22 @@ public class WeaponSwitcher : MonoBehaviour
     private List<GameObject> hitScanWeapons = new List<GameObject>();
     [SerializeField]
     private List<GameObject> meleeWeapons = new List<GameObject>();
+    
+    //weapon change ui update
+    public TMPro.TMP_Text weaponChangeText;
+    [SerializeField]
+    private float fadeOutValue = 0f;
+    //rather do this with properties but c# version too old :(
+    [SerializeField] 
+    private float fadeOutTime = 1.5f;
+    private float fadeOutTimeInverse;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //calculate and store inverse
+        fadeOutTimeInverse = 1/ fadeOutTime;
+        //hide weaponswitchtext
+        weaponChangeText.alpha = 0f;
         Weapon[] weapons = GetComponentsInChildren<Weapon>(true);
         foreach (Weapon weapon in weapons)
         {
@@ -42,7 +55,14 @@ public class WeaponSwitcher : MonoBehaviour
         }
     }
 
-
+    private void Update()
+    {
+        if (fadeOutValue > 0)
+        {
+            fadeOutValue -= (Time.deltaTime * fadeOutTimeInverse);
+            weaponChangeText.alpha = fadeOutValue;
+        }
+    }
     void OnWeapon1()
     {
         SetWeapon(Weapon.WeaponCatagory.PROJECTILE);
@@ -97,6 +117,8 @@ public class WeaponSwitcher : MonoBehaviour
         {
             Debug.Log("no weapons in catagory");
         }
+        weaponChangeText.text = currWeapon.GetComponent<Weapon>().gunName;
+        fadeOutValue = 1f;
 
 
 
