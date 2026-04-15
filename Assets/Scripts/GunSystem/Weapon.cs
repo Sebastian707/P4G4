@@ -1,10 +1,11 @@
-using System.Collections;
-using UnityEngine;
-using StarterAssets;
-using FMODUnity;
 using FMOD.Studio;
-using UnityEngine.InputSystem;
+using FMODUnity;
+using StarterAssets;
+using System.Collections;
 using System.Runtime.CompilerServices;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using static Weapon;
 public class Weapon : MonoBehaviour
 {
     public enum FireMode { SemiAuto, FullAuto, Burst }
@@ -71,6 +72,23 @@ public class Weapon : MonoBehaviour
     private Camera mainCamera;
     private Animator animator;
     private PlayerInput newInput;
+
+    public enum WeaponCatagory
+    {
+        PROJECTILE,
+        HITSCAN,
+        MELEE
+    }
+    public WeaponCatagory WeaponsCatagory { get { if (projectile == null)
+            {
+                return WeaponCatagory.HITSCAN;
+            }
+            else
+            {
+                return WeaponCatagory.PROJECTILE;
+            }
+        } }
+
     void Awake()
     {
         input = FindFirstObjectByType<StarterAssetsInputs>();
@@ -118,7 +136,7 @@ public class Weapon : MonoBehaviour
 
     void Start()
     {
-       animator = GetComponent<Animator>();
+            animator = GetComponent<Animator>();
     }
     IEnumerator BurstCoroutine()
     {
