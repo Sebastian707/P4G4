@@ -3875,6 +3875,10 @@ PrefabInstance:
       propertyPath: weaponChangeText
       value: 
       objectReference: {fileID: 749770564}
+    - target: {fileID: 7208353561848413296, guid: 67705baaeb8d5d84db46408604f48ef1, type: 3}
+      propertyPath: airControl
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7375982790613254668, guid: 67705baaeb8d5d84db46408604f48ef1, type: 3}
       propertyPath: pointManager
       value: 
