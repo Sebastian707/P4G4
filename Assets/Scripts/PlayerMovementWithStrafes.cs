@@ -109,7 +109,7 @@ namespace StarterAssets {
 #endif
 
     }
-    void LateUpdate()
+    void Update()
 	{
 			Look();
 		#region //UI, Feel free to remove the region.

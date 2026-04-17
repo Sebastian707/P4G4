@@ -4369,7 +4369,7 @@ MonoBehaviour:
   dashVelocity: 10
   dashSound: {fileID: 0}
   maxDashCharges: 3
-  chargeRestoreRate: 5
+  chargeRestoreRate: 3.5
   dashCooldown: 1.2
   dashText: {fileID: 324614969}
 --- !u!1 &3559118439608858257
