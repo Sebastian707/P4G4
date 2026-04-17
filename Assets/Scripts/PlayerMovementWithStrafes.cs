@@ -109,8 +109,7 @@ namespace StarterAssets {
 #endif
 
     }
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
 	{
 			Look();
 		#region //UI, Feel free to remove the region.
