@@ -278,6 +278,7 @@ namespace StarterAssets {
             */
         private void Look()
         {
+			/*
             if (_input.look.sqrMagnitude < _threshold) return;
 
             float delta = IsMouse ? 1f : Time.deltaTime;
@@ -287,6 +288,12 @@ namespace StarterAssets {
 
             transform.Rotate(Vector3.up * _input.look.x * RotationSpeed * delta);
 
+            Camera.main.transform.localEulerAngles = new Vector3(_pitch, 0f, 0f);
+			*/
+			Vector2 playerLook = _playerInput.actions["Look"].ReadValue<Vector2>();
+            transform.Rotate(Vector3.up * playerLook.x * RotationSpeed * 100 * Time.deltaTime);
+            _pitch += playerLook.y * Time.deltaTime * RotationSpeed * 100;
+			_pitch = Mathf.Clamp(_pitch, -MaxLookAngle, MaxLookAngle);
             Camera.main.transform.localEulerAngles = new Vector3(_pitch, 0f, 0f);
         }
         public void GroundMove()

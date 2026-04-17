@@ -25,6 +25,7 @@ public class Weapon : MonoBehaviour
     public int burstCount = 3;
     public int pelletsPerShot = 1;
     public float spreadAngle = 2f;
+    public float projCameraSpawnOffset = 2f;
 
 
     [Header("Damage")]
@@ -180,6 +181,7 @@ public class Weapon : MonoBehaviour
                 ApplyHit(hit);
             } else
             {
+                origin = origin + mainCamera.transform.rotation * Vector3.forward * projCameraSpawnOffset;
                 var shot = Instantiate(projectile, origin, Quaternion.LookRotation(direction));
             }
         }

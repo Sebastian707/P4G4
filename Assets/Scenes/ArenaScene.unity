@@ -969,11 +969,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 332075759}
+  m_Father: {fileID: 998017658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 153, y: -540}
+  m_AnchoredPosition: {x: 178, y: 60}
   m_SizeDelta: {x: 262.8, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &324614969
@@ -1218,12 +1218,11 @@ RectTransform:
   m_Children:
   - {fileID: 454216806}
   - {fileID: 749770563}
-  - {fileID: 324614968}
   m_Father: {fileID: 998017658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -802.25, y: 298}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 211, y: -100}
   m_SizeDelta: {x: 335.5, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &355631085
@@ -2106,6 +2105,7 @@ RectTransform:
   m_Children:
   - {fileID: 1344655777}
   - {fileID: 311536246}
+  - {fileID: 324614968}
   - {fileID: 332075759}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4270,6 +4270,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1838147928046574581, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: RotationSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838147928046574581, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
       propertyPath: GroundedOffset
       value: 1.1
       objectReference: {fileID: 0}
@@ -4297,6 +4301,10 @@ PrefabInstance:
       propertyPath: previewImage
       value: 
       objectReference: {fileID: 2800000, guid: ddaeb828442af2a4590014d284a95dad, type: 3}
+    - target: {fileID: 3832584488302644278, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: projCameraSpawnOffset
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4566217592537748297, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
       propertyPath: fireRate
       value: 0.9
@@ -4305,6 +4313,10 @@ PrefabInstance:
       propertyPath: previewImage
       value: 
       objectReference: {fileID: 2800000, guid: 81c526c9b7411ea4094e68623b8b7467, type: 3}
+    - target: {fileID: 4566217592537748297, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: projCameraSpawnOffset
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5899426816158078892, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
       propertyPath: weaponChangeText
       value: 
