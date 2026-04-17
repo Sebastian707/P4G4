@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public class WeaponSwitcher : MonoBehaviour
 {
     [SerializeField]
@@ -21,6 +22,7 @@ public class WeaponSwitcher : MonoBehaviour
     
     //weapon change ui update
     public TMPro.TMP_Text weaponChangeText;
+    public RawImage weaponChangeImage;
     [SerializeField]
     private float fadeOutValue = 0f;
     //rather do this with properties but c# version too old :(
@@ -34,6 +36,7 @@ public class WeaponSwitcher : MonoBehaviour
         fadeOutTimeInverse = 1/ fadeOutTime;
         //hide weaponswitchtext
         weaponChangeText.alpha = 0f;
+        weaponChangeImage.color = new Color(255, 255, 255, 0f);
         Weapon[] weapons = GetComponentsInChildren<Weapon>(true);
         foreach (Weapon weapon in weapons)
         {
@@ -61,6 +64,8 @@ public class WeaponSwitcher : MonoBehaviour
         {
             fadeOutValue -= (Time.deltaTime * fadeOutTimeInverse);
             weaponChangeText.alpha = fadeOutValue;
+            weaponChangeImage.color = new Color(255, 255, 255, fadeOutValue);
+
         }
     }
     void OnWeapon1()
@@ -117,7 +122,9 @@ public class WeaponSwitcher : MonoBehaviour
         {
             Debug.Log("no weapons in catagory");
         }
-        weaponChangeText.text = currWeapon.GetComponent<Weapon>().gunName;
+        Weapon weapon = currWeapon.GetComponent<Weapon>();
+        weaponChangeText.text = weapon.gunName;
+        weaponChangeImage.texture = weapon.previewImage;
         fadeOutValue = 1f;
 
 

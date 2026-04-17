@@ -57,6 +57,8 @@ public class ExplosiveProjectile : MonoBehaviour
             } else if (distanceAsPercent > explosionScaleLowPercent)
             {
                 forceToApply = explosionForceMin + (explosionForceMax - explosionForceMin) * distanceAsPercent;
+                //this does same...
+                //forceToApply = Mathf.Lerp(explosionForceMin, explosionForceMax, distanceAsPercent);
             }
 
 

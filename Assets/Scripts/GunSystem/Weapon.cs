@@ -3,6 +3,7 @@ using FMODUnity;
 using StarterAssets;
 using System.Collections;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Weapon;
@@ -15,7 +16,7 @@ public class Weapon : MonoBehaviour
     [Header("General")]
     public FireMode fireMode = FireMode.SemiAuto;
     public string gunName;
-    public UnityEngine.UI.Image previewImage;
+    public Texture2D previewImage;
 
 
     [Header("Shooting")]
@@ -25,11 +26,15 @@ public class Weapon : MonoBehaviour
     public int pelletsPerShot = 1;
     public float spreadAngle = 2f;
 
+
     [Header("Damage")]
 
     public float damage = 25f;
     public float maxDistance = 100f;
     public LayerMask hitMask = ~0;
+    public float damageFalloffStartDist = 100f;
+    public float damageFalloffEndDist = 200f;
+    public float damageFalloffMaxPercent = 0.3f;
 
     [Header("References")]
     public Transform muzzleTransform;
@@ -196,6 +201,20 @@ public class Weapon : MonoBehaviour
         IDamageable damageable = hit.collider.GetComponentInParent<IDamageable>();
         if (damageable != null)
         {
+            float damageToApply = damage;
+            if (hit.distance > damageFalloffStartDist)
+            {
+                float falloffPercent = damageFalloffMaxPercent;
+                if (hit.distance < damageFalloffEndDist)
+                {
+                    float falloffRange = damageFalloffStartDist - damageFalloffEndDist;
+                    falloffPercent = 1-((hit.distance - damageFalloffStartDist) / falloffRange);
+                    //map to range
+                    falloffPercent = Mathf.Lerp(1, damageFalloffMaxPercent, falloffPercent);
+                }
+                damageToApply = falloffPercent*damage;
+
+            }
             damageable.ApplyDamage(damage);
             // Do NOT spawn bullet hole prefab on damageable objects
         }

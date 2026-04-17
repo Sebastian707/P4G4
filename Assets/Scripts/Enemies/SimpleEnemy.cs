@@ -17,6 +17,7 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
 
     public void ApplyDamage(float amount)
     {
+        Debug.Log(enemyName + " hit for: " + amount);
         currentHealth -= amount;
 
         GetComponent<BossBar>()?.OnBossDamaged();
