@@ -3930,7 +3930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 119974951254983298, guid: 67705baaeb8d5d84db46408604f48ef1, type: 3}
       propertyPath: damageFalloffEndDist
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 119974951254983298, guid: 67705baaeb8d5d84db46408604f48ef1, type: 3}
       propertyPath: damageFalloffStartDist
@@ -3958,7 +3958,7 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: 7224d9ccd1f4a5043b84002c4210e978, type: 3}
     - target: {fileID: 168788990160138655, guid: 67705baaeb8d5d84db46408604f48ef1, type: 3}
       propertyPath: damageFalloffEndDist
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 168788990160138655, guid: 67705baaeb8d5d84db46408604f48ef1, type: 3}
       propertyPath: damageFalloffStartDist
