@@ -48,12 +48,14 @@ public class ExplosiveProjectile : MonoBehaviour
             Rigidbody rb = collider.attachedRigidbody;
             Vector3 explosionDirection = (collider.transform.position - this.transform.position).normalized;
             float distanceToExplosion = (collider.transform.position - this.transform.position).magnitude;
-            // 100% = center 0% = edge
-            float forceToApply = explosionForceMin;
-            float distanceAsPercent = ((explosionRadius - distanceToExplosion) / explosionRadius);
+            //100% at edge 0% at center
+            float distanceAsPercent = 1- ((explosionRadius - distanceToExplosion) / explosionRadius);
+
+
+            float forceToApply = explosionForceMax;
             if (distanceAsPercent > explosionScaleHighPercent)
             {
-                forceToApply = explosionForceMax;
+                forceToApply = explosionForceMin;
             } else if (distanceAsPercent > explosionScaleLowPercent)
             {
                 forceToApply = explosionForceMin + (explosionForceMax - explosionForceMin) * distanceAsPercent;
@@ -64,11 +66,17 @@ public class ExplosiveProjectile : MonoBehaviour
 
             if ((collider.gameObject.GetComponent<IDamageable>()) != null)
             {
-                collider.gameObject.GetComponent<IDamageable>().ApplyDamage(damage * distanceAsPercent);
+                float damageToApply = damage;
+                if (distanceAsPercent > explosionScaleLowPercent)
+                {
+                    //scale damage so it is lower the further
+                    damageToApply = damage * (1-distanceAsPercent);
+                }
+                    collider.gameObject.GetComponent<IDamageable>().ApplyDamage(damageToApply);
             }
             if (collider.gameObject.CompareTag("Player"))
             {
-                Debug.Log("Hit Player" + ": " + forceToApply);
+                //Debug.Log("Hit Player" + ": " + forceToApply);
                 var pc = collider.gameObject.GetComponent<PlayerMovementWithStrafes>();
                 pc.IsGrounded = false;
                 //full force at edge linearly dropping off

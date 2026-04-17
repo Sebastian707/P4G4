@@ -32,8 +32,8 @@ public class Weapon : MonoBehaviour
     public float damage = 25f;
     public float maxDistance = 100f;
     public LayerMask hitMask = ~0;
-    public float damageFalloffStartDist = 100f;
-    public float damageFalloffEndDist = 200f;
+    public float damageFalloffStartDist = 10f;
+    public float damageFalloffEndDist = 20f;
     public float damageFalloffMaxPercent = 0.3f;
 
     [Header("References")]
@@ -178,7 +178,6 @@ public class Weapon : MonoBehaviour
             if (projectile == null) { 
             if (Physics.Raycast(origin, direction, out RaycastHit hit, maxDistance, hitMask))
                 ApplyHit(hit);
-                Debug.Log("HitScan");
             } else
             {
                 var shot = Instantiate(projectile, origin, Quaternion.LookRotation(direction));
