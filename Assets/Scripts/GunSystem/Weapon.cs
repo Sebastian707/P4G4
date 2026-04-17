@@ -214,7 +214,7 @@ public class Weapon : MonoBehaviour
                 damageToApply = falloffPercent*damage;
 
             }
-            damageable.ApplyDamage(damage);
+            damageable.ApplyDamage(damageToApply);
             // Do NOT spawn bullet hole prefab on damageable objects
         }
         else
