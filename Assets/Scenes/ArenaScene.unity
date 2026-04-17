@@ -4303,7 +4303,7 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: ddaeb828442af2a4590014d284a95dad, type: 3}
     - target: {fileID: 3832584488302644278, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
       propertyPath: projCameraSpawnOffset
-      value: 10
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4566217592537748297, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
       propertyPath: fireRate
@@ -4315,7 +4315,7 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: 81c526c9b7411ea4094e68623b8b7467, type: 3}
     - target: {fileID: 4566217592537748297, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
       propertyPath: projCameraSpawnOffset
-      value: 10
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5899426816158078892, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
       propertyPath: weaponChangeText
