@@ -206,8 +206,8 @@ public class Weapon : MonoBehaviour
                 float falloffPercent = damageFalloffMaxPercent;
                 if (hit.distance < damageFalloffEndDist)
                 {
-                    float falloffRange = damageFalloffStartDist - damageFalloffEndDist;
-                    falloffPercent = 1-((hit.distance - damageFalloffStartDist) / falloffRange);
+                    float falloffRange = damageFalloffEndDist-damageFalloffStartDist;
+                    falloffPercent = ((hit.distance - damageFalloffStartDist) / falloffRange);
                     //map to range
                     falloffPercent = Mathf.Lerp(1, damageFalloffMaxPercent, falloffPercent);
                 }
