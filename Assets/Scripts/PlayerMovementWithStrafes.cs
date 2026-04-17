@@ -100,6 +100,7 @@ namespace StarterAssets {
         {
             Vector3 pos = transform.position - Vector3.up * GroundedOffset;
             IsGrounded = Physics.CheckSphere(pos, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+			Debug.DrawLine(transform.position - Vector3.up * GroundedOffset, (transform.position - Vector3.up * GroundedOffset) + new Vector3(0, 1, 0) * GroundedRadius);
         }
         private void Start()
     {
@@ -161,7 +162,8 @@ namespace StarterAssets {
 
 		if (!IsGrounded && _input.jump)
 		{
-			JumpQueue = true;
+				//disable jumpQ
+			//JumpQueue = true;
 		}
 		if (IsGrounded && JumpQueue)
 		{

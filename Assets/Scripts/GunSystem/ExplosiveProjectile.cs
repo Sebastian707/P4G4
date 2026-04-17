@@ -78,7 +78,6 @@ public class ExplosiveProjectile : MonoBehaviour
             {
                 //Debug.Log("Hit Player" + ": " + forceToApply);
                 var pc = collider.gameObject.GetComponent<PlayerMovementWithStrafes>();
-                pc.IsGrounded = false;
                 //full force at edge linearly dropping off
                 Vector3 relativeForce = forceToApply * explosionDirection;
                 pc.PlayerVelocity = pc.PlayerVelocity + relativeForce;

@@ -4269,6 +4269,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1838147928046574581, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: GroundedOffset
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838147928046574581, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: GroundLayers.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937498944810686291, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: m_Layer
+      value: 24
+      objectReference: {fileID: 0}
     - target: {fileID: 2372986856777323267, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
       propertyPath: pointManager
       value: 
@@ -4277,6 +4289,10 @@ PrefabInstance:
       propertyPath: deathScreenUI
       value: 
       objectReference: {fileID: 1344655776}
+    - target: {fileID: 2985517007308569586, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: dashText
+      value: 
+      objectReference: {fileID: 324614969}
     - target: {fileID: 3832584488302644278, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
       propertyPath: previewImage
       value: 
@@ -4337,6 +4353,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCapsule
       objectReference: {fileID: 0}
+    - target: {fileID: 6940652548021853181, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: m_Layer
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410701803531564229, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: m_Layer
+      value: 23
+      objectReference: {fileID: 0}
     - target: {fileID: 7761273531161466562, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
       propertyPath: previewImage
       value: 
@@ -4344,34 +4368,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6940652548021853181, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3430564915553091907}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
---- !u!1 &3430564915553091906 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6940652548021853181, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
-  m_PrefabInstance: {fileID: 3430564915553091905}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3430564915553091907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3430564915553091906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a9b0127eb65c52419f3f113dd043d7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerDash
-  dashVelocity: 10
-  dashSound: {fileID: 0}
-  maxDashCharges: 3
-  chargeRestoreRate: 3.5
-  dashCooldown: 1.2
-  dashText: {fileID: 324614969}
 --- !u!1 &3559118439608858257
 GameObject:
   m_ObjectHideFlags: 0

@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   fireMode: 1
   gunName: Grenade Launcher
-  previewImage: {fileID: 0}
+  previewImage: {fileID: 2800000, guid: ddaeb828442af2a4590014d284a95dad, type: 3}
   projectile: {fileID: 6054764215323127235, guid: 18745fa0b8d7cca4987e29f40f826227, type: 3}
   fireRate: 0.6
   burstCount: 3
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 3156125799491722644}
   - component: {fileID: 4990152273892658919}
   - component: {fileID: 1262735911232669383}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: WeaponCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   fireMode: 1
   gunName: Rocket Launcher
-  previewImage: {fileID: 0}
+  previewImage: {fileID: 2800000, guid: 81c526c9b7411ea4094e68623b8b7467, type: 3}
   projectile: {fileID: 6054764215323127235, guid: 9657c5c6e0edd2140b5a48b2d38fca5b, type: 3}
   fireRate: 0.75
   burstCount: 3
@@ -593,37 +593,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5747960305562328146}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4291381185970036755
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1275573606484578976}
-  m_Layer: 8
-  m_Name: GroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1275573606484578976
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4291381185970036755}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.878, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6029959330476659949}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4592546078727330532
 GameObject:
@@ -1182,7 +1151,8 @@ GameObject:
   - component: {fileID: 2372986856777323267}
   - component: {fileID: 4602063444008471499}
   - component: {fileID: 1838147928046574581}
-  m_Layer: 0
+  - component: {fileID: 2985517007308569586}
+  m_Layer: 23
   m_Name: PlayerCapsule 1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1197,13 +1167,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6940652548021853181}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.68, y: 13.24, z: -49.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6709980756125418007}
-  - {fileID: 1275573606484578976}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &7929596840477095711
@@ -1412,7 +1381,7 @@ MonoBehaviour:
   controller: {fileID: 7929596840477095711}
   GroundLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1
   GroundedRadius: 0.4
   moveSpeed: 7
   runAcceleration: 14
@@ -1433,7 +1402,7 @@ MonoBehaviour:
   XVelocity: 0
   moveDirection: {x: 0, y: 0, z: 0}
   moveDirectionNorm: {x: 0, y: 0, z: 0}
-  GroundedOffset: -0.14
+  GroundedOffset: 1.1
   playerView: {fileID: 6709980756125418007}
   x: 0
   z: 0
@@ -1441,6 +1410,24 @@ MonoBehaviour:
   player: {fileID: 6029959330476659949}
   RotationSpeed: 1
   MaxLookAngle: 90
+--- !u!114 &2985517007308569586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6940652548021853181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9b0127eb65c52419f3f113dd043d7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDash
+  dashVelocity: 10
+  dashSound: {fileID: 0}
+  maxDashCharges: 3
+  chargeRestoreRate: 3.5
+  dashCooldown: 1.2
+  dashText: {fileID: 0}
 --- !u!1 &7283992048287976368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1612,7 +1599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   fireMode: 1
   gunName: Shotgun
-  previewImage: {fileID: 0}
+  previewImage: {fileID: 2800000, guid: 66ab4d86a557fcd409508e65adbc55cb, type: 3}
   projectile: {fileID: 0}
   fireRate: 1
   burstCount: 3
@@ -1684,7 +1671,7 @@ GameObject:
   - component: {fileID: 8952640843128510071}
   - component: {fileID: 4646933870571625246}
   - component: {fileID: 1679594516587238752}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}

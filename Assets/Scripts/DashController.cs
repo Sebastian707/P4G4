@@ -71,7 +71,6 @@ public class PlayerDash : MonoBehaviour
             playerInputDir = transform.forward;
         }
         Vector3 movementDir = playerInputDir;
-        playerMovementWithStrafes.IsGrounded = false;
         var newVel = Vector3.Scale(playerMovementWithStrafes.PlayerVelocity, new Vector3(1, 0, 1))  + Vector3.Scale(movementDir, new Vector3(1, 0, 1)) * dashVelocity;
         newVel.y = dashUpSpeed;
         playerMovementWithStrafes.PlayerVelocity = newVel;
