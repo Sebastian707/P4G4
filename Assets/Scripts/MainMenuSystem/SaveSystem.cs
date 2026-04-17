@@ -2,12 +2,15 @@ using System;
 using System.IO;
 using UnityEngine;
 
-
+// ─────────────────────────────────────────────────────────────
+//  Data that gets written to / read from JSON
+// ─────────────────────────────────────────────────────────────
 [Serializable]
 public class SaveData
 {
-    public bool   isEmpty    = true;
-    public string lastPlayed = "";       
+    public bool isEmpty = true;
+    public string lastPlayed = "";    
+    public float totalTimePlayed = 0f;     
 }
 
 public static class SaveSystem
@@ -25,8 +28,8 @@ public static class SaveSystem
             return;
         }
 
-        data.isEmpty    = false;
-        data.lastPlayed = DateTime.Now.ToString("dd MMM yyyy – HH:mm");
+        data.isEmpty = false;
+        data.lastPlayed = DateTime.Now.ToString("dd/MM/yy – HH:mm");
 
         string json = JsonUtility.ToJson(data, prettyPrint: true);
         File.WriteAllText(SlotPath(slot), json);
@@ -37,7 +40,7 @@ public static class SaveSystem
         string path = SlotPath(slot);
 
         if (!File.Exists(path))
-            return new SaveData();                
+            return new SaveData();
 
         try
         {
@@ -50,7 +53,6 @@ public static class SaveSystem
             return new SaveData();
         }
     }
-
 
     public static SaveData[] LoadAll()
     {
@@ -67,7 +69,7 @@ public static class SaveSystem
             File.Delete(path);
     }
 
-    public static int  ActiveSlot
+    public static int ActiveSlot
     {
         get => PlayerPrefs.GetInt("ActiveSaveSlot", 0);
         set { PlayerPrefs.SetInt("ActiveSaveSlot", value); PlayerPrefs.Save(); }

@@ -1,3 +1,4 @@
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -5,26 +6,19 @@ using TMPro;
 public class SaveSlotUI : MonoBehaviour
 {
     [Header("Labels")]
-    [SerializeField] private TMP_Text slotLabel;       
-    [SerializeField] private TMP_Text lastPlayedLabel; 
+    [SerializeField] private TMP_Text slotLabel;
+    [SerializeField] private TMP_Text lastPlayedLabel;
+    [SerializeField] private TMP_Text timePlayedLabel;
 
     [Header("Buttons")]
-    [SerializeField] private Button actionButton;    
+    [SerializeField] private Button actionButton;
     [SerializeField] private TMP_Text actionButtonText;
-    [SerializeField] private Button deleteButton;   
+    [SerializeField] private Button deleteButton;
 
-    [Header("Delete Confirmation Popup")]
-    [SerializeField] private GameObject confirmPopup;  
-    [SerializeField] private Button confirmYesButton;
-    [SerializeField] private Button confirmNoButton;
-
-    private int _slotIndex;
     private LoadGameMenuController _controller;
-
 
     public void Populate(int index, SaveData data, LoadGameMenuController controller)
     {
-        _slotIndex = index;
         _controller = controller;
 
         if (slotLabel != null)
@@ -33,12 +27,21 @@ public class SaveSlotUI : MonoBehaviour
         if (data.isEmpty)
         {
             if (lastPlayedLabel != null) lastPlayedLabel.text = "Empty";
+            if (timePlayedLabel != null) timePlayedLabel.gameObject.SetActive(false);
             if (actionButtonText != null) actionButtonText.text = "New Game";
             if (deleteButton != null) deleteButton.gameObject.SetActive(false);
         }
         else
         {
-            if (lastPlayedLabel != null) lastPlayedLabel.text = $"{data.lastPlayed}";
+            if (lastPlayedLabel != null)
+                lastPlayedLabel.text = $"{data.lastPlayed}";
+
+            if (timePlayedLabel != null)
+            {
+                timePlayedLabel.gameObject.SetActive(true);
+                timePlayedLabel.text = $"Time played: {FormatTime(data.totalTimePlayed)}";
+            }
+
             if (actionButtonText != null) actionButtonText.text = "Continue";
             if (deleteButton != null) deleteButton.gameObject.SetActive(true);
         }
@@ -46,49 +49,21 @@ public class SaveSlotUI : MonoBehaviour
         if (actionButton != null)
         {
             actionButton.onClick.RemoveAllListeners();
-            actionButton.onClick.AddListener(OnActionClicked);
+            actionButton.onClick.AddListener(() => _controller.OnSlotSelected(index));
         }
 
         if (deleteButton != null)
         {
             deleteButton.onClick.RemoveAllListeners();
-            deleteButton.onClick.AddListener(OnDeleteClicked);
-        }
-
-        if (confirmPopup != null) confirmPopup.SetActive(false);
-
-        if (confirmYesButton != null)
-        {
-            confirmYesButton.onClick.RemoveAllListeners();
-            confirmYesButton.onClick.AddListener(OnConfirmYes);
-        }
-
-        if (confirmNoButton != null)
-        {
-            confirmNoButton.onClick.RemoveAllListeners();
-            confirmNoButton.onClick.AddListener(OnConfirmNo);
+            deleteButton.onClick.AddListener(() => _controller.OnDeleteRequested(index));
         }
     }
-    private void OnActionClicked()
-    {
-        _controller.OnSlotSelected(_slotIndex);
-    }
 
-    private void OnDeleteClicked()
+    private string FormatTime(float seconds)
     {
-        if (confirmPopup != null)
-            confirmPopup.SetActive(true);
-    }
-
-    private void OnConfirmYes()
-    {
-        if (confirmPopup != null) confirmPopup.SetActive(false);
-        SaveSystem.Delete(_slotIndex);
-        Populate(_slotIndex, new SaveData(), _controller);
-    }
-
-    private void OnConfirmNo()
-    {
-        if (confirmPopup != null) confirmPopup.SetActive(false);
+        TimeSpan t = TimeSpan.FromSeconds(seconds);
+        return t.TotalHours >= 1
+            ? $"{(int)t.TotalHours}h {t.Minutes}m"
+            : $"{t.Minutes}m {t.Seconds}s";
     }
 }

@@ -36,9 +36,6 @@ namespace StarterAssets
 
         private void Start()
         {
-            // Try to restore from the active save slot
-            SaveData save = SaveSystem.Load(SaveSystem.ActiveSlot);
-
             currentHealth = maxHealth;
             _ghostHealth = currentHealth;
 
@@ -117,6 +114,8 @@ namespace StarterAssets
             UpdateHealthUI();
         }
 
+        // ── Internal ─────────────────────────────────────────
+
         private void UpdateHealthUI()
         {
             if (healthBar != null)
@@ -137,11 +136,7 @@ namespace StarterAssets
             if (_isDead) return;
             _isDead = true;
 
-            SaveData data = new SaveData
-            {
-             
-            };
-            SaveSystem.Save(SaveSystem.ActiveSlot, data);
+            GameSaveManager.Instance.SaveOnDeath();
 
             if (_fpsController != null) _fpsController.enabled = false;
             if (_characterController != null) _characterController.enabled = false;
