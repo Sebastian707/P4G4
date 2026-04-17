@@ -98,9 +98,16 @@ namespace StarterAssets {
 #endif
         private void GroundedCheck()
         {
-            Vector3 pos = transform.position - Vector3.up * GroundedOffset;
-            IsGrounded = Physics.CheckSphere(pos, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
-			Debug.DrawLine(transform.position - Vector3.up * GroundedOffset, (transform.position - Vector3.up * GroundedOffset) + new Vector3(0, 1, 0) * GroundedRadius);
+			if (playerVelocity.y <= 0)
+			{
+                Vector3 pos = transform.position - Vector3.up * GroundedOffset;
+                IsGrounded = Physics.CheckSphere(pos, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+                Debug.DrawLine(transform.position - Vector3.up * GroundedOffset, (transform.position - Vector3.up * GroundedOffset) + new Vector3(0, 1, 0) * GroundedRadius);
+            } else
+			{
+                IsGrounded = false;
+			}
+            
         }
         private void Start()
     {
@@ -132,9 +139,9 @@ namespace StarterAssets {
         QueueJump();
 
 		/* Movement, here's the important part */
-		if (controller.isGrounded)
+		if (IsGrounded)
 			GroundMove();
-		else if (!controller.isGrounded)
+		else if (!IsGrounded)
 			AirMove();
 
 		// Move the controller
@@ -162,8 +169,8 @@ namespace StarterAssets {
 
 		if (!IsGrounded && _input.jump)
 		{
-				//disable jumpQ
-			//JumpQueue = true;
+				//disable jumpQue by commenting this out
+			JumpQueue = true;
 		}
 		if (IsGrounded && JumpQueue)
 		{
@@ -322,7 +329,7 @@ namespace StarterAssets {
 			drop = 0f;
 
 			/* Only if the player is on the ground then apply friction */
-			if (controller.isGrounded)
+			if (IsGrounded)
 			{
 				control = speed < runDeacceleration ? runDeacceleration : speed;
 				drop = control * friction * Time.deltaTime * t;
