@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{3bf1a42e-346f-4069-a88e-735a396a9da6}">
+		<property name="assetPath">
+			<value>lesiakower-minimalist-button-hover-sound-effect-399749.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.74399999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b37012e9-5ce3-485e-96a4-f03f14c6690f}</destination>
+		</relationship>
+	</object>
+</objects>

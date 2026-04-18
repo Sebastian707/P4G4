@@ -172,10 +172,10 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/StyleBank.bank
   Name: StyleBank
   StudioPath: bank:/StyleBank
-  lastModified: 639120482947853990
+  lastModified: 639121261516470163
   FileSizes:
   - Name: Desktop
-    Value: 11380864
+    Value: 11380928
   Exists: 1
 --- !u!114 &-5740172225975297598
 MonoBehaviour:
@@ -325,10 +325,10 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639120482946779887
+  lastModified: 639120665203698149
   FileSizes:
   - Name: Desktop
-    Value: 1932
+    Value: 1980
   Exists: 1
 --- !u!114 &-3491648743720684548
 MonoBehaviour:
@@ -405,6 +405,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 12797
+--- !u!114 &-1869042084622847156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Hover
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Hover
+  Guid:
+    Data1: 824825927
+    Data2: 1327996442
+    Data3: -1622093183
+    Data4: -1839373380
+  Banks:
+  - {fileID: 3219367564650421146}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 744
 --- !u!114 &-1684147843260884233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,13 +578,14 @@ MonoBehaviour:
   - {fileID: 5614438019663854073}
   - {fileID: -4489896983937688640}
   - {fileID: -125471612607283995}
+  - {fileID: -1869042084622847156}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3219367564650421146}
   StringsBanks:
   - {fileID: -3885612251368421316}
   cacheVersion: 131859
-  cacheTime: 639120482947853990
+  cacheTime: 639121261516470163
   SerializableEventsDict:
   - key: event:/Footsteps/Footstep_3
     index: 0
@@ -599,6 +627,8 @@ MonoBehaviour:
     index: 18
   - key: event:/HealthPickUp
     index: 19
+  - key: event:/Hover
+    index: 20
 --- !u!114 &902513565502561977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,10 +692,10 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639120482946759895
+  lastModified: 639120665203678151
   FileSizes:
   - Name: Desktop
-    Value: 7326080
+    Value: 7333696
   Exists: 1
 --- !u!114 &3386591051681145209
 MonoBehaviour:
