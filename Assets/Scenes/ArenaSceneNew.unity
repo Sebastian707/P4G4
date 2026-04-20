@@ -16442,6 +16442,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 646571964813126498, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2372986856777323267, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
       propertyPath: healthBar
       value: 
@@ -16466,6 +16470,18 @@ PrefabInstance:
       propertyPath: dashText
       value: 
       objectReference: {fileID: 1731819370}
+    - target: {fileID: 3832584488302644278, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 6054764215323127235, guid: 4dc1efd6766688a4bb9b2510de456b6e, type: 3}
+    - target: {fileID: 3851759470338509820, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566217592537748297, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 6054764215323127235, guid: 584b3d028c5cc3f4fa2ea92dc46947a7, type: 3}
     - target: {fileID: 5899426816158078892, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
       propertyPath: weaponChangeText
       value: 
