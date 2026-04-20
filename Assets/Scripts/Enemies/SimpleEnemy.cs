@@ -14,6 +14,7 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
     public string enemyName = "Boss";
     public PointManager pointManager;
     public int pointsToAdd = 50;
+    public bool isAlive = true;
 
     [Header("Spawn Effects")]
     public GameObject spawnParticlePrefab;
@@ -83,12 +84,13 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
         UnityEngine.Debug.Log(enemyName + " hit for: " + amount);
         currentHealth -= amount;
         GetComponent<BossBar>()?.OnBossDamaged();
-        if (currentHealth <= 0f)
+        if (currentHealth <= 0f & isAlive)
             Die();
     }
 
     void Die()
     {
+        isAlive = false;
         OnDeath?.Invoke();
         Destroy(gameObject);
         pointManager.AddPoints(pointsToAdd);
