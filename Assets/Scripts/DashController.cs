@@ -31,7 +31,7 @@ public class PlayerDash : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         playerMovementWithStrafes = GetComponent<PlayerMovementWithStrafes>();
 
-        currentDashCharges = maxDashCharges;
+        currentDashCharges = 0;
     }
 
     void Update()

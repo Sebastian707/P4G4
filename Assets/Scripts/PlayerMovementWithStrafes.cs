@@ -120,9 +120,10 @@ namespace StarterAssets {
     void Update()
 	{
 			Look();
-		#region //UI, Feel free to remove the region.
 
-		moved = player.position - lastPos;
+            #region //UI, Feel free to remove the region.
+
+            moved = player.position - lastPos;
 		lastPos = player.position;
 		PlayerVel = moved / Time.fixedDeltaTime;
 
@@ -134,7 +135,8 @@ namespace StarterAssets {
 
 			#endregion
 
-		GroundedCheck();
+
+        GroundedCheck();
 
         QueueJump();
 
@@ -233,6 +235,7 @@ namespace StarterAssets {
 
 		// Apply gravity
 		playerVelocity.y += gravity * Time.deltaTime;
+
 
 		/**
 			* Air control occurs when the player is in the air, it allows

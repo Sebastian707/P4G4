@@ -80,7 +80,7 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
 
     public void ApplyDamage(float amount)
     {
-        Debug.Log(enemyName + " hit for: " + amount);
+        UnityEngine.Debug.Log(enemyName + " hit for: " + amount);
         currentHealth -= amount;
         GetComponent<BossBar>()?.OnBossDamaged();
         if (currentHealth <= 0f)
