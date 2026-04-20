@@ -69,7 +69,7 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Footsteps.bank
   Name: Footsteps
   StudioPath: bank:/Footsteps
-  lastModified: 639122767188229988
+  lastModified: 639111620838435481
   FileSizes:
   - Name: Desktop
     Value: 38144
@@ -172,7 +172,7 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/StyleBank.bank
   Name: StyleBank
   StudioPath: bank:/StyleBank
-  lastModified: 639122808143357517
+  lastModified: 639122825745974249
   FileSizes:
   - Name: Desktop
     Value: 11380928
@@ -325,7 +325,7 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639122808142735002
+  lastModified: 639122825744683476
   FileSizes:
   - Name: Desktop
     Value: 1980
@@ -585,7 +585,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -3885612251368421316}
   cacheVersion: 131859
-  cacheTime: 639122808143357517
+  cacheTime: 639122825745974249
   SerializableEventsDict:
   - key: event:/Footsteps/Footstep_3
     index: 0
@@ -692,7 +692,7 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639122808142715036
+  lastModified: 639122825744668625
   FileSizes:
   - Name: Desktop
     Value: 7333696
