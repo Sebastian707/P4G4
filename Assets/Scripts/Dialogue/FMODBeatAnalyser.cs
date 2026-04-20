@@ -12,7 +12,7 @@ public class FMODBeatAnalyzer : MonoBehaviour
     private FMOD.DSP fftDSP;
     private FMOD.ChannelGroup targetGroup;
 
-    public string fmodBusPath = "bus:/AdaptiveAudio"; 
+    public string fmodBusPath = "bus:/AdaptiveAudio"; // Set this in Inspector to match your FMOD bus path
 
     private int windowSize = 1024;
     private int bassBins = 10;
@@ -89,10 +89,10 @@ public class FMODBeatAnalyzer : MonoBehaviour
                 }
             }
         }
-        
+        UnityEngine.Debug.Log($"Energy: {energy:F4} | Avg: {averageEnergy:F4}");
         if (isBeat)
         {
-
+            UnityEngine.Debug.Log("🔥 BEAT DETECTED");
             OnBeat?.Invoke();
         }
     }

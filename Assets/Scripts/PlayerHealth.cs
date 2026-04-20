@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -6,7 +6,6 @@ using TMPro;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
-
 namespace StarterAssets
 {
     public class PlayerHealth : MonoBehaviour
@@ -18,9 +17,9 @@ namespace StarterAssets
 
         [Header("UI")]
         public Slider healthBar;
-        public Slider ghostHealthBar;
-        public float ghostDelay = 1f;
-        public float ghostDrainSpeed = 30f;
+        public Slider ghostHealthBar;       // Yellow/ghost slider � sits behind the main bar
+        public float ghostDelay = 1f;       // Seconds before ghost starts draining
+        public float ghostDrainSpeed = 30f; // How fast the ghost bar catches up
 
         [Header("Death References")]
         public GameObject deathScreenUI;
@@ -29,15 +28,14 @@ namespace StarterAssets
         private FirstPersonController _fpsController;
         private CharacterController _characterController;
         private bool _isDead = false;
+
         private float _ghostHealth;
         private float _timeSinceLastHit = 0f;
-
-        // ── Lifecycle ────────────────────────────────────────
 
         private void Start()
         {
             currentHealth = maxHealth;
-            _ghostHealth = currentHealth;
+            _ghostHealth = maxHealth;
 
             _fpsController = GetComponent<FirstPersonController>();
             _characterController = GetComponent<CharacterController>();
@@ -53,7 +51,6 @@ namespace StarterAssets
             UpdateGhostBar();
 
             if (!_isDead) return;
-
 #if ENABLE_INPUT_SYSTEM
             if (Keyboard.current.rKey.wasPressedThisFrame)
 #else
@@ -64,12 +61,11 @@ namespace StarterAssets
             }
         }
 
-        // ── Ghost bar ────────────────────────────────────────
-
         private void UpdateGhostBar()
         {
             if (ghostHealthBar == null) return;
 
+            // Only drain if ghost is ahead of real health
             if (_ghostHealth > currentHealth)
             {
                 _timeSinceLastHit += Time.deltaTime;
@@ -87,14 +83,12 @@ namespace StarterAssets
             ghostHealthBar.value = _ghostHealth;
         }
 
-        // ── Public API ───────────────────────────────────────
-
         public void TakeDamage(float amount)
         {
             if (_isDead) return;
 
             currentHealth = Mathf.Clamp(currentHealth - amount, 0f, maxHealth);
-            _timeSinceLastHit = 0f;
+            _timeSinceLastHit = 0f; // Reset ghost delay on each hit
 
             UpdateHealthUI();
 
@@ -108,13 +102,12 @@ namespace StarterAssets
 
             currentHealth = Mathf.Clamp(currentHealth + amount, 0f, maxHealth);
 
+            // Snap ghost bar down if healing (no ghost effect on heals)
             if (currentHealth > _ghostHealth)
                 _ghostHealth = currentHealth;
 
             UpdateHealthUI();
         }
-
-        // ── Internal ─────────────────────────────────────────
 
         private void UpdateHealthUI()
         {
@@ -125,10 +118,11 @@ namespace StarterAssets
             }
 
             if (ghostHealthBar != null)
+            {
                 ghostHealthBar.maxValue = maxHealth;
-
+            }
             if (healthText != null)
-                healthText.text = ((int)currentHealth).ToString();
+                healthText.text = ((int)currentHealth).ToString(); // Add this line
         }
 
         private void Die()
@@ -136,12 +130,14 @@ namespace StarterAssets
             if (_isDead) return;
             _isDead = true;
 
-            GameSaveManager.Instance.SaveOnDeath();
-
-            if (_fpsController != null) _fpsController.enabled = false;
-            if (_characterController != null) _characterController.enabled = false;
-            if (pointManager != null) pointManager.SetActive(false);
-            if (deathScreenUI != null) deathScreenUI.SetActive(true);
+            if (_fpsController != null)
+                _fpsController.enabled = false;
+            if (_characterController != null)
+                _characterController.enabled = false;
+            if (pointManager != null)
+                pointManager.SetActive(false);
+            if (deathScreenUI != null)
+                deathScreenUI.SetActive(true);
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

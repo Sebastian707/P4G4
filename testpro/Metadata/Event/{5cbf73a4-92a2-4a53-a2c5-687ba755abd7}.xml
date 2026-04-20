@@ -168,8 +168,6 @@
 		<relationship name="markers">
 			<destination>{15cdf294-7f02-419e-8958-a9720cd9091a}</destination>
 			<destination>{3bab0b7d-a261-4797-883a-e3bae0e688d4}</destination>
-			<destination>{b8225083-059d-4ac3-9c50-8f7156f3cfa3}</destination>
-			<destination>{0c72e0b9-078f-4600-94da-5577d481796d}</destination>
 		</relationship>
 	</object>
 	<object class="ParameterProxy" id="{018b71bf-475f-4f74-ab08-849cbed48898}">
@@ -443,37 +441,6 @@
 		</relationship>
 		<relationship name="destination">
 			<destination>{15cdf294-7f02-419e-8958-a9720cd9091a}</destination>
-		</relationship>
-	</object>
-	<object class="TempoMarker" id="{b8225083-059d-4ac3-9c50-8f7156f3cfa3}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="tempo">
-			<value>113</value>
-		</property>
-		<property name="timeSignatureNumerator">
-			<value>3</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{c84275d1-95aa-410c-b260-425e4d67722e}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{b65cb8e1-f072-4934-a00f-62c1c689089d}</destination>
-		</relationship>
-	</object>
-	<object class="TempoMarker" id="{0c72e0b9-078f-4600-94da-5577d481796d}">
-		<property name="position">
-			<value>14</value>
-		</property>
-		<property name="tempo">
-			<value>200</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{c84275d1-95aa-410c-b260-425e4d67722e}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{b65cb8e1-f072-4934-a00f-62c1c689089d}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{1ddde870-6919-4236-9161-c2ded8258cdf}">

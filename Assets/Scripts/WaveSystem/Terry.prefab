@@ -215,8 +215,6 @@ MonoBehaviour:
       Data3: -1419071047
       Data4: -1096722864
     Path: event:/TeleportEnemy
-  HealthPrefab: {fileID: 3330622228234490784, guid: 69967930abdaecb40bbaabd63632ff00, type: 3}
-  DropChance: 1
   player: {fileID: 0}
   hellOrbPrefab: {fileID: 5304451666383355082, guid: 231233d5574745a4baa1f4711e23a27b, type: 3}
   explosionPrefab: {fileID: 0}

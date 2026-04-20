@@ -4,7 +4,6 @@ public class WaveStart : MonoBehaviour
 {
     public WaveManager waveManager;
     public GameObject pointManager;
-    public StartingDoors StartingDoors;
 
     public string triggerTag = "Player";
 
@@ -28,8 +27,8 @@ public class WaveStart : MonoBehaviour
                 Debug.LogError("WaveManager not assigned!");
             }
 
+            // Optional: disable trigger after use
             GetComponent<Collider>().enabled = false;
-            StartingDoors.Islocked = true;
         }
     }
 }
