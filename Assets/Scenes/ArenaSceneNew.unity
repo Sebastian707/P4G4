@@ -12390,6 +12390,7 @@ Transform:
   - {fileID: 450583955}
   - {fileID: 2757935}
   - {fileID: 1272879260}
+  - {fileID: 1764457720}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &703491659
@@ -15575,7 +15576,7 @@ GameObject:
   - component: {fileID: 1485419460}
   - component: {fileID: 1485419459}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16944,7 +16945,7 @@ GameObject:
   - component: {fileID: 1764457717}
   - component: {fileID: 1764457716}
   m_Layer: 0
-  m_Name: Plane (1)
+  m_Name: Rythm Grate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17056,9 +17057,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764457715}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 6.39, y: 2.25, z: -36.94}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 22.58936, y: 1.16, z: -8.980768}
+  m_LocalScale: {x: 0.1, y: 0.10000001, z: 0.10000001}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1130904241}
@@ -17068,7 +17069,7 @@ Transform:
   - {fileID: 1934214048}
   - {fileID: 1332069465}
   - {fileID: 1021645291}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 697858000}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1900558966
 GameObject:
@@ -19764,7 +19765,6 @@ SceneRoots:
   - {fileID: 1622582919}
   - {fileID: 697858000}
   - {fileID: 1587865509}
-  - {fileID: 76231987}
   - {fileID: 1026018135}
   - {fileID: 1704604898}
   - {fileID: 384408497}
@@ -19773,5 +19773,5 @@ SceneRoots:
   - {fileID: 1431436658}
   - {fileID: 437380252}
   - {fileID: 686489725}
-  - {fileID: 1764457720}
   - {fileID: 1970777393}
+  - {fileID: 76231987}
