@@ -1,12 +1,9 @@
-using FMOD.Studio;
-using FMODUnity;
-using StarterAssets;
 using System.Collections;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static Weapon;
+using StarterAssets;
+using FMODUnity;
+using FMOD.Studio;
+
 public class Weapon : MonoBehaviour
 {
     public enum FireMode { SemiAuto, FullAuto, Burst }
@@ -15,32 +12,21 @@ public class Weapon : MonoBehaviour
 
     [Header("General")]
     public FireMode fireMode = FireMode.SemiAuto;
-    public string gunName;
-    public Texture2D previewImage;
-
 
     [Header("Shooting")]
-    public GameObject projectile;
     public float fireRate = 6f;
     public int burstCount = 3;
     public int pelletsPerShot = 1;
     public float spreadAngle = 2f;
-    public float projCameraSpawnOffset = 2f;
-
 
     [Header("Damage")]
-
     public float damage = 25f;
     public float maxDistance = 100f;
     public LayerMask hitMask = ~0;
-    public float damageFalloffStartDist = 10f;
-    public float damageFalloffEndDist = 20f;
-    public float damageFalloffMaxPercent = 0.3f;
 
     [Header("References")]
     public Transform muzzleTransform;
     public Transform raycastOrigin;
-    public Transform swayTransform;
 
     [Header("Effects")]
     public ParticleSystem muzzleFlash;
@@ -76,30 +62,10 @@ public class Weapon : MonoBehaviour
 
     private StarterAssetsInputs input;
     private Camera mainCamera;
-    private Animator animator;
-    private PlayerInput newInput;
-
-    public enum WeaponCatagory
-    {
-        PROJECTILE,
-        HITSCAN,
-        MELEE
-    }
-    public WeaponCatagory WeaponsCatagory { get { if (projectile == null)
-            {
-                return WeaponCatagory.HITSCAN;
-            }
-            else
-            {
-                return WeaponCatagory.PROJECTILE;
-            }
-        } }
 
     void Awake()
     {
-        input = FindFirstObjectByType<StarterAssetsInputs>();
-        //really should be using project wide...
-        newInput = FindFirstObjectByType<PlayerInput>();
+        input = FindObjectOfType<StarterAssetsInputs>();
         mainCamera = Camera.main;
 
         burstLeft = burstCount;
@@ -109,11 +75,10 @@ public class Weapon : MonoBehaviour
     void Update()
     {
         if (Time.timeScale == 0f || input == null) return;
-        HandleWeaponSway();
 
         timeSinceLastShot += Time.deltaTime;
-        //the abstraction layer was breaking the interaction so reading directly (another reason to use project wide system instead...))
-        bool currentShoot = newInput.actions["Shoot"].ReadValue<float>() > 0.5;
+
+        bool currentShoot = input.shoot;
         bool triggerDown = currentShoot && !triggerWasHeld;
 
         switch (fireMode)
@@ -138,12 +103,9 @@ public class Weapon : MonoBehaviour
         currentRecoil = Vector3.Lerp(currentRecoil, targetRecoil, Time.deltaTime * recoilRecoverySpeed);
         targetRecoil = Vector3.Lerp(targetRecoil, Vector3.zero, Time.deltaTime * recoilRecoverySpeed);
 
+        HandleWeaponSway();
     }
 
-    void Start()
-    {
-            animator = GetComponent<Animator>();
-    }
     IEnumerator BurstCoroutine()
     {
         burstRunning = true;
@@ -171,19 +133,14 @@ public class Weapon : MonoBehaviour
         if (muzzleFlash != null) muzzleFlash.Play();
         PlayFireSound();
         SpawnShell();
-        animator.SetTrigger("Shoot");
+
         for (int i = 0; i < pelletsPerShot; i++)
         {
             Vector3 origin = raycastOrigin != null ? raycastOrigin.position : mainCamera.transform.position;
             Vector3 direction = GetShotDirection();
-            if (projectile == null) { 
+
             if (Physics.Raycast(origin, direction, out RaycastHit hit, maxDistance, hitMask))
                 ApplyHit(hit);
-            } else
-            {
-                origin = origin + mainCamera.transform.rotation * Vector3.forward * projCameraSpawnOffset;
-                var shot = Instantiate(projectile, origin, Quaternion.LookRotation(direction));
-            }
         }
 
         return true;
@@ -202,21 +159,7 @@ public class Weapon : MonoBehaviour
         IDamageable damageable = hit.collider.GetComponentInParent<IDamageable>();
         if (damageable != null)
         {
-            float damageToApply = damage;
-            if (hit.distance > damageFalloffStartDist)
-            {
-                float falloffPercent = damageFalloffMaxPercent;
-                if (hit.distance < damageFalloffEndDist)
-                {
-                    float falloffRange = damageFalloffEndDist-damageFalloffStartDist;
-                    falloffPercent = ((hit.distance - damageFalloffStartDist) / falloffRange);
-                    //map to range
-                    falloffPercent = Mathf.Lerp(1, damageFalloffMaxPercent, falloffPercent);
-                }
-                damageToApply = falloffPercent*damage;
-
-            }
-            damageable.ApplyDamage(damageToApply);
+            damageable.ApplyDamage(damage);
             // Do NOT spawn bullet hole prefab on damageable objects
         }
         else
@@ -234,8 +177,6 @@ public class Weapon : MonoBehaviour
 
     void SpawnBulletHole(RaycastHit hit)
     {
-        //if hitscan
-        if (projectile != null) return;
         if (bulletHolePrefab == null) return;
 
         var go = Instantiate(bulletHolePrefab,
@@ -308,11 +249,7 @@ public class Weapon : MonoBehaviour
             Time.deltaTime * swaySmooth
         );
 
-        swayTransform.localRotation = currentSwayRotation * Quaternion.Euler(currentRecoil);
-    }
-    void OnShoot2()
-    {
-        animator.SetTrigger("Spin");
+        transform.localRotation = currentSwayRotation * Quaternion.Euler(currentRecoil);
     }
 }
 

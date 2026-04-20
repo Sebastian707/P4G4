@@ -20,8 +20,9 @@ namespace StarterAssets {
 #if ENABLE_INPUT_SYSTEM
         private PlayerInput _playerInput;
 #endif
-	public LayerMask GroundLayers;
-    private float wishspeed2;
+    public Transform GroundCheck;
+        public LayerMask GroundLayers;
+        private float wishspeed2;
 	private float gravity = -20f;
 	float wishspeed;
 
@@ -66,8 +67,6 @@ namespace StarterAssets {
 	public Vector3 moveDirection;
 	public Vector3 moveDirectionNorm;
 	private Vector3 playerVelocity;
-	//expose playervelocity
-	public Vector3 PlayerVelocity {  get { return playerVelocity; } set  { playerVelocity = value; } }
 	Vector3 wishdir;
 	Vector3 vec;
 
@@ -98,16 +97,8 @@ namespace StarterAssets {
 #endif
         private void GroundedCheck()
         {
-			if (playerVelocity.y <= 0)
-			{
-                Vector3 pos = transform.position - Vector3.up * GroundedOffset;
-                IsGrounded = Physics.CheckSphere(pos, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
-                Debug.DrawLine(transform.position - Vector3.up * GroundedOffset, (transform.position - Vector3.up * GroundedOffset) + new Vector3(0, 1, 0) * GroundedRadius);
-            } else
-			{
-                IsGrounded = false;
-			}
-            
+            Vector3 pos = transform.position - Vector3.up * GroundedOffset;
+            IsGrounded = Physics.CheckSphere(pos, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
         }
         private void Start()
     {
@@ -117,6 +108,7 @@ namespace StarterAssets {
 #endif
 
     }
+    // Update is called once per frame
     void Update()
 	{
 			Look();
@@ -139,9 +131,9 @@ namespace StarterAssets {
         QueueJump();
 
 		/* Movement, here's the important part */
-		if (IsGrounded)
+		if (controller.isGrounded)
 			GroundMove();
-		else if (!IsGrounded)
+		else if (!controller.isGrounded)
 			AirMove();
 
 		// Move the controller
@@ -169,7 +161,6 @@ namespace StarterAssets {
 
 		if (!IsGrounded && _input.jump)
 		{
-				//disable jumpQue by commenting this out
 			JumpQueue = true;
 		}
 		if (IsGrounded && JumpQueue)
@@ -177,11 +168,10 @@ namespace StarterAssets {
 			wishJump = true;
 			JumpQueue = false;
 		}
-        _input.jump = false;
-        }
+	}
 
-        //Calculates wish acceleration
-        public void Accelerate(Vector3 wishdir, float wishspeed, float accel)
+	//Calculates wish acceleration
+	public void Accelerate(Vector3 wishdir, float wishspeed, float accel)
 	{
 		currentspeed = Vector3.Dot(playerVelocity, wishdir);
 		addspeed = wishspeed - currentspeed;
@@ -278,7 +268,6 @@ namespace StarterAssets {
             */
         private void Look()
         {
-			/*
             if (_input.look.sqrMagnitude < _threshold) return;
 
             float delta = IsMouse ? 1f : Time.deltaTime;
@@ -288,12 +277,6 @@ namespace StarterAssets {
 
             transform.Rotate(Vector3.up * _input.look.x * RotationSpeed * delta);
 
-            Camera.main.transform.localEulerAngles = new Vector3(_pitch, 0f, 0f);
-			*/
-			Vector2 playerLook = _playerInput.actions["Look"].ReadValue<Vector2>();
-            transform.Rotate(Vector3.up * playerLook.x * RotationSpeed * 100 * Time.deltaTime);
-            _pitch += playerLook.y * Time.deltaTime * RotationSpeed * 100;
-			_pitch = Mathf.Clamp(_pitch, -MaxLookAngle, MaxLookAngle);
             Camera.main.transform.localEulerAngles = new Vector3(_pitch, 0f, 0f);
         }
         public void GroundMove()
@@ -336,7 +319,7 @@ namespace StarterAssets {
 			drop = 0f;
 
 			/* Only if the player is on the ground then apply friction */
-			if (IsGrounded)
+			if (controller.isGrounded)
 			{
 				control = speed < runDeacceleration ? runDeacceleration : speed;
 				drop = control * friction * Time.deltaTime * t;
