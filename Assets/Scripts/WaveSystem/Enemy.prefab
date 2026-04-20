@@ -136,8 +136,10 @@ MonoBehaviour:
   dissolveEnd: -13
   spawnSoundEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1483874939
+      Data2: 1199044887
+      Data3: -1419071047
+      Data4: -1096722864
+    Path: event:/TeleportEnemy
+  HealthPrefab: {fileID: 0}
+  DropChance: 0.2

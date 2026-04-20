@@ -357,5 +357,32 @@ namespace StarterAssets {
 			playerVelocity.z *= newspeed;
 		}
 	}
-}
+		/* not required...
+        private void OnCollisionEnter(Collision collision)
+        {
+            // remove only the velocity component that is pointing into the contact normal
+            Vector3 normal = collision.contacts[0].normal.normalized;
+            float vDot = Vector3.Dot(playerVelocity, normal);
+            if (vDot < 0f)
+            {
+                // subtract the component into the surface
+                playerVelocity -= vDot * normal;
+            }
+        } */
+
+        // CharacterController collisions come through here
+        private void OnControllerColliderHit(ControllerColliderHit hit)
+        {
+            Vector3 normal = hit.normal.normalized;
+            float vDot = Vector3.Dot(playerVelocity, normal);
+            /*
+		     * •	If vDot < 0 (velocity has a component into the surface), 
+		     * remove that component: playerVelocity -= vDot * normal; 
+		     * This preserves tangential velocity while preventing penetration/continued movement into the collided surface.d*/
+            if (vDot < 0f)
+            {
+                playerVelocity -= vDot * normal;
+            }
+        }
+    }
 }
