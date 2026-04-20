@@ -15,18 +15,36 @@ public class StyleRank
     public float decayPerSecond;
 }
 
+public static class StyleEvents
+{
+    public static event System.Action<float> OnMultiplierAdd;
+
+    public static void AddMultiplier(float amount)
+    {
+        OnMultiplierAdd?.Invoke(amount);
+    }
+}
+
 public class PointManager : MonoBehaviour
 {
     [Header("Points Settings")]
     public int currentPoints = 0;
     public int maxPoints = 11000;
+
     [Header("Style Ranks")]
     public List<StyleRank> ranks = new List<StyleRank>();
+
+    [Header("Multiplier Settings")]
+    [Tooltip("How much the multiplier decays per second back toward 1.0")]
+    public float multiplierDecayRate = 0.1f;
+    [Tooltip("Maximum allowed multiplier")]
+    public float maxMultiplier = 8f;
 
     [Header("UI")]
     public TextMeshProUGUI rankText;
     public Slider progressSlider;
     public TextMeshProUGUI pointsText;
+    public TextMeshProUGUI multiplierText;
 
     [Header("Decay Settings")]
     [Tooltip("Delay before decay starts after gaining points")]
@@ -42,6 +60,21 @@ public class PointManager : MonoBehaviour
 
     private float decayTimer = 0f;
     private float noDecayTimer = 0f;
+
+    public float currentMultiplier = 1f;
+
+    void OnEnable()
+    {
+        StyleEvents.OnMultiplierAdd += AddMultiplier;
+    }
+
+    void OnDisable()
+    {
+        StyleEvents.OnMultiplierAdd -= AddMultiplier;
+
+        if (musicInstance.isValid())
+            musicInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
 
     void Start()
     {
@@ -64,14 +97,34 @@ public class PointManager : MonoBehaviour
     {
         UpdateRank();
         HandleDecay();
+        UpdateMultiplier();
         UpdateUI();
     }
 
     public void AddPoints(int amount)
     {
-        currentPoints += amount;
+        int multipliedAmount = Mathf.RoundToInt(amount * currentMultiplier);
+        currentPoints += multipliedAmount;
         noDecayTimer = 0f;
         if (currentPoints > maxPoints) { currentPoints = maxPoints; }
+    }
+
+    public void AddMultiplier(float amount)
+    {
+        currentMultiplier = Mathf.Min(currentMultiplier + amount, maxMultiplier);
+    }
+
+    void UpdateMultiplier()
+    {
+        if (currentMultiplier > 1f)
+        {
+            currentMultiplier -= multiplierDecayRate * Time.deltaTime;
+            if (currentMultiplier < 1f)
+                currentMultiplier = 1f;
+        }
+
+        if (multiplierText != null)
+            multiplierText.text = $"x {currentMultiplier:F2}";
     }
 
     void UpdateRank()
@@ -101,7 +154,7 @@ public class PointManager : MonoBehaviour
     {
         if (musicInstance.isValid())
         {
-            var result = musicInstance.setParameterByName("StyleParam", (float)currentRankIndex);
+            musicInstance.setParameterByName("StyleParam", (float)currentRankIndex);
 
             Debug.Log($"🎵 Setting StyleParam = {currentRankIndex}");
         }
@@ -154,10 +207,11 @@ public class PointManager : MonoBehaviour
                     Time.deltaTime * 5f
                 );
             }
-            
         }
+
         if (pointsText != null)
             pointsText.text = currentPoints.ToString();
+
         previousRankIndex = currentRankIndex;
     }
 
@@ -197,11 +251,9 @@ public class PointManager : MonoBehaviour
         AddPoints(10);
     }
 
-    void OnDisable()
+    [ContextMenu("Add 0.5 Multiplier")]
+    void DebugAddMultiplier()
     {
-        if (musicInstance.isValid())
-        {
-            musicInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        }
+        AddMultiplier(0.5f);
     }
 }

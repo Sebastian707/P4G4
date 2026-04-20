@@ -2,15 +2,23 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneTransitionManager : MonoBehaviour
 {
     public static SceneTransitionManager Instance;
+    [Header("Debug")]
+    [SerializeField] private bool forceLoadingDelay = false;
+    [SerializeField] private float forcedDelayDuration = 3f;
 
+    [Header("Fade")]
     public CanvasGroup fadeCanvasGroup;
     public float fadeDuration = 1f;
-
     [SerializeField] private float fadeLinger = 1f;
+
+    [Header("Loading Screen")]
+    [SerializeField] private GameObject loadingScreen;       
+    [SerializeField] private float loadingScreenDelay = 0.5f; 
 
     private void Awake()
     {
@@ -23,28 +31,51 @@ public class SceneTransitionManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (loadingScreen != null)
+            loadingScreen.SetActive(false);
     }
 
-    [System.Obsolete]
     public void TransitionToScene(string sceneName)
     {
         StartCoroutine(LoadSceneRoutine(sceneName));
     }
 
-    [System.Obsolete]
     private IEnumerator LoadSceneRoutine(string sceneName)
     {
         yield return StartCoroutine(Fade(1));
 
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
-        while (!operation.isDone)
+        operation.allowSceneActivation = false;
+
+        float elapsed = 0f;
+        bool loadingScreenVisible = false;
+        float debugElapsed = 0f; // tracks fake delay separately
+
+        while (operation.progress < 0.9f || (forceLoadingDelay && debugElapsed < forcedDelayDuration))
         {
+            elapsed += Time.deltaTime;
+            if (forceLoadingDelay)
+                debugElapsed += Time.deltaTime;
+
+            if (!loadingScreenVisible && elapsed >= loadingScreenDelay)
+            {
+                loadingScreenVisible = true;
+                if (loadingScreen != null)
+                    loadingScreen.SetActive(true);
+            }
+
             yield return null;
         }
 
+        operation.allowSceneActivation = true;
+        while (!operation.isDone)
+            yield return null;
+
+        if (loadingScreen != null)
+            loadingScreen.SetActive(false);
 
         yield return new WaitForSeconds(fadeLinger);
-
         yield return StartCoroutine(Fade(0));
     }
 
@@ -62,5 +93,4 @@ public class SceneTransitionManager : MonoBehaviour
 
         fadeCanvasGroup.alpha = targetAlpha;
     }
-
 }
