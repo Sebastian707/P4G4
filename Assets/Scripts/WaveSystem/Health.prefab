@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 6636706589098029698}
   - component: {fileID: 2389276709832863385}
   - component: {fileID: 4155899502705915777}
+  - component: {fileID: 3845682319855789518}
   m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
@@ -277,7 +278,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1073741824
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -300,7 +301,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 1073741824
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -319,6 +320,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spin
   SpinSpeed: 100
+--- !u!65 &3845682319855789518
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330622228234490784}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 1073741824
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: -0.42, z: 0}
 --- !u!1 &5236529088014892097
 GameObject:
   m_ObjectHideFlags: 0
