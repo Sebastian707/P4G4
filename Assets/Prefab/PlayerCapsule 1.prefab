@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1131504392305344270
 Transform:
   m_ObjectHideFlags: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   fireMode: 1
   gunName: Grenade Launcher
   previewImage: {fileID: 2800000, guid: ddaeb828442af2a4590014d284a95dad, type: 3}
-  projectile: {fileID: 6054764215323127235, guid: 18745fa0b8d7cca4987e29f40f826227, type: 3}
+  projectile: {fileID: 6054764215323127235, guid: 4dc1efd6766688a4bb9b2510de456b6e, type: 3}
   fireRate: 0.6
   burstCount: 3
   pelletsPerShot: 1
@@ -472,7 +472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7541146934596604806
 Transform:
   m_ObjectHideFlags: 0
@@ -506,7 +506,7 @@ MonoBehaviour:
   fireMode: 1
   gunName: Rocket Launcher
   previewImage: {fileID: 2800000, guid: 81c526c9b7411ea4094e68623b8b7467, type: 3}
-  projectile: {fileID: 6054764215323127235, guid: 9657c5c6e0edd2140b5a48b2d38fca5b, type: 3}
+  projectile: {fileID: 6054764215323127235, guid: 584b3d028c5cc3f4fa2ea92dc46947a7, type: 3}
   fireRate: 0.9
   burstCount: 3
   pelletsPerShot: 1
@@ -1352,7 +1352,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StarterAssets.PlayerHealth
   maxHealth: 20
   currentHealth: 0
+  healthText: {fileID: 0}
   healthBar: {fileID: 0}
+  ghostHealthBar: {fileID: 0}
+  ghostDelay: 1
+  ghostDrainSpeed: 30
   deathScreenUI: {fileID: 0}
   pointManager: {fileID: 0}
 --- !u!114 &4602063444008471499

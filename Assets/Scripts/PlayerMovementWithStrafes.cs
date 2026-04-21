@@ -172,7 +172,7 @@ namespace StarterAssets {
 		if (!IsGrounded && _input.jump)
 		{
 				//disable jumpQue by commenting this out
-			JumpQueue = true;
+			//JumpQueue = true;
 		}
 		if (IsGrounded && JumpQueue)
 		{
