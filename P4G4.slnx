@@ -1,22 +1,34 @@
 ﻿<Solution>
   <Project Path="Unity.Timeline.csproj" />
   <Project Path="Unity.PlasticSCM.Editor.csproj" />
+<<<<<<< Updated upstream
   <Project Path="Unity.ProBuilder.csproj" />
+=======
+>>>>>>> Stashed changes
   <Project Path="Unity.Mathematics.csproj" />
   <Project Path="Unity.Timeline.Editor.csproj" />
   <Project Path="Unity.Cinemachine.Editor.csproj" />
   <Project Path="Unity.Collections.csproj" />
+<<<<<<< Updated upstream
   <Project Path="Unity.ProBuilder.Poly2Tri.csproj" />
+=======
+>>>>>>> Stashed changes
   <Project Path="Unity.VisualScripting.Core.Editor.csproj" />
   <Project Path="Unity.PerformanceTesting.Editor.csproj" />
   <Project Path="Unity.Splines.csproj" />
   <Project Path="Unity.Burst.csproj" />
   <Project Path="Unity.VisualScripting.Flow.Editor.csproj" />
+<<<<<<< Updated upstream
   <Project Path="Unity.ProBuilder.Csg.csproj" />
   <Project Path="Unity.VisualStudio.Editor.csproj" />
   <Project Path="Unity.InputSystem.csproj" />
   <Project Path="Unity.Searcher.Editor.csproj" />
   <Project Path="Unity.ProBuilder.Editor.csproj" />
+=======
+  <Project Path="Unity.VisualStudio.Editor.csproj" />
+  <Project Path="Unity.InputSystem.csproj" />
+  <Project Path="Unity.Searcher.Editor.csproj" />
+>>>>>>> Stashed changes
   <Project Path="Unity.VisualScripting.Core.csproj" />
   <Project Path="Unity.AI.Navigation.Editor.ConversionSystem.csproj" />
   <Project Path="Unity.VisualScripting.State.Editor.csproj" />
@@ -38,8 +50,11 @@
   <Project Path="FMODUnityResonanceEditor.csproj" />
   <Project Path="FMODUnityEditor.csproj" />
   <Project Path="FMODUnity.csproj" />
+<<<<<<< Updated upstream
   <Project Path="Unity.ProBuilder.KdTree.csproj" />
   <Project Path="Unity.ProBuilder.AddOns.Editor.csproj" />
+=======
+>>>>>>> Stashed changes
   <Project Path="Unity.InputSystem.ForUI.csproj" />
   <Project Path="Unity.AI.Navigation.csproj" />
   <Project Path="Unity.Collections.CodeGen.csproj" />
@@ -47,7 +62,10 @@
   <Project Path="Unity.Mathematics.Editor.csproj" />
   <Project Path="Unity.VisualScripting.SettingsProvider.Editor.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
+<<<<<<< Updated upstream
   <Project Path="Unity.ProBuilder.AssetIdRemapUtility.csproj" />
+=======
+>>>>>>> Stashed changes
   <Project Path="Unity.Settings.Editor.csproj" />
   <Project Path="Unity.InputSystem.TestFramework.csproj" />
   <Project Path="Unity.VisualScripting.Shared.Editor.csproj" />
@@ -55,7 +73,10 @@
   <Project Path="FMODUnityResonance.csproj" />
   <Project Path="Unity.CollabProxy.Editor.csproj" />
   <Project Path="Unity.InputSystem.DocCodeSamples.csproj" />
+<<<<<<< Updated upstream
   <Project Path="Unity.ProBuilder.Stl.csproj" />
+=======
+>>>>>>> Stashed changes
   <Project Path="Unity.VisualScripting.DocCodeExamples.csproj" />
   <Project Path="Unity.PlasticSCM.Editor.Entities.csproj" />
   <Project Path="Unity.Collections.Editor.csproj" />
