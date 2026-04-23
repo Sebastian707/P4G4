@@ -69,7 +69,7 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Footsteps.bank
   Name: Footsteps
   StudioPath: bank:/Footsteps
-  lastModified: 639111655959340822
+  lastModified: 639111620838435481
   FileSizes:
   - Name: Desktop
     Value: 38144
@@ -172,10 +172,10 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/StyleBank.bank
   Name: StyleBank
   StudioPath: bank:/StyleBank
-  lastModified: 639116690454873003
+  lastModified: 639122825745974249
   FileSizes:
   - Name: Desktop
-    Value: 11380864
+    Value: 11380928
   Exists: 1
 --- !u!114 &-5740172225975297598
 MonoBehaviour:
@@ -325,10 +325,10 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639116690454213049
+  lastModified: 639122825744683476
   FileSizes:
   - Name: Desktop
-    Value: 1890
+    Value: 1980
   Exists: 1
 --- !u!114 &-3491648743720684548
 MonoBehaviour:
@@ -405,6 +405,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 12797
+--- !u!114 &-1869042084622847156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Hover
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Hover
+  Guid:
+    Data1: 824825927
+    Data2: 1327996442
+    Data3: -1622093183
+    Data4: -1839373380
+  Banks:
+  - {fileID: 3219367564650421146}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 744
 --- !u!114 &-1684147843260884233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,6 +513,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 319
+--- !u!114 &-125471612607283995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/HealthPickUp
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/HealthPickUp
+  Guid:
+    Data1: -47432954
+    Data2: 1137168939
+    Data3: 1408457090
+    Data4: -141695823
+  Banks:
+  - {fileID: 3219367564650421146}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 528
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,13 +577,15 @@ MonoBehaviour:
   - {fileID: 4379772644388398909}
   - {fileID: 5614438019663854073}
   - {fileID: -4489896983937688640}
+  - {fileID: -125471612607283995}
+  - {fileID: -1869042084622847156}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3219367564650421146}
   StringsBanks:
   - {fileID: -3885612251368421316}
   cacheVersion: 131859
-  cacheTime: 639116690454873003
+  cacheTime: 639122825745974249
   SerializableEventsDict:
   - key: event:/Footsteps/Footstep_3
     index: 0
@@ -569,6 +625,10 @@ MonoBehaviour:
     index: 17
   - key: event:/CountDownClick
     index: 18
+  - key: event:/HealthPickUp
+    index: 19
+  - key: event:/Hover
+    index: 20
 --- !u!114 &902513565502561977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,10 +692,10 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639116690454202995
+  lastModified: 639122825744668625
   FileSizes:
   - Name: Desktop
-    Value: 7317344
+    Value: 7333696
   Exists: 1
 --- !u!114 &3386591051681145209
 MonoBehaviour:

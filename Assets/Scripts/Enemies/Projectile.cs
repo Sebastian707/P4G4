@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour
     public GameObject owner;
     public float damageAmount = 10f;
 
+    private bool _wasParried = false;
+
     void Update()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
@@ -17,11 +19,29 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject == owner)
             return;
 
-        PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-
-        if (playerHealth != null)
+        if (!_wasParried)
         {
-            playerHealth.TakeDamage(damageAmount);
+            // Normal projectile — check for parry first
+            ParrySystem parry = collision.gameObject.GetComponent<ParrySystem>();
+            if (parry != null && parry.TryParry(gameObject, owner))
+            {
+                // Transfer ownership to the player and mark as parried
+                owner = collision.gameObject;
+                _wasParried = true;
+                return;
+            }
+
+            // Hit the player with no parry — deal damage normally
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+                playerHealth.TakeDamage(damageAmount);
+        }
+        else
+        {
+            // Parried projectile — damage enemies via IDamageable
+            IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+            if (damageable != null)
+                damageable.ApplyDamage(damageAmount);
         }
 
         Destroy(gameObject);

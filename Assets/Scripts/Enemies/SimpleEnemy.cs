@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
+using FMOD;
+using StarterAssets;
 
 public class SimpleEnemy : MonoBehaviour, IDamageable
 {
@@ -12,6 +14,7 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
     public string enemyName = "Boss";
     public PointManager pointManager;
     public int pointsToAdd = 50;
+    public bool isAlive = true;
 
     [Header("Spawn Effects")]
     public GameObject spawnParticlePrefab;
@@ -25,6 +28,11 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
     public event Action OnDeath;
 
     private Material _dissolveMat;
+
+    [Header("Death")]
+
+    public GameObject HealthPrefab;
+    public float DropChance = 0.2f;
 
     public void Awake()
     {
@@ -73,17 +81,27 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
 
     public void ApplyDamage(float amount)
     {
+        UnityEngine.Debug.Log(enemyName + " hit for: " + amount);
         currentHealth -= amount;
         GetComponent<BossBar>()?.OnBossDamaged();
-        if (currentHealth <= 0f)
+        if (currentHealth <= 0f & isAlive)
             Die();
     }
 
     void Die()
     {
+        isAlive = false;
         OnDeath?.Invoke();
         Destroy(gameObject);
         pointManager.AddPoints(pointsToAdd);
+
+
+            if (UnityEngine.Random.value <= DropChance)
+        {
+            if (HealthPrefab != null)
+                Instantiate(HealthPrefab, transform.position, Quaternion.identity);
+        }
+      
     }
     protected void InvokeOnDeath()
     {

@@ -20,9 +20,8 @@ namespace StarterAssets {
 #if ENABLE_INPUT_SYSTEM
         private PlayerInput _playerInput;
 #endif
-    public Transform GroundCheck;
-        public LayerMask GroundLayers;
-        private float wishspeed2;
+	public LayerMask GroundLayers;
+    private float wishspeed2;
 	private float gravity = -20f;
 	float wishspeed;
 
@@ -67,6 +66,8 @@ namespace StarterAssets {
 	public Vector3 moveDirection;
 	public Vector3 moveDirectionNorm;
 	private Vector3 playerVelocity;
+	//expose playervelocity
+	public Vector3 PlayerVelocity {  get { return playerVelocity; } set  { playerVelocity = value; } }
 	Vector3 wishdir;
 	Vector3 vec;
 
@@ -97,8 +98,16 @@ namespace StarterAssets {
 #endif
         private void GroundedCheck()
         {
-            Vector3 pos = transform.position - Vector3.up * GroundedOffset;
-            IsGrounded = Physics.CheckSphere(pos, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+			if (playerVelocity.y <= 0)
+			{
+                Vector3 pos = transform.position - Vector3.up * GroundedOffset;
+                IsGrounded = Physics.CheckSphere(pos, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+                Debug.DrawLine(transform.position - Vector3.up * GroundedOffset, (transform.position - Vector3.up * GroundedOffset) + new Vector3(0, 1, 0) * GroundedRadius);
+            } else
+			{
+                IsGrounded = false;
+			}
+            
         }
         private void Start()
     {
@@ -108,13 +117,13 @@ namespace StarterAssets {
 #endif
 
     }
-    // Update is called once per frame
     void Update()
 	{
 			Look();
-		#region //UI, Feel free to remove the region.
 
-		moved = player.position - lastPos;
+            #region //UI, Feel free to remove the region.
+
+            moved = player.position - lastPos;
 		lastPos = player.position;
 		PlayerVel = moved / Time.fixedDeltaTime;
 
@@ -126,14 +135,15 @@ namespace StarterAssets {
 
 			#endregion
 
-		GroundedCheck();
+
+        GroundedCheck();
 
         QueueJump();
 
 		/* Movement, here's the important part */
-		if (controller.isGrounded)
+		if (IsGrounded)
 			GroundMove();
-		else if (!controller.isGrounded)
+		else if (!IsGrounded)
 			AirMove();
 
 		// Move the controller
@@ -161,17 +171,19 @@ namespace StarterAssets {
 
 		if (!IsGrounded && _input.jump)
 		{
-			JumpQueue = true;
+				//disable jumpQue by commenting this out
+			//JumpQueue = true;
 		}
 		if (IsGrounded && JumpQueue)
 		{
 			wishJump = true;
 			JumpQueue = false;
 		}
-	}
+        _input.jump = false;
+        }
 
-	//Calculates wish acceleration
-	public void Accelerate(Vector3 wishdir, float wishspeed, float accel)
+        //Calculates wish acceleration
+        public void Accelerate(Vector3 wishdir, float wishspeed, float accel)
 	{
 		currentspeed = Vector3.Dot(playerVelocity, wishdir);
 		addspeed = wishspeed - currentspeed;
@@ -224,6 +236,7 @@ namespace StarterAssets {
 		// Apply gravity
 		playerVelocity.y += gravity * Time.deltaTime;
 
+
 		/**
 			* Air control occurs when the player is in the air, it allows
 			* players to move side to side much faster rather than being
@@ -268,6 +281,7 @@ namespace StarterAssets {
             */
         private void Look()
         {
+			/*
             if (_input.look.sqrMagnitude < _threshold) return;
 
             float delta = IsMouse ? 1f : Time.deltaTime;
@@ -277,6 +291,12 @@ namespace StarterAssets {
 
             transform.Rotate(Vector3.up * _input.look.x * RotationSpeed * delta);
 
+            Camera.main.transform.localEulerAngles = new Vector3(_pitch, 0f, 0f);
+			*/
+			Vector2 playerLook = _playerInput.actions["Look"].ReadValue<Vector2>();
+            transform.Rotate(Vector3.up * playerLook.x * RotationSpeed * 100 * Time.deltaTime);
+            _pitch += playerLook.y * Time.deltaTime * RotationSpeed * 100;
+			_pitch = Mathf.Clamp(_pitch, -MaxLookAngle, MaxLookAngle);
             Camera.main.transform.localEulerAngles = new Vector3(_pitch, 0f, 0f);
         }
         public void GroundMove()
@@ -319,7 +339,7 @@ namespace StarterAssets {
 			drop = 0f;
 
 			/* Only if the player is on the ground then apply friction */
-			if (controller.isGrounded)
+			if (IsGrounded)
 			{
 				control = speed < runDeacceleration ? runDeacceleration : speed;
 				drop = control * friction * Time.deltaTime * t;
@@ -337,5 +357,32 @@ namespace StarterAssets {
 			playerVelocity.z *= newspeed;
 		}
 	}
-}
+		/* not required...
+        private void OnCollisionEnter(Collision collision)
+        {
+            // remove only the velocity component that is pointing into the contact normal
+            Vector3 normal = collision.contacts[0].normal.normalized;
+            float vDot = Vector3.Dot(playerVelocity, normal);
+            if (vDot < 0f)
+            {
+                // subtract the component into the surface
+                playerVelocity -= vDot * normal;
+            }
+        } */
+
+        // CharacterController collisions come through here
+        private void OnControllerColliderHit(ControllerColliderHit hit)
+        {
+            Vector3 normal = hit.normal.normalized;
+            float vDot = Vector3.Dot(playerVelocity, normal);
+            /*
+		     * •	If vDot < 0 (velocity has a component into the surface), 
+		     * remove that component: playerVelocity -= vDot * normal; 
+		     * This preserves tangential velocity while preventing penetration/continued movement into the collided surface.d*/
+            if (vDot < 0f)
+            {
+                playerVelocity -= vDot * normal;
+            }
+        }
+    }
 }
