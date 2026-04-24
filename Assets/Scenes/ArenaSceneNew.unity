@@ -16599,7 +16599,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 646571964813126498, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2372986856777323267, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
       propertyPath: healthBar
@@ -16633,14 +16633,54 @@ PrefabInstance:
       propertyPath: projectile
       value: 
       objectReference: {fileID: 6054764215323127235, guid: 4dc1efd6766688a4bb9b2510de456b6e, type: 3}
+    - target: {fileID: 3832584488302644278, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: soundFire.Path
+      value: event:/GrenadeLauncher Shoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832584488302644278, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: soundFire.Guid.Data1
+      value: 1226967008
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832584488302644278, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: soundFire.Guid.Data2
+      value: 1099324623
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832584488302644278, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: soundFire.Guid.Data3
+      value: 39077778
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832584488302644278, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: soundFire.Guid.Data4
+      value: -1413103787
+      objectReference: {fileID: 0}
     - target: {fileID: 3851759470338509820, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4566217592537748297, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
       propertyPath: projectile
       value: 
       objectReference: {fileID: 6054764215323127235, guid: 584b3d028c5cc3f4fa2ea92dc46947a7, type: 3}
+    - target: {fileID: 4566217592537748297, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: soundFire.Path
+      value: event:/RPG shoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566217592537748297, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: soundFire.Guid.Data1
+      value: -1767296777
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566217592537748297, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: soundFire.Guid.Data2
+      value: 1230632943
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566217592537748297, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: soundFire.Guid.Data3
+      value: 1029447058
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566217592537748297, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: soundFire.Guid.Data4
+      value: -607801983
+      objectReference: {fileID: 0}
     - target: {fileID: 5899426816158078892, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
       propertyPath: weaponChangeText
       value: 
@@ -16692,6 +16732,26 @@ PrefabInstance:
     - target: {fileID: 6940652548021853181, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761273531161466562, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: soundFire.Path
+      value: event:/Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761273531161466562, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: soundFire.Guid.Data1
+      value: -266913871
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761273531161466562, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: soundFire.Guid.Data2
+      value: 1155315220
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761273531161466562, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: soundFire.Guid.Data3
+      value: 1958169237
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761273531161466562, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: soundFire.Guid.Data4
+      value: 1702706767
       objectReference: {fileID: 0}
     - target: {fileID: 8952640843128510071, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
       propertyPath: m_TargetTexture

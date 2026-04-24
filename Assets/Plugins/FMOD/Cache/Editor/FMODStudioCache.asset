@@ -69,11 +69,39 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Footsteps.bank
   Name: Footsteps
   StudioPath: bank:/Footsteps
-  lastModified: 639111620838435481
+  lastModified: 639126233155608064
   FileSizes:
   - Name: Desktop
     Value: 38144
   Exists: 1
+--- !u!114 &-7736314008612765910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/RPG shoot
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/RPG shoot
+  Guid:
+    Data1: -1767296777
+    Data2: 1230632943
+    Data3: 1029447058
+    Data4: -607801983
+  Banks:
+  - {fileID: 3219367564650421146}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 5966854922762400744}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1573
 --- !u!114 &-7468360875820517574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +200,7 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/StyleBank.bank
   Name: StyleBank
   StudioPath: bank:/StyleBank
-  lastModified: 639122825745974249
+  lastModified: 639126233390428481
   FileSizes:
   - Name: Desktop
     Value: 11380928
@@ -325,10 +353,10 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639122825744683476
+  lastModified: 639126237910067744
   FileSizes:
   - Name: Desktop
-    Value: 1980
+    Value: 2108
   Exists: 1
 --- !u!114 &-3491648743720684548
 MonoBehaviour:
@@ -459,6 +487,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 301
+--- !u!114 &-1437713646202782053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Shotgun
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Shotgun
+  Guid:
+    Data1: -266913871
+    Data2: 1155315220
+    Data3: 1958169237
+    Data4: 1702706767
+  Banks:
+  - {fileID: 3219367564650421146}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 3664925099046482994}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1642
 --- !u!114 &-1088338865663699887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,13 +635,16 @@ MonoBehaviour:
   - {fileID: -4489896983937688640}
   - {fileID: -125471612607283995}
   - {fileID: -1869042084622847156}
+  - {fileID: -1437713646202782053}
+  - {fileID: 3142651260248998952}
+  - {fileID: -7736314008612765910}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3219367564650421146}
   StringsBanks:
   - {fileID: -3885612251368421316}
   cacheVersion: 131859
-  cacheTime: 639122825745974249
+  cacheTime: 639126237910067744
   SerializableEventsDict:
   - key: event:/Footsteps/Footstep_3
     index: 0
@@ -677,6 +736,34 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &3142651260248998952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/GrenadeLauncher Shoot
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/GrenadeLauncher Shoot
+  Guid:
+    Data1: 1226967008
+    Data2: 1099324623
+    Data3: 39077778
+    Data4: -1413103787
+  Banks:
+  - {fileID: 3219367564650421146}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 3946337003558691028}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 626
 --- !u!114 &3219367564650421146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,10 +779,10 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639122825744668625
+  lastModified: 639126237910019182
   FileSizes:
   - Name: Desktop
-    Value: 7333696
+    Value: 7379776
   Exists: 1
 --- !u!114 &3386591051681145209
 MonoBehaviour:
@@ -752,6 +839,54 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 321
+--- !u!114 &3664925099046482994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Shotgun/StyleParam
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: StyleParam
+  StudioPath: 
+  Min: 0
+  Max: 6
+  Default: 0
+  ID:
+    data1: 1093054725
+    data2: 2450989697
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &3946337003558691028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GrenadeLauncher Shoot/StyleParam
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: StyleParam
+  StudioPath: 
+  Min: 0
+  Max: 6
+  Default: 0
+  ID:
+    data1: 1093054725
+    data2: 2450989697
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &4379772644388398909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,6 +942,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 11290
+--- !u!114 &5966854922762400744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/RPG shoot/StyleParam
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: StyleParam
+  StudioPath: 
+  Min: 0
+  Max: 6
+  Default: 0
+  ID:
+    data1: 1093054725
+    data2: 2450989697
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &6009115686606564230
 MonoBehaviour:
   m_ObjectHideFlags: 0
