@@ -609,8 +609,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: testpro/testpro.fspro
-  sourceBankPath: testpro/Build
+  sourceProjectPath: Assets/StreamingAssets/testpro/testpro.fspro
+  sourceBankPath: Assets/StreamingAssets/testpro/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -620,7 +620,7 @@ MonoBehaviour:
   EncryptionKey: 
   ImportType: 0
   TargetAssetPath: FMODBanks
-  TargetBankFolder: C:\Users\Ulrich\P4G4\testpro\FMOD
+  TargetBankFolder: FMOD
   EventLinkage: 0
   SerializeGUIDsOnly: 0
   LoggingLevel: 2
@@ -632,8 +632,11 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks: []
-  Banks: []
+  MasterBanks:
+  - Master
+  Banks:
+  - Footsteps
+  - StyleBank
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

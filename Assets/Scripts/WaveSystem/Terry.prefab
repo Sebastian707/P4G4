@@ -102,7 +102,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: e5b885fca1c269741bc5d764d7c3becd, type: 3}
+  - {fileID: 2100000, guid: 563c78568c9094644b092eca9fa63536, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -204,6 +204,7 @@ MonoBehaviour:
   enemyName: Drone
   pointManager: {fileID: 0}
   pointsToAdd: 50
+  isAlive: 1
   spawnParticlePrefab: {fileID: 76895744292651234, guid: 0976e71fd074fdc4cbc7de7a6899d030, type: 3}
   dissolveSpawnDuration: 1.5
   dissolveStart: -30
@@ -216,7 +217,7 @@ MonoBehaviour:
       Data4: -1096722864
     Path: event:/TeleportEnemy
   HealthPrefab: {fileID: 3330622228234490784, guid: 69967930abdaecb40bbaabd63632ff00, type: 3}
-  DropChance: 1
+  DropChance: 0.2
   player: {fileID: 0}
   hellOrbPrefab: {fileID: 5304451666383355082, guid: 231233d5574745a4baa1f4711e23a27b, type: 3}
   explosionPrefab: {fileID: 0}
