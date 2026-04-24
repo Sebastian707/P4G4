@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{d6313f49-53d5-4a94-b85f-6140b7196f3d}">
+		<property name="name">
+			<value>FMODParam</value>
+		</property>
+		<relationship name="folder">
+			<destination>{43946ce1-6aca-4ccc-96d5-cc0244909a01}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{d695360e-3e5c-4f73-80c4-a3ab979bb1c7}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{d695360e-3e5c-4f73-80c4-a3ab979bb1c7}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

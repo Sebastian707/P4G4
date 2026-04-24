@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="MixerGroup" id="{65bd8012-d7a6-43bd-bd47-5721b41977f9}">
+		<property name="name">
+			<value>AdaptiveAudio</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{baff432d-2ee3-4ccf-9f92-3629cdbf24f1}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{2b7d3500-db23-4a3a-b14c-b4935d9f37d2}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{c49a9977-771b-47d5-96eb-aabbeae28f8d}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{baff432d-2ee3-4ccf-9f92-3629cdbf24f1}">
+		<relationship name="effects">
+			<destination>{94c87c71-5f20-45db-833c-b2092cc79e4c}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{2b7d3500-db23-4a3a-b14c-b4935d9f37d2}" />
+	<object class="MixerBusFader" id="{94c87c71-5f20-45db-833c-b2092cc79e4c}" />
+</objects>

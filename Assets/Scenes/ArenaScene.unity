@@ -6889,13 +6889,13 @@ MonoBehaviour:
     basePoints: 300
     minimumPoints: 10
   - weapon: {fileID: 58619467}
-    basePoints: 800
+    basePoints: 400
     minimumPoints: 10
   - weapon: {fileID: 1085879267}
-    basePoints: 500
+    basePoints: 50
     minimumPoints: 10
-  - weapon: {fileID: 1085879267}
-    basePoints: 1000
+  - weapon: {fileID: 1829183025}
+    basePoints: 400
     minimumPoints: 10
   historyWindowSize: 12
   streakBonusPerKill: 20
@@ -17883,6 +17883,17 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 311301485394103638, guid: 1d9452530c0f65f478b15944c633ef28, type: 3}
   m_PrefabInstance: {fileID: 660583733}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1829183025 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3832584488302644278, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+  m_PrefabInstance: {fileID: 1622582919}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa8ac46a16ef434438615541f275f872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Weapon
 --- !u!1 &1900558966
 GameObject:
   m_ObjectHideFlags: 0
