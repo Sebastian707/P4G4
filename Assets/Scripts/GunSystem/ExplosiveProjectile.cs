@@ -14,6 +14,7 @@ public class ExplosiveProjectile : MonoBehaviour
     public bool explodeOnContact = true;
     public float explodeDelay = 30f;
     private float timeAlive;
+    public Weapon sourceWeapon;
 
 
 
@@ -72,7 +73,7 @@ public class ExplosiveProjectile : MonoBehaviour
                     //scale damage so it is lower the further
                     damageToApply = damage * (1-distanceAsPercent);
                 }
-                    collider.gameObject.GetComponent<IDamageable>().ApplyDamage(damageToApply);
+                    collider.gameObject.GetComponentInParent<IDamageable>().ApplyDamage(sourceWeapon, damageToApply);
             }
             if (collider.gameObject.CompareTag("Player"))
             {

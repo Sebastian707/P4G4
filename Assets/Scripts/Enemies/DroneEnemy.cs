@@ -232,7 +232,7 @@ public class DroneEnemy : SimpleEnemy
         TransitionTo(DroneState.Chase);
     }
 
-    public new void ApplyDamage(float amount)
+    public new void ApplyDamage(Weapon weapon, float amount)
     {
         currentHealth -= amount;
         GetComponent<BossBar>()?.OnBossDamaged();

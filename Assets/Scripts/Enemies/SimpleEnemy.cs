@@ -79,7 +79,7 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
         _dissolveMat?.SetFloat("_NoiseStrength", dissolveEnd);
     }
 
-    public void ApplyDamage(float amount)
+    public void ApplyDamage(Weapon weapon, float amount)
     {
         UnityEngine.Debug.Log(enemyName + " hit for: " + amount);
         currentHealth -= amount;
@@ -90,6 +90,7 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
 
     void Die()
     {
+        UnityEngine.Debug.Log(enemyName + " has died.");
         isAlive = false;
         OnDeath?.Invoke();
         Destroy(gameObject);

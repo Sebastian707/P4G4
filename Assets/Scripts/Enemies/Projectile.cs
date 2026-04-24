@@ -41,7 +41,7 @@ public class Projectile : MonoBehaviour
             // Parried projectile — damage enemies via IDamageable
             IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
             if (damageable != null)
-                damageable.ApplyDamage(damageAmount);
+                damageable.ApplyDamage(null, damageAmount);
         }
 
         Destroy(gameObject);

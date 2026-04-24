@@ -7061,7 +7061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 343d81958bcc21b4899e1f3ab02b3f06, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.28
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 343d81958bcc21b4899e1f3ab02b3f06, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7095,9 +7095,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: 343d81958bcc21b4899e1f3ab02b3f06, type: 3}
+      propertyPath: m_Layer
+      value: 24
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 343d81958bcc21b4899e1f3ab02b3f06, type: 3}
       propertyPath: m_Name
       value: shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 343d81958bcc21b4899e1f3ab02b3f06, type: 3}
+      propertyPath: m_Layer
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513859187771203891, guid: 343d81958bcc21b4899e1f3ab02b3f06, type: 3}
+      propertyPath: m_Layer
+      value: 24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7364,7 +7376,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
   waves:
   - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
-  - {fileID: 11400000, guid: cf496380802ece846aa42a692a36f6af, type: 2}
+  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
+  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
+  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
+  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
+  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
+  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
+  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
+  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
+  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
+  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
   enemyCounterUI: {fileID: 384408498}
   triggerTag: Player
 --- !u!4 &568232246
@@ -13075,6 +13096,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1752129897312131450, guid: 1d9452530c0f65f478b15944c633ef28, type: 3}
   m_PrefabInstance: {fileID: 1725606571}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &807407838 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 311301485394103638, guid: 1d9452530c0f65f478b15944c633ef28, type: 3}
+  m_PrefabInstance: {fileID: 1725606571}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &822302754
 GameObject:
   m_ObjectHideFlags: 0
@@ -17135,6 +17161,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7761273531161466562, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
+      propertyPath: muzzleFlash
+      value: 
+      objectReference: {fileID: 807407838}
     - target: {fileID: 7761273531161466562, guid: a166236434a8ca24cb961e0ddc0cfac8, type: 3}
       propertyPath: soundFire.Path
       value: event:/Shotgun

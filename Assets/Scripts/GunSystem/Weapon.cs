@@ -183,6 +183,12 @@ public class Weapon : MonoBehaviour
             {
                 origin = origin + mainCamera.transform.rotation * Vector3.forward * projCameraSpawnOffset;
                 var shot = Instantiate(projectile, origin, Quaternion.LookRotation(direction));
+                if (shot.GetComponent<ExplosiveProjectile>() != null) { 
+                shot.GetComponent<ExplosiveProjectile>().sourceWeapon = this;
+                } else
+                {
+                    UnityEngine.Debug.LogWarning("projectile created without source weapon");
+                }
             }
         }
 
@@ -216,7 +222,7 @@ public class Weapon : MonoBehaviour
                 damageToApply = falloffPercent*damage;
 
             }
-            damageable.ApplyDamage(damageToApply);
+            damageable.ApplyDamage(this, damageToApply);
             // Do NOT spawn bullet hole prefab on damageable objects
         }
         else
@@ -318,5 +324,5 @@ public class Weapon : MonoBehaviour
 
 public interface IDamageable
 {
-    void ApplyDamage(float amount);
+    void ApplyDamage(Weapon weapon, float amount);
 }

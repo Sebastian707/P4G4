@@ -88,7 +88,7 @@ public class SimpleShooter : MonoBehaviour, IDamageable
 
     // -------- DAMAGE SYSTEM --------
 
-    public void ApplyDamage(float amount)
+    public void ApplyDamage(Weapon weapon, float amount)
     {
         currentHealth -= amount;
 
