@@ -353,7 +353,7 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639126237910067744
+  lastModified: 639126247121851824
   FileSizes:
   - Name: Desktop
     Value: 2108
@@ -644,7 +644,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -3885612251368421316}
   cacheVersion: 131859
-  cacheTime: 639126237910067744
+  cacheTime: 639126247121851824
   SerializableEventsDict:
   - key: event:/Footsteps/Footstep_3
     index: 0
@@ -688,6 +688,12 @@ MonoBehaviour:
     index: 19
   - key: event:/Hover
     index: 20
+  - key: event:/Shotgun
+    index: 21
+  - key: event:/GrenadeLauncher Shoot
+    index: 22
+  - key: event:/RPG shoot
+    index: 23
 --- !u!114 &902513565502561977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -779,7 +785,7 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639126237910019182
+  lastModified: 639126247121826077
   FileSizes:
   - Name: Desktop
     Value: 7379776
