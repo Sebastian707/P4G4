@@ -44,6 +44,10 @@ public class PlayerDash : MonoBehaviour
                 currentDashCharges++;
                 lastChargeTime = Time.time;
             }
+        } else
+        {
+            //if we're at max charges, keep pushing back the lastChargeTime so that it doesn't immediately gain a charge when we use one
+            lastChargeTime = Time.time;
         }
 
         // UI
