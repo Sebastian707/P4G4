@@ -163,6 +163,7 @@ namespace StarterAssets {
 		else if (IsGrounded && isSliding)
 			{
 				AirMove();
+				// not sure if this is best way... but feels okay
                 playerVelocity.x += (1f - hitNormal.y) * hitNormal.x * (1f - slideFriction);
                 playerVelocity.z += (1f - hitNormal.y) * hitNormal.z * (1f - slideFriction);
             }
