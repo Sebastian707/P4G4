@@ -391,8 +391,8 @@ namespace StarterAssets {
         // CharacterController collisions come through here
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
-			//set ground hitnormal if is "below player"
-			if (270 > Vector3.Angle(hit.normal, Vector3.up) && Vector3.Angle(hit.normal, Vector3.up) < 90 )
+			//set ground hitnormal if is "below player" (with a little headroom (bit arbitrary since we check on groundcheck with slopelimit))
+			if (260 > Vector3.Angle(hit.normal, Vector3.up) && Vector3.Angle(hit.normal, Vector3.up) < 80 )
 			{
                 hitNormal = hit.normal;
             }
