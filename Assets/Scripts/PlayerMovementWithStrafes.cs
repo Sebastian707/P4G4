@@ -51,8 +51,8 @@ namespace StarterAssets {
 	float newspeed;
 	float control;
 	float drop;
-
-	public bool JumpQueue = false;
+	float maxGroundupSpeed = 5f;
+        public bool JumpQueue = false;
 	public bool wishJump = false;
 
     //UI
@@ -82,8 +82,7 @@ namespace StarterAssets {
 	public bool IsGrounded = true;
 
 	private Vector3 hitNormal;
-	private float slopeLimit = 0.45f;
-	public float slideFriction = 0.3f;
+	private float slopeLimit = 45f;
 	[SerializeField]
 	private bool isSliding = false;
     public Transform player;
@@ -104,7 +103,7 @@ namespace StarterAssets {
         private void GroundedCheck()
         {
             Vector3 pos = transform.position - Vector3.up * GroundedOffset;
-            if (playerVelocity.y <= 0)
+            if (playerVelocity.y <= maxGroundupSpeed)
 			{
 				//https://discussions.unity.com/t/character-controller-slide-down-slope/188130/2
 				IsGrounded = Physics.CheckSphere(pos, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
@@ -121,7 +120,8 @@ namespace StarterAssets {
             if (Physics.Raycast(pos, Vector3.down, out hit, 10f, GroundLayers))
             {
                 hitNormal = hit.normal;
-                isSliding = !(Vector3.Angle(Vector3.up, hitNormal) <= slopeLimit);
+				float angle = Vector3.Angle(Vector3.up, hitNormal);
+                isSliding = angle >= slopeLimit;
             }
         }
         private void Start()
@@ -163,9 +163,6 @@ namespace StarterAssets {
 		else if (IsGrounded && isSliding)
 			{
 				AirMove();
-				// not sure if this is best way... but feels okay
-                playerVelocity.x += (1f - hitNormal.y) * hitNormal.x * (1f - slideFriction);
-                playerVelocity.z += (1f - hitNormal.y) * hitNormal.z * (1f - slideFriction);
             }
 
             // Move the controller
