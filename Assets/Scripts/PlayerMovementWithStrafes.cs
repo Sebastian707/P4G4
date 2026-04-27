@@ -25,9 +25,6 @@ namespace StarterAssets {
     private float wishspeed2;
 	private float gravity = -20f;
 	float wishspeed;
-	// Smoothed target used for downhill ramp movement
-	private float currentWishspeed = 0f;
-	public float slopeDownSmooth = 8f;
 
 	public float GroundedRadius = 0.4f;
 	public float moveSpeed = 7.0f;  // Ground move speed
@@ -85,7 +82,7 @@ namespace StarterAssets {
 	public bool IsGrounded = true;
 
 	private Vector3 hitNormal;
-	private float slopeLimit = 30f;
+	private float slopeLimit = 45f;
 	[SerializeField]
 	private bool isSliding = false;
     public Transform player;
@@ -331,54 +328,13 @@ namespace StarterAssets {
 
 		SetMovementDir();
 
-		// Build the desired movement direction from input (in world space)
-		Vector3 inputWish = new Vector3(_input.move.x, 0, _input.move.y);
-		Vector3 wishWorld = transform.TransformDirection(inputWish);
+		wishdir = new Vector3(_input.move.x, 0, _input.move.y);
+		wishdir = transform.TransformDirection(wishdir);
+		wishdir.Normalize();
+		moveDirectionNorm = wishdir;
 
-		// Project the wish direction onto the ground plane so movement follows slopes
-		Vector3 groundNormal = hitNormal == Vector3.zero ? Vector3.up : hitNormal;
-		Vector3 groundWish = Vector3.ProjectOnPlane(wishWorld, groundNormal);
-
-		if (groundWish.sqrMagnitude > 0.0001f)
-		{
-			// Normalized direction along the slope
-			Vector3 groundWishNorm = groundWish.normalized;
-
-			// Horizontal (XZ) component length of that normalized slope direction.
-			// When going up a slope this will be < 1. To keep the player's
-			// horizontal speed equal to moveSpeed when ascending/descending ramps,
-			// scale the wishspeed by 1 / horizLen.
-			float horizLen = new Vector3(groundWishNorm.x, 0f, groundWishNorm.z).magnitude;
-			if (horizLen < 0.0001f) horizLen = 1f;
-
-			// Use the horizontal direction for acceleration (y component ignored in accelerate)
-			wishdir = new Vector3(groundWishNorm.x, 0f, groundWishNorm.z);
-			moveDirectionNorm = groundWishNorm;
-
-			// Set wishspeed so horizontal speed equals moveSpeed on slopes
-			float targetWish = moveSpeed / horizLen;
-
-			// If moving downhill (y < 0) smooth the target to avoid sudden speed pops
-			if (groundWishNorm.y < 0f)
-			{
-				float smoothFactor = 1f - Mathf.Exp(-slopeDownSmooth * Time.deltaTime);
-				currentWishspeed = Mathf.Lerp(currentWishspeed, targetWish, smoothFactor);
-			}
-			else
-			{
-				// uphill or flat: snap to target for responsive control
-				currentWishspeed = targetWish;
-			}
-
-			wishspeed = currentWishspeed;
-		}
-		else
-		{
-			// fallback to flat behaviour
-			wishdir = wishWorld.normalized;
-			moveDirectionNorm = wishdir;
-			wishspeed = moveSpeed;
-		}
+		wishspeed = wishdir.magnitude;
+		wishspeed *= moveSpeed;
 
 		Accelerate(wishdir, wishspeed, runAcceleration);
 
