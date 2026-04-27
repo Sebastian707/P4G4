@@ -78,10 +78,12 @@ namespace StarterAssets {
 
 	public float x;
 	public float z;
+	public bool IsGrounded = true;
 
-	public bool IsGrounded;
-
-	public Transform player;
+	private Vector3 hitNormal;
+	private float slopeLimit = 0.45f;
+	public float slideFriction = 0.3f;
+    public Transform player;
 	Vector3 udp;
         [Header("Look Settings")]
 
@@ -98,12 +100,23 @@ namespace StarterAssets {
 #endif
         private void GroundedCheck()
         {
+
 			if (playerVelocity.y <= 0)
 			{
                 Vector3 pos = transform.position - Vector3.up * GroundedOffset;
-                IsGrounded = Physics.CheckSphere(pos, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
-                Debug.DrawLine(transform.position - Vector3.up * GroundedOffset, (transform.position - Vector3.up * GroundedOffset) + new Vector3(0, 1, 0) * GroundedRadius);
-            } else
+				//https://discussions.unity.com/t/character-controller-slide-down-slope/188130/2
+				IsGrounded = (Vector3.Angle(Vector3.up, hitNormal) <= slopeLimit);
+				if (!Physics.CheckSphere(pos, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore))
+				{
+					// if nothing below player make not grounded
+					IsGrounded = false;
+					//make hitnormal be a "not grounded" value so that check works :)
+					hitNormal = Vector3.down;
+				}
+
+                //Debug.DrawLine(transform.position - Vector3.up * GroundedOffset, (transform.position - Vector3.up * GroundedOffset) + new Vector3(0, 1, 0) * GroundedRadius);
+            }
+            else
 			{
                 IsGrounded = false;
 			}
@@ -146,8 +159,13 @@ namespace StarterAssets {
 		else if (!IsGrounded)
 			AirMove();
 
-		// Move the controller
-		controller.Move(playerVelocity * Time.deltaTime);
+            if (!IsGrounded)
+            {
+                playerVelocity.x += (1f - hitNormal.y) * hitNormal.x * (1f - slideFriction);
+                playerVelocity.z += (1f - hitNormal.y) * hitNormal.z * (1f - slideFriction);
+            }
+            // Move the controller
+            controller.Move(playerVelocity * Time.deltaTime);
 
 		// Calculate top velocity
 		udp = playerVelocity;
@@ -373,6 +391,11 @@ namespace StarterAssets {
         // CharacterController collisions come through here
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
+			//set ground hitnormal if is "below player"
+			if (270 > Vector3.Angle(hit.normal, Vector3.up) && Vector3.Angle(hit.normal, Vector3.up) < 90 )
+			{
+                hitNormal = hit.normal;
+            }
             Vector3 normal = hit.normal.normalized;
             float vDot = Vector3.Dot(playerVelocity, normal);
             /*
