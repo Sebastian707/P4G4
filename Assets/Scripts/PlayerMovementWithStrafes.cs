@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 #endif
 
 namespace StarterAssets {
@@ -83,6 +84,8 @@ namespace StarterAssets {
 	private Vector3 hitNormal;
 	private float slopeLimit = 0.45f;
 	public float slideFriction = 0.3f;
+	[SerializeField]
+	private bool isSliding = false;
     public Transform player;
 	Vector3 udp;
         [Header("Look Settings")]
@@ -100,27 +103,26 @@ namespace StarterAssets {
 #endif
         private void GroundedCheck()
         {
-
-			if (playerVelocity.y <= 0)
+            Vector3 pos = transform.position - Vector3.up * GroundedOffset;
+            if (playerVelocity.y <= 0)
 			{
-                Vector3 pos = transform.position - Vector3.up * GroundedOffset;
 				//https://discussions.unity.com/t/character-controller-slide-down-slope/188130/2
-				IsGrounded = (Vector3.Angle(Vector3.up, hitNormal) <= slopeLimit);
-				if (!Physics.CheckSphere(pos, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore))
-				{
-					// if nothing below player make not grounded
-					IsGrounded = false;
-					//make hitnormal be a "not grounded" value so that check works :)
-					hitNormal = Vector3.down;
-				}
+				IsGrounded = Physics.CheckSphere(pos, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
 
                 //Debug.DrawLine(transform.position - Vector3.up * GroundedOffset, (transform.position - Vector3.up * GroundedOffset) + new Vector3(0, 1, 0) * GroundedRadius);
             }
             else
 			{
                 IsGrounded = false;
+
 			}
-            
+            RaycastHit hit;
+			Debug.DrawRay(pos, Vector3.down);
+            if (Physics.Raycast(pos, Vector3.down, out hit, 10f, GroundLayers))
+            {
+                hitNormal = hit.normal;
+                isSliding = !(Vector3.Angle(Vector3.up, hitNormal) <= slopeLimit);
+            }
         }
         private void Start()
     {
@@ -154,16 +156,17 @@ namespace StarterAssets {
         QueueJump();
 
 		/* Movement, here's the important part */
-		if (IsGrounded)
+		if (IsGrounded && !isSliding)
 			GroundMove();
 		else if (!IsGrounded)
 			AirMove();
-
-            if (!IsGrounded)
-            {
+		else if (IsGrounded && isSliding)
+			{
+				AirMove();
                 playerVelocity.x += (1f - hitNormal.y) * hitNormal.x * (1f - slideFriction);
                 playerVelocity.z += (1f - hitNormal.y) * hitNormal.z * (1f - slideFriction);
             }
+
             // Move the controller
             controller.Move(playerVelocity * Time.deltaTime);
 
@@ -391,11 +394,6 @@ namespace StarterAssets {
         // CharacterController collisions come through here
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
-			//set ground hitnormal if is "below player" (with a little headroom (bit arbitrary since we check on groundcheck with slopelimit))
-			if (260 > Vector3.Angle(hit.normal, Vector3.up) && Vector3.Angle(hit.normal, Vector3.up) < 80 )
-			{
-                hitNormal = hit.normal;
-            }
             Vector3 normal = hit.normal.normalized;
             float vDot = Vector3.Dot(playerVelocity, normal);
             /*
