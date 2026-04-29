@@ -31,7 +31,7 @@ public class PlayerDash : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         playerMovementWithStrafes = GetComponent<PlayerMovementWithStrafes>();
 
-        currentDashCharges = 0;
+        currentDashCharges = maxDashCharges;
     }
 
     void Update()
@@ -82,7 +82,10 @@ public class PlayerDash : MonoBehaviour
         lastDashTime = Time.time;
 
     }
-
+    public void SetDashes(int dashes)
+    {
+        currentDashCharges = Mathf.Clamp(dashes, 0, maxDashCharges);
+    }
     void EndDash()
     {
         isDashing = false;
