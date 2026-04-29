@@ -28,7 +28,7 @@ public static class StyleEvents
 public class PointManager : MonoBehaviour
 {
     [Header("Points Settings")]
-    public int currentPoints = 0;
+    public float currentPoints = 0;
     public int maxPoints = 11000;
 
     [Header("Style Ranks")]
@@ -210,7 +210,7 @@ public class PointManager : MonoBehaviour
         }
 
         if (pointsText != null)
-            pointsText.text = currentPoints.ToString();
+            pointsText.text = ((int)currentPoints).ToString();
 
         previousRankIndex = currentRankIndex;
     }
