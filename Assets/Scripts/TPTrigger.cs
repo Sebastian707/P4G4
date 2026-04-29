@@ -13,13 +13,16 @@ public class TPTrigger : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
+        if (!other.CompareTag("Player")) return;
             if (resetPlayerVelocity)
             {
                 player.PlayerVelocity = Vector3.zero;
             }
-            player.gameObject.transform.position = destination.position;
-        }
+        var cc = other.GetComponent<CharacterController>();
+        cc.enabled = false;
+        other.transform.SetPositionAndRotation(destination.position, destination.rotation);
+        Camera.main.transform.localEulerAngles = new Vector3(destination.rotation.eulerAngles.x, 0, 0);
+        cc.enabled = true;
+
     }
 }
