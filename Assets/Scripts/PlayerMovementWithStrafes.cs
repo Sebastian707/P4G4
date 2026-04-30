@@ -102,7 +102,7 @@ namespace StarterAssets {
 #endif
         private void GroundedCheck()
         {
-            Vector3 pos = transform.position - Vector3.up * GroundedOffset;
+            Vector3 pos = transform.position - Vector3.up * (GroundedRadius+GroundedOffset);
             if (playerVelocity.y <= maxGroundupSpeed)
 			{
 				//https://discussions.unity.com/t/character-controller-slide-down-slope/188130/2
