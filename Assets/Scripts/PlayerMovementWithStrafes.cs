@@ -3,6 +3,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -28,6 +29,8 @@ namespace StarterAssets {
 	private float gravity = -20f;
 	float wishspeed;
 
+
+		//public TMP_Text debugText;
 	public float groundCheckRange = 0.5f;
 	public float moveSpeed = 7.0f;  // Ground move speed
 	public float runAcceleration = 14f;   // Ground accel
@@ -104,9 +107,9 @@ namespace StarterAssets {
 #endif
         private void GroundedCheck()
         {
+			
             Vector3 pos = (transform.position - controller.center) - Vector3.up * (controller.height/2);
             Debug.DrawLine(pos, pos + Vector3.down * groundCheckRange, Color.red);
-            //https://discussions.unity.com/t/character-controller-slide-down-slope/188130/2
             if (PlayerVelocity.y > maxGroundedUpSpeed)
 			{
 				IsGrounded = false;
@@ -118,6 +121,7 @@ namespace StarterAssets {
 					IsGrounded = false;
 				}
                 /*
+                 //https://discussions.unity.com/t/character-controller-slide-down-slope/188130/2
 				if (Physics.Raycast(pos, Vector3.down, out hit, 10f, GroundLayers))
 				{
 					hitNormal = hit.normal;
@@ -136,7 +140,19 @@ namespace StarterAssets {
     }
     void Update()
 	{
-			Look();
+			/*
+			if (debugText != null) { 
+                debugText.text = "Grounded: " + IsGrounded + "\n" +
+                "Velocity: " + playerVelocity + "\n" +
+                "Wishdir: " + wishdir + "\n" +
+                "Wishspeed: " + wishspeed + "\n" +
+                "Player Friction: " + playerFriction + "\n" +
+                "Top Velocity: " + playerTopVelocity + "\n" +
+                "Surface Normal: " + surfaceNormal + "\n" +
+                "Is Sliding: " + isSliding;
+            } */
+
+            Look();
 
             #region //UI, Feel free to remove the region.
 
@@ -408,7 +424,6 @@ namespace StarterAssets {
 			//check if normal is floor
 			if (Vector3.Angle(normal, Vector3.up) < slopeLimit)
 			{
-				Debug.Log(Vector3.Angle(normal, Vector3.up));
 				IsGrounded = true;
 				surfaceNormal = normal;
 			}

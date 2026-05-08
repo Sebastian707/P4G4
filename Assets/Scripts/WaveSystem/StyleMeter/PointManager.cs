@@ -101,9 +101,9 @@ public class PointManager : MonoBehaviour
         UpdateUI();
     }
 
-    public void AddPoints(int amount)
+    public void AddPoints(float amount)
     {
-        int multipliedAmount = Mathf.RoundToInt(amount * currentMultiplier);
+        float multipliedAmount = Mathf.RoundToInt(amount * currentMultiplier);
         currentPoints += multipliedAmount;
         noDecayTimer = 0f;
         if (currentPoints > maxPoints) { currentPoints = maxPoints; }

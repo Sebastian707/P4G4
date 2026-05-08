@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 400
-  damage: 3
+  damage: 0.7
   explosionRadius: 10
   explosionForceMin: 15
   explosionForceMax: 18
@@ -136,6 +136,7 @@ MonoBehaviour:
   explosionScaleHighPercent: 0.7
   explodeOnContact: 0
   explodeDelay: 2
+  sourceWeapon: {fileID: 0}
 --- !u!54 &4057166648797116023
 Rigidbody:
   m_ObjectHideFlags: 0
