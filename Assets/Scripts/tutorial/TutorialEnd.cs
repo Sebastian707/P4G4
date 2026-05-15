@@ -20,8 +20,9 @@ public class TutorialEnd : MonoBehaviour
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                // this doesnt really work... do not understand how scene transitionmanager really works...
                 SceneTransitionManager sceneTransitionManager = FindAnyObjectByType<SceneTransitionManager>();
-                sceneTransitionManager.TransitionToScene("MainMenu");
+                sceneTransitionManager.TransitionToScene("Arena2");
             }
         }
     }
