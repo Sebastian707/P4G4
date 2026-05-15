@@ -5842,10 +5842,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RandomLoadingScreenPicker
   Options:
-  - sprite: {fileID: 21300000, guid: 369c3e9de1d958b4988df9a5390857e8, type: 3}
-    text: Hello Stranger
-  - sprite: {fileID: 21300000, guid: fc3f64c72c9921c4a83e6a50cb0fb399, type: 3}
-    text: FUCK YOU
+  - sprite: {fileID: 21300000, guid: efb4417637ae23141882da2a4d9faaa6, type: 3}
+    text: Switching weapons are faster than reloading
   image: {fileID: 1603344059}
   text: {fileID: 110746511}
 --- !u!1 &1632548277
