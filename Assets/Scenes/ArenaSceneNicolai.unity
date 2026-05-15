@@ -13952,8 +13952,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7364166799634574536}
     - target: {fileID: 3888115799762256714, guid: 32ce6e8ef4d1fd146928be283434bfd5, type: 3}
+      propertyPath: musicEvent.Path
+      value: event:/GuhAssEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888115799762256714, guid: 32ce6e8ef4d1fd146928be283434bfd5, type: 3}
       propertyPath: multiplierDecayRate
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888115799762256714, guid: 32ce6e8ef4d1fd146928be283434bfd5, type: 3}
+      propertyPath: musicEvent.Guid.Data1
+      value: 1556050852
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888115799762256714, guid: 32ce6e8ef4d1fd146928be283434bfd5, type: 3}
+      propertyPath: musicEvent.Guid.Data2
+      value: 1246991010
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888115799762256714, guid: 32ce6e8ef4d1fd146928be283434bfd5, type: 3}
+      propertyPath: musicEvent.Guid.Data3
+      value: 2070463906
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888115799762256714, guid: 32ce6e8ef4d1fd146928be283434bfd5, type: 3}
+      propertyPath: musicEvent.Guid.Data4
+      value: -676637273
       objectReference: {fileID: 0}
     - target: {fileID: 4101629771123425854, guid: 32ce6e8ef4d1fd146928be283434bfd5, type: 3}
       propertyPath: m_Name
