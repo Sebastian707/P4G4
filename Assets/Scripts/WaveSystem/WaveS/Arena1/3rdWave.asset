@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec0d5aeb17de9be42b4de85bdd17d31d, type: 3}
+  m_Name: 3rdWave
+  m_EditorClassIdentifier: Assembly-CSharp::WaveData
+  enemies:
+  - enemyPrefab: {fileID: 7313989658818356384, guid: 2815c4392a0918f43b5c7f2b3441dd79, type: 3}
+    spawnPointName: SpawnPoint01
+    spawnDelay: 0
+  - enemyPrefab: {fileID: 7313989658818356384, guid: 2815c4392a0918f43b5c7f2b3441dd79, type: 3}
+    spawnPointName: SpawnPoint02
+    spawnDelay: 0
+  - enemyPrefab: {fileID: 7313989658818356384, guid: 2815c4392a0918f43b5c7f2b3441dd79, type: 3}
+    spawnPointName: SpawnPoint02
+    spawnDelay: 0
+  - enemyPrefab: {fileID: 7313989658818356384, guid: 2815c4392a0918f43b5c7f2b3441dd79, type: 3}
+    spawnPointName: SpawnPoint02
+    spawnDelay: 0
+  - enemyPrefab: {fileID: 7313989658818356384, guid: 2815c4392a0918f43b5c7f2b3441dd79, type: 3}
+    spawnPointName: SpawnPoint01
+    spawnDelay: 0
+  - enemyPrefab: {fileID: 7313989658818356384, guid: 2815c4392a0918f43b5c7f2b3441dd79, type: 3}
+    spawnPointName: SpawnPoint02
+    spawnDelay: 0
+  - enemyPrefab: {fileID: 7313989658818356384, guid: 2815c4392a0918f43b5c7f2b3441dd79, type: 3}
+    spawnPointName: SpawnPoint01
+    spawnDelay: 0
+  timeBeforeWaveStarts: 3
