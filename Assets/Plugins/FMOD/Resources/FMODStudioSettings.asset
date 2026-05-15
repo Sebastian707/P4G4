@@ -620,7 +620,7 @@ MonoBehaviour:
   EncryptionKey: 
   ImportType: 0
   TargetAssetPath: FMODBanks
-  TargetBankFolder: FMOD
+  TargetBankFolder: C:\Users\Ulrich\P4G4\testpro\FMOD
   EventLinkage: 0
   SerializeGUIDsOnly: 0
   LoggingLevel: 2
