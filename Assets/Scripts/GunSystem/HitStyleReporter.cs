@@ -44,7 +44,7 @@ public class HitStyleReporter : MonoBehaviour, IDamageable
 
         // Report the hit to the style system
         if (sourceWeapon != null && styleManager != null)
-            styleManager.RegisterHit(sourceWeapon);
+            styleManager.RegisterHit(sourceWeapon,amount);
     }
 
     void OnEnemyDeath()

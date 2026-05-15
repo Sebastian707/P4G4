@@ -3,6 +3,7 @@ using UnityEngine.Audio;
 
 public class MainMenu : MonoBehaviour
 {
+    public SceneTransitionManager sceneTransitionManager;
     [SerializeField] private GameObject playMenu;
     [SerializeField] private GameObject SettingsMenu;
     [SerializeField] private GameObject CreditsMenu;
@@ -11,7 +12,10 @@ public class MainMenu : MonoBehaviour
 
     // NOTE: targetScene is now handled inside LoadGameMenuController.
     // Remove the direct scene load from OnBegin — it now opens the slot picker.
-
+    private void Start()
+    {
+        sceneTransitionManager = FindFirstObjectByType<SceneTransitionManager>();
+    }
     public void OnBegin()
     {
         playMenu.SetActive(false);
@@ -61,5 +65,9 @@ public class MainMenu : MonoBehaviour
     public void OnConfirmDeny()
     {
         ConfirmMenu.SetActive(false);
+    }
+    public void OnTutorial()
+    {
+        sceneTransitionManager.TransitionToScene("TutorialScene");
     }
 }

@@ -3,6 +3,9 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -26,7 +29,9 @@ namespace StarterAssets {
 	private float gravity = -20f;
 	float wishspeed;
 
-	public float GroundedRadius = 0.4f;
+
+		//public TMP_Text debugText;
+	public float groundCheckRange = 0.5f;
 	public float moveSpeed = 7.0f;  // Ground move speed
 	public float runAcceleration = 14f;   // Ground accel
 	public float runDeacceleration = 10f;   // Deacceleration that occurs when running on the ground
@@ -38,6 +43,7 @@ namespace StarterAssets {
 
 	public float jumpSpeed = 8.0f;
 	public float friction = 6f;
+	private Vector3 surfaceNormal;
 	private float playerTopVelocity = 0;
 	public float playerFriction = 0f;
 	float addspeed;
@@ -51,8 +57,7 @@ namespace StarterAssets {
 	float newspeed;
 	float control;
 	float drop;
-	float maxGroundupSpeed = 5f;
-        public bool JumpQueue = false;
+    public bool JumpQueue = false;
 	public bool wishJump = false;
 
     //UI
@@ -80,7 +85,7 @@ namespace StarterAssets {
 	public float x;
 	public float z;
 	public bool IsGrounded = true;
-
+	private float maxGroundedUpSpeed = 1f;
 	private Vector3 hitNormal;
 	private float slopeLimit = 45f;
 	[SerializeField]
@@ -102,26 +107,27 @@ namespace StarterAssets {
 #endif
         private void GroundedCheck()
         {
-            Vector3 pos = transform.position - Vector3.up * GroundedOffset;
-            if (playerVelocity.y <= maxGroundupSpeed)
+			
+            Vector3 pos = (transform.position - controller.center) - Vector3.up * (controller.height/2);
+            Debug.DrawLine(pos, pos + Vector3.down * groundCheckRange, Color.red);
+            if (PlayerVelocity.y > maxGroundedUpSpeed)
 			{
-				//https://discussions.unity.com/t/character-controller-slide-down-slope/188130/2
-				IsGrounded = Physics.CheckSphere(pos, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
-
-                //Debug.DrawLine(transform.position - Vector3.up * GroundedOffset, (transform.position - Vector3.up * GroundedOffset) + new Vector3(0, 1, 0) * GroundedRadius);
-            }
-            else
+				IsGrounded = false;
+			}else
 			{
-                IsGrounded = false;
-
-			}
-            RaycastHit hit;
-			Debug.DrawRay(pos, Vector3.down);
-            if (Physics.Raycast(pos, Vector3.down, out hit, 10f, GroundLayers))
-            {
-                hitNormal = hit.normal;
-				float angle = Vector3.Angle(Vector3.up, hitNormal);
-                isSliding = angle >= slopeLimit;
+				
+				if (!Physics.Raycast(pos, Vector3.down, out RaycastHit groundHit, groundCheckRange, GroundLayers, QueryTriggerInteraction.Ignore))
+				{
+					IsGrounded = false;
+				}
+                /*
+                 //https://discussions.unity.com/t/character-controller-slide-down-slope/188130/2
+				if (Physics.Raycast(pos, Vector3.down, out hit, 10f, GroundLayers))
+				{
+					hitNormal = hit.normal;
+					float angle = Vector3.Angle(Vector3.up, hitNormal);
+					isSliding = angle >= slopeLimit;
+				} */
             }
         }
         private void Start()
@@ -134,7 +140,19 @@ namespace StarterAssets {
     }
     void Update()
 	{
-			Look();
+			/*
+			if (debugText != null) { 
+                debugText.text = "Grounded: " + IsGrounded + "\n" +
+                "Velocity: " + playerVelocity + "\n" +
+                "Wishdir: " + wishdir + "\n" +
+                "Wishspeed: " + wishspeed + "\n" +
+                "Player Friction: " + playerFriction + "\n" +
+                "Top Velocity: " + playerTopVelocity + "\n" +
+                "Surface Normal: " + surfaceNormal + "\n" +
+                "Is Sliding: " + isSliding;
+            } */
+
+            Look();
 
             #region //UI, Feel free to remove the region.
 
@@ -319,38 +337,49 @@ namespace StarterAssets {
             Camera.main.transform.localEulerAngles = new Vector3(_pitch, 0f, 0f);
         }
         public void GroundMove()
-	{
-		// Do not apply friction if the player is queueing up the next jump
-		if (!wishJump)
-			ApplyFriction(1.0f);
-		else
-			ApplyFriction(0);
+		{
+			// Do not apply friction if the player is queueing up the next jump
+			if (!wishJump)
+				ApplyFriction(1.0f);
+			else
+				ApplyFriction(0);
 
-		SetMovementDir();
+			SetMovementDir();
 
-		wishdir = new Vector3(_input.move.x, 0, _input.move.y);
-		wishdir = transform.TransformDirection(wishdir);
-		wishdir.Normalize();
-		moveDirectionNorm = wishdir;
+			wishdir = new Vector3(_input.move.x, 0, _input.move.y);
+			wishdir = transform.TransformDirection(wishdir);
+			wishdir.Normalize();
+			moveDirectionNorm = wishdir;
+			//project wishdir onto surface normal to move with the slope
+			//wishdir = Vector3.ProjectOnPlane(wishdir, surfaceNormal).normalized;
+			
+			wishspeed = wishdir.magnitude;
+			wishspeed *= moveSpeed;
+			/*if (wishdir.y > 0)
+			{
+                //if we're moving up a slope, we need to add extra speed to compensate for the loss of speed due to gravity
+                wishspeed += wishdir.y * gravity * -1;
 
-		wishspeed = wishdir.magnitude;
-		wishspeed *= moveSpeed;
+            }
+            float velGravity = Vector3.Dot(playerVelocity, surfaceNormal);
+			*/
 
-		Accelerate(wishdir, wishspeed, runAcceleration);
+            Accelerate(wishdir, wishspeed, runAcceleration);
 
 		// Reset the gravity velocity
-		playerVelocity.y = 0;
+		//playerVelocity.y = 0;
 
-		if (wishJump)
-		{
-			playerVelocity.y = jumpSpeed;
-			wishJump = false;
-		}
-
-		/**
+			if (wishJump)
+			{
+				playerVelocity.y = jumpSpeed;
+				IsGrounded = false;
+				wishJump = false;
+			}
+        }
+        /**
 			* Applies friction to the player, called in both the air and on the ground
 			*/
-		void ApplyFriction(float t)
+        void ApplyFriction(float t)
 		{
 			vec = playerVelocity; // Equivalent to: VectorCopy();
 			vec.y = 0f;
@@ -375,7 +404,6 @@ namespace StarterAssets {
 			// playerVelocity.y *= newspeed;
 			playerVelocity.z *= newspeed;
 		}
-	}
 		/* not required...
         private void OnCollisionEnter(Collision collision)
         {
@@ -393,6 +421,12 @@ namespace StarterAssets {
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
             Vector3 normal = hit.normal.normalized;
+			//check if normal is floor
+			if (Vector3.Angle(normal, Vector3.up) < slopeLimit)
+			{
+				IsGrounded = true;
+				surfaceNormal = normal;
+			}
             float vDot = Vector3.Dot(playerVelocity, normal);
             /*
 		     * •	If vDot < 0 (velocity has a component into the surface), 
@@ -403,5 +437,9 @@ namespace StarterAssets {
                 playerVelocity -= vDot * normal;
             }
         }
+        private void OnControllerColliderStay(ControllerColliderHit hit)
+		{
+
+		}
     }
 }
