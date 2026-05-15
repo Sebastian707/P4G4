@@ -9990,7 +9990,7 @@ MonoBehaviour:
     using keys: 1 & 2
 
     (press 1
-    to cycle hitscan 2 for projectile)'
+    to cycle projectile 2 for hitscan weapons)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b59f99b5579d5a34b9aa8e3fe4246125, type: 2}
   m_sharedMaterial: {fileID: -1186121363697850278, guid: b59f99b5579d5a34b9aa8e3fe4246125, type: 2}
