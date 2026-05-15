@@ -85,7 +85,7 @@ public class StyleComboManager : MonoBehaviour
     /// Call this when a weapon lands a hit on a damageable target.
     /// Called by HitStyleReporter — no changes to Weapon.cs needed.
     /// </summary>
-    public void RegisterHit(Weapon sourceWeapon)
+    public void RegisterHit(Weapon sourceWeapon, float damage)
     {
         if (sourceWeapon == null) return;
 
@@ -115,7 +115,7 @@ public class StyleComboManager : MonoBehaviour
         // the very first use). If you want the first hit to always pay full basePoints,
         // change the formula to use (appearances - 1) instead.
         float multiplier = 1f / (1f + (appearances - 1));   // first hit = ×1.0
-        int points = Mathf.RoundToInt(Mathf.Max(cfg.minimumPoints, cfg.basePoints * multiplier));
+        float points = cfg.basePoints * multiplier * damage;
 
         // One-time switch bonus on first hit after swapping
         if (_switchBonusActive)
@@ -170,7 +170,7 @@ public class StyleComboManager : MonoBehaviour
     void DebugSimulateHit()
     {
         if (weaponConfigs.Count > 0)
-            RegisterHit(weaponConfigs[0].weapon);
+            RegisterHit(weaponConfigs[0].weapon, 10f);
     }
 
     [ContextMenu("Debug: Simulate Kill")]

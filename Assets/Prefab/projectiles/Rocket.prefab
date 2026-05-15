@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 1100
-  damage: 4
+  damage: 0.7
   explosionRadius: 5
   explosionForceMin: 10
   explosionForceMax: 20

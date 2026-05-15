@@ -5,15 +5,17 @@ using StarterAssets;
 
 public class PlayerDash : MonoBehaviour
 {
-    public float dashVelocity = 5f;
+    public float dashVelocity = 10f;
 
     public AudioClip dashSound;
 
     public int maxDashCharges = 3;
     public float chargeRestoreRate = 5f;
     private int currentDashCharges;
-    private float dashUpSpeed = 10f;
+    //7 or higher or ground friction breaks it
+    private float dashUpSpeed = 7f;
     private bool isDashing = false;
+    
     private float lastChargeTime;
     public float dashCooldown = 2f;
     private float lastDashTime;
@@ -31,7 +33,7 @@ public class PlayerDash : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         playerMovementWithStrafes = GetComponent<PlayerMovementWithStrafes>();
 
-        currentDashCharges = 0;
+        currentDashCharges = maxDashCharges;
     }
 
     void Update()
@@ -74,15 +76,20 @@ public class PlayerDash : MonoBehaviour
         {
             playerInputDir = transform.forward;
         }
-        Vector3 movementDir = playerInputDir;
+        Vector3 movementDir = Vector3.Scale(playerInputDir, new Vector3(1, 0, 1)).normalized;
         playerMovementWithStrafes.IsGrounded = false;
-        var newVel = Vector3.Scale(playerMovementWithStrafes.PlayerVelocity, new Vector3(1, 0, 1))  + Vector3.Scale(movementDir, new Vector3(1, 0, 1)) * dashVelocity;
+        //old (keeping old momentum with added dash speed)
+        //var newVel = Vector3.Scale(playerMovementWithStrafes.PlayerVelocity, new Vector3(1, 0, 1))  + movementDir * dashVelocity;
+        Vector3 newVel = (playerMovementWithStrafes.PlayerVelocity.magnitude + dashVelocity) * movementDir;
         newVel.y = dashUpSpeed;
         playerMovementWithStrafes.PlayerVelocity = newVel;
         lastDashTime = Time.time;
 
     }
-
+    public void SetDashes(int dashes)
+    {
+        currentDashCharges = Mathf.Clamp(dashes, 0, maxDashCharges);
+    }
     void EndDash()
     {
         isDashing = false;
