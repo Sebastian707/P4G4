@@ -22583,6 +22583,66 @@ PrefabInstance:
       propertyPath: dashText
       value: 
       objectReference: {fileID: 1731819370}
+    - target: {fileID: 3832584488302644278, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: swayAmount
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832584488302644278, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: swaySmooth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832584488302644278, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: idleSwaySpeed
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832584488302644278, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: maxSwayAmount
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832584488302644278, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: idleSwayAmount
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566217592537748297, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: swayAmount
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566217592537748297, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: swaySmooth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566217592537748297, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: idleSwaySpeed
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566217592537748297, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: maxSwayAmount
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566217592537748297, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: idleSwayAmount
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015377627111425008, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: swayAmount
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015377627111425008, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: swaySmooth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015377627111425008, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: idleSwaySpeed
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015377627111425008, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: maxSwayAmount
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015377627111425008, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: idleSwayAmount
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 5899426816158078892, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
       propertyPath: weaponChangeText
       value: 
@@ -22634,6 +22694,26 @@ PrefabInstance:
     - target: {fileID: 6940652548021853181, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761273531161466562, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: swayAmount
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761273531161466562, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: swaySmooth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761273531161466562, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: idleSwaySpeed
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761273531161466562, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: maxSwayAmount
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761273531161466562, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
+      propertyPath: idleSwayAmount
+      value: 0.02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
