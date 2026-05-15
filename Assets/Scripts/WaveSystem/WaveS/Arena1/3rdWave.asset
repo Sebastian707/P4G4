@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec0d5aeb17de9be42b4de85bdd17d31d, type: 3}
-  m_Name: 2ndWave
+  m_Name: 3rdWave
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   enemies:
   - enemyPrefab: {fileID: 7545753746582415300, guid: 39b21b0de88dc2c4bbc598ab22ca9b30, type: 3}
@@ -18,6 +18,15 @@ MonoBehaviour:
     spawnDelay: 0
   - enemyPrefab: {fileID: 7545753746582415300, guid: 39b21b0de88dc2c4bbc598ab22ca9b30, type: 3}
     spawnPointName: SpawnPoint02
+    spawnDelay: 0
+  - enemyPrefab: {fileID: 7545753746582415300, guid: 39b21b0de88dc2c4bbc598ab22ca9b30, type: 3}
+    spawnPointName: SpawnPoint02
+    spawnDelay: 0
+  - enemyPrefab: {fileID: 7545753746582415300, guid: 39b21b0de88dc2c4bbc598ab22ca9b30, type: 3}
+    spawnPointName: SpawnPoint02
+    spawnDelay: 0
+  - enemyPrefab: {fileID: 7545753746582415300, guid: 39b21b0de88dc2c4bbc598ab22ca9b30, type: 3}
+    spawnPointName: SpawnPoint01
     spawnDelay: 0
   - enemyPrefab: {fileID: 7545753746582415300, guid: 39b21b0de88dc2c4bbc598ab22ca9b30, type: 3}
     spawnPointName: SpawnPoint02

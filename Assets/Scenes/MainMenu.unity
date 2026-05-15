@@ -5902,7 +5902,7 @@ MonoBehaviour:
   - {fileID: 459330373}
   loadGameMenuPanel: {fileID: 1632548277}
   playMenuPanel: {fileID: 71390041844489032}
-  gameScene: ArenaScene
+  gameScene: ArenaSceneNicolai
   confirmPopup: {fileID: 1137989245}
   confirmYesButton: {fileID: 1841761660}
   confirmNoButton: {fileID: 1284957938}
