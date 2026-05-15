@@ -59,11 +59,11 @@ public class Weapon : MonoBehaviour
     public float recoilRecoverySpeed = 5f;
 
     [Header("Weapon Sway")]
-    public float swayAmount = 0.02f;
+    public float swayAmount = 0.03f;
     public float maxSwayAmount = 0.06f;
     public float swaySmooth = 6f;
-    public float idleSwaySpeed = 1f;
-    public float idleSwayAmount = 0.5f;
+    public float idleSwaySpeed = 0.7f;
+    public float idleSwayAmount = 0.02f;
 
     // Private state
     private float timeSinceLastShot;
@@ -315,6 +315,8 @@ public class Weapon : MonoBehaviour
         );
 
         swayTransform.localRotation = currentSwayRotation * Quaternion.Euler(currentRecoil);
+
+
     }
     void OnShoot2()
     {

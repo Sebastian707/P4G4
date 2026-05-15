@@ -84,11 +84,11 @@ MonoBehaviour:
   audioPitchVariation: 0.02
   recoilKick: {x: 0, y: 0}
   recoilRecoverySpeed: 1
-  swayAmount: 1.8
-  maxSwayAmount: 1.3
-  swaySmooth: 0.1
-  idleSwaySpeed: 1
-  idleSwayAmount: 0.5
+  swayAmount: 0.1
+  maxSwayAmount: 0.1
+  swaySmooth: 5
+  idleSwaySpeed: 0.7
+  idleSwayAmount: 0.02
 --- !u!95 &6096026192384140564
 Animator:
   serializedVersion: 7
@@ -195,11 +195,11 @@ MonoBehaviour:
   audioPitchVariation: 0.02
   recoilKick: {x: 0, y: 66.02}
   recoilRecoverySpeed: 10
-  swayAmount: 1
-  maxSwayAmount: 1
-  swaySmooth: 0.1
-  idleSwaySpeed: 1
-  idleSwayAmount: 0.5
+  swayAmount: 0.1
+  maxSwayAmount: 0.03
+  swaySmooth: 5
+  idleSwaySpeed: 0.7
+  idleSwayAmount: 0.02
 --- !u!95 &9159562014559419042
 Animator:
   serializedVersion: 7
@@ -458,7 +458,7 @@ Transform:
   m_LocalScale: {x: 1.13, y: 1.13, z: 1.13}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 226097436236097483}
+  - {fileID: 336075722978738209}
   - {fileID: 8616024053978298869}
   m_Father: {fileID: 2846071676206563388}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -510,11 +510,11 @@ MonoBehaviour:
   audioPitchVariation: 0.02
   recoilKick: {x: 0, y: 0}
   recoilRecoverySpeed: 1
-  swayAmount: 1.8
+  swayAmount: 0.1
   maxSwayAmount: 0.1
-  swaySmooth: 0.1
-  idleSwaySpeed: 1
-  idleSwayAmount: 0.5
+  swaySmooth: 5
+  idleSwaySpeed: 0.7
+  idleSwayAmount: 0.02
 --- !u!95 &8529818609566812604
 Animator:
   serializedVersion: 7
@@ -1040,11 +1040,11 @@ MonoBehaviour:
   audioPitchVariation: 0.02
   recoilKick: {x: 0, y: 88.2}
   recoilRecoverySpeed: 5.5
-  swayAmount: 1.3
-  maxSwayAmount: 1.5
-  swaySmooth: 0.1
+  swayAmount: 0.1
+  maxSwayAmount: 0.1
+  swaySmooth: 5
   idleSwaySpeed: 0.7
-  idleSwayAmount: 0.5
+  idleSwayAmount: 0.02
 --- !u!95 &5318498493581790640
 Animator:
   serializedVersion: 7
@@ -1333,7 +1333,7 @@ PrefabInstance:
       addedObject: {fileID: 4060327585257495602}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b43b472356ce5b4e99fa89717a62afa, type: 3}
---- !u!4 &226097436236097483 stripped
+--- !u!4 &336075722978738209 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5b43b472356ce5b4e99fa89717a62afa, type: 3}
   m_PrefabInstance: {fileID: 226097436236097482}
@@ -1424,7 +1424,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 226097436236097483}
+    m_TransformParent: {fileID: 336075722978738209}
     m_Modifications:
     - target: {fileID: 311301485394103638, guid: 1d9452530c0f65f478b15944c633ef28, type: 3}
       propertyPath: LightsModule.light
