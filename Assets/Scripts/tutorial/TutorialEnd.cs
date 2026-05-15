@@ -1,4 +1,6 @@
+using Unity.VectorGraphics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialEnd : MonoBehaviour
 {
@@ -21,8 +23,7 @@ public class TutorialEnd : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 // this doesnt really work... do not understand how scene transitionmanager really works...
-                SceneTransitionManager sceneTransitionManager = FindAnyObjectByType<SceneTransitionManager>();
-                sceneTransitionManager.TransitionToScene("Arena2");
+                SceneManager.LoadSceneAsync("MainMenu");
             }
         }
     }
