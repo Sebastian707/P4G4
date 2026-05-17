@@ -11,6 +11,9 @@ public class WaveManager : MonoBehaviour
 
     [Header("Trigger Settings")]
     public string triggerTag = "Player";
+    
+    [Header("End UI")]
+    public GameObject finalPanel;
 
     private int currentWaveIndex = 0;
     private int enemiesAlive = 0;
@@ -51,6 +54,18 @@ public class WaveManager : MonoBehaviour
 
             Debug.Log($"Wave {currentWaveIndex + 1} complete!");
             currentWaveIndex++;
+            
+            if (currentWaveIndex == 11)
+            {
+                if (finalPanel != null)
+                    Time.timeScale = 0;
+                    finalPanel.SetActive(true);
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    
+
+                Debug.Log("Final panel activated at wave 11!");
+            }
         }
 
         Debug.Log("ALL WAVES COMPLETE");
