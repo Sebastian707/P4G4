@@ -10698,7 +10698,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fc3f64c72c9921c4a83e6a50cb0fb399, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 19107d83f062bed44804d82bb876e990, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10748,11 +10748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2730f03e5f705b04b93ebba2cf17dc99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RandomLoadingScreenPicker
-  Options:
-  - sprite: {fileID: 21300000, guid: 369c3e9de1d958b4988df9a5390857e8, type: 3}
-    text: Hello Stranger
-  - sprite: {fileID: 21300000, guid: fc3f64c72c9921c4a83e6a50cb0fb399, type: 3}
-    text: FUCK YOU
+  Options: []
   image: {fileID: 1603344059}
   text: {fileID: 110746511}
 --- !u!1 &1632548277
