@@ -22,6 +22,15 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
     public float dissolveStart = 5f;
     public float dissolveEnd = -13f;
 
+    [Header("Blood Effects")]
+    private GameObject bloodPrefab;
+    public float bloodMinLifetime = 1f;
+    public float bloodMaxLifetime = 2f;
+    public float bloodSpreadForce = 7f;
+    public float bloodUpwardForce = 8f;
+    private bool _bloodSpawnedThisFrame = false;
+    private GameObject deathBloodPrefab;
+
     [Header("FMOD Audio")]
     public EventReference spawnSoundEvent;
 
@@ -44,6 +53,14 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
         Renderer rend = GetComponent<Renderer>();
         if (rend != null)
             _dissolveMat = rend.material;
+
+        bloodPrefab = Resources.Load<GameObject>("BloodPrefab");
+        if (bloodPrefab == null)
+            UnityEngine.Debug.LogWarning("BloodPrefab not found in Resources folder!");
+
+        deathBloodPrefab = Resources.Load<GameObject>("DeathBloodPrefab");
+        if (deathBloodPrefab == null)
+            UnityEngine.Debug.LogWarning("DeathBloodPrefab not found in Resources folder!");
 
         StartCoroutine(SpawnEffect());
     }
@@ -84,8 +101,67 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
         UnityEngine.Debug.Log(enemyName + " hit for: " + amount);
         currentHealth -= amount;
         GetComponent<BossBar>()?.OnBossDamaged();
+        if (!_bloodSpawnedThisFrame)
+        {
+            SpawnBloodEffect();
+            _bloodSpawnedThisFrame = true;
+            StartCoroutine(ResetBloodFlag());
+        }
         if (currentHealth <= 0f & isAlive)
             Die();
+    }
+
+    IEnumerator ResetBloodFlag()
+    {
+        yield return null;
+        _bloodSpawnedThisFrame = false;
+    }
+
+    void SpawnBloodEffect()
+    {
+        if (bloodPrefab == null) return;
+
+        int count = UnityEngine.Random.Range(3, 5);
+        for (int i = 0; i < count; i++)
+        {
+            Vector3 spawnPos = transform.position + UnityEngine.Random.insideUnitSphere * 0.3f;
+            GameObject blood = Instantiate(bloodPrefab, spawnPos, UnityEngine.Random.rotation);
+
+            Rigidbody rb = blood.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                Vector3 randomDir = UnityEngine.Random.insideUnitSphere;
+                randomDir.y = Mathf.Abs(randomDir.y);
+                rb.AddForce((randomDir * bloodSpreadForce + Vector3.up * bloodUpwardForce), ForceMode.Impulse);
+                rb.AddTorque(UnityEngine.Random.insideUnitSphere * 5f, ForceMode.Impulse);
+            }
+
+            float lifetime = UnityEngine.Random.Range(bloodMinLifetime, bloodMaxLifetime);
+            Destroy(blood, lifetime);
+        }
+    }
+
+    void SpawnDeathBloodEffect()
+    {
+        if (deathBloodPrefab == null) return;
+
+        for (int i = 0; i < 10; i++)
+        {
+            Vector3 spawnPos = transform.position + UnityEngine.Random.insideUnitSphere * 0.3f;
+            GameObject blood = Instantiate(deathBloodPrefab, spawnPos, UnityEngine.Random.rotation);
+
+            Rigidbody rb = blood.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                Vector3 randomDir = UnityEngine.Random.insideUnitSphere;
+                randomDir.y = Mathf.Abs(randomDir.y);
+                rb.AddForce((randomDir * bloodSpreadForce + Vector3.up * bloodUpwardForce), ForceMode.Impulse);
+                rb.AddTorque(UnityEngine.Random.insideUnitSphere * 5f, ForceMode.Impulse);
+            }
+
+            float lifetime = UnityEngine.Random.Range(bloodMinLifetime, bloodMaxLifetime);
+            Destroy(blood, lifetime);
+        }
     }
 
     void Die()
@@ -93,6 +169,7 @@ public class SimpleEnemy : MonoBehaviour, IDamageable
         UnityEngine.Debug.Log(enemyName + " has died.");
         isAlive = false;
         OnDeath?.Invoke();
+        SpawnDeathBloodEffect();
         Destroy(gameObject);
         pointManager.AddPoints(pointsToAdd);
 

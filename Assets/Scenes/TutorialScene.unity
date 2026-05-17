@@ -5079,7 +5079,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6029959330476659949, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -44.725018
+      value: -48.35
       objectReference: {fileID: 0}
     - target: {fileID: 6029959330476659949, guid: 70ac125ffe97d8e4b8aabd5be073be34, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10138,9 +10138,8 @@ MonoBehaviour:
     with keys: [1] & [2].
 
 
-
-    [1] Cycles
-    Projectile weapons.
+    [1] Cycles Projectile
+    weapons.
 
     [2] Cycles Direct fire weapons.
 
@@ -10210,7 +10209,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 7.5933094, y: 1.1415424, z: 3.245593, w: -2.5544858}
+  m_margin: {x: 7.5933094, y: 2.352295, z: 3.245593, w: -2.5544858}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0

@@ -10580,14 +10580,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
   - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
   - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
-  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
-  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
-  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
-  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
-  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
-  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
-  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
-  - {fileID: 11400000, guid: 9a5e748291144774597cddba7b8aea20, type: 2}
+  - {fileID: 11400000, guid: cf496380802ece846aa42a692a36f6af, type: 2}
+  - {fileID: 11400000, guid: cf496380802ece846aa42a692a36f6af, type: 2}
+  - {fileID: 11400000, guid: cf496380802ece846aa42a692a36f6af, type: 2}
+  - {fileID: 11400000, guid: cf496380802ece846aa42a692a36f6af, type: 2}
+  - {fileID: 11400000, guid: 494ad3ee2b99da640aee1fddce0815a8, type: 2}
+  - {fileID: 11400000, guid: 494ad3ee2b99da640aee1fddce0815a8, type: 2}
+  - {fileID: 11400000, guid: 494ad3ee2b99da640aee1fddce0815a8, type: 2}
+  - {fileID: 11400000, guid: 494ad3ee2b99da640aee1fddce0815a8, type: 2}
   enemyCounterUI: {fileID: 384408498}
   triggerTag: Player
   finalPanel: {fileID: 2103028324}
