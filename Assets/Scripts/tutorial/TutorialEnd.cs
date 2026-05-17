@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class TutorialEnd : MonoBehaviour
 {
+    public float pointsRequired = 5000;
     private PointManager styleComboManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,7 +19,7 @@ public class TutorialEnd : MonoBehaviour
             styleComboManager = FindAnyObjectByType<PointManager>();
         } else { 
 
-            if (styleComboManager.currentPoints >= 2000)
+            if (styleComboManager.currentPoints >= pointsRequired)
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
