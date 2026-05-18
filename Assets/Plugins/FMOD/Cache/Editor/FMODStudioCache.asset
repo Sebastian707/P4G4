@@ -195,10 +195,10 @@ MonoBehaviour:
   Path: testpro/Build/Desktop/StyleBank.bank
   Name: StyleBank
   StudioPath: bank:/StyleBank
-  lastModified: 639146955286548887
+  lastModified: 639146968791411825
   FileSizes:
   - Name: Desktop
-    Value: 11387264
+    Value: 11386752
   Exists: 1
 --- !u!114 &-7820425113866159226
 MonoBehaviour:
@@ -1996,7 +1996,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -2893598910067195388}
   cacheVersion: 131859
-  cacheTime: 639146955286548887
+  cacheTime: 639146968791411825
   SerializableEventsDict:
   - key: event:/Footsteps/Footstep_3
     index: 0
